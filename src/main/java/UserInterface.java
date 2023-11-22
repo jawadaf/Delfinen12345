@@ -43,10 +43,6 @@ public class UserInterface {
         System.out.println("Indtast medlemmets e-mail: ");
         String email = scanner.nextLine();
 
-
-
-
-
         Medlem nytMedlem = new Medlem(navn, adresse, alder, fødselsdato, telefonnummer, email);
         medlemsliste.add(nytMedlem);
         System.out.println("Medlem registreret: " + nytMedlem.getFuldNavn());
@@ -71,7 +67,5 @@ public class UserInterface {
         for (Medlem medlem : formand.medlemsliste) {
             System.out.println(medlem.getFuldNavn() + " - " + medlem.getAlder() + " år");
         }
-
-        inputScanner.close();
     }
 }
