@@ -12,7 +12,7 @@ public class UserInterface {
     }
 
     public void registrerNytMedlem() {
-        System.out.println("""
+                System.out.println("""
                             Ved registrering af ny medlem har jeg bruge for følgende:
                             1. Medlemmets fulde navn
                             2. Medlemmets adresse 
@@ -46,9 +46,7 @@ public class UserInterface {
         Medlem nytMedlem = new Medlem(navn, adresse, alder, fødselsdato, telefonnummer, email);
         medlemsliste.add(nytMedlem);
         System.out.println("Medlem registreret: " + nytMedlem.getFuldNavn());
-    }
 
-    public static void main(String[] args) {
         Formand formand = new Formand();
 
         System.out.println("Velkommen som formand for Svømmeklubben Delfinen!");
@@ -67,5 +65,12 @@ public class UserInterface {
         for (Medlem medlem : formand.medlemsliste) {
             System.out.println(medlem.getFuldNavn() + " - " + medlem.getAlder() + " år");
         }
+
+        for (int i = 0; i < 5; i++) {
+            int medlemsNummer;
+        }
+
+
+
     }
 }
