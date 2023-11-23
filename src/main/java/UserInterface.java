@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -11,66 +12,69 @@ public class UserInterface {
         scanner = new Scanner(System.in);
     }
 
-    public void registrerNytMedlem() {
-                System.out.println("""
-                            Ved registrering af ny medlem har jeg bruge for følgende:
-                            1. Medlemmets fulde navn
-                            2. Medlemmets adresse 
-                            3. Medlemmets alder
-                            4. Medlemmets fødselsdato
-                            5. Medlemmets telefonnumer
-                            6. Medlemmets e-mail
-                            """);
+    public Medlem registrerNytMedlem() {
+        System.out.println("""
+                Ved registrering af nyt medlem har jeg bruge for følgende:
+                1. Medlemmets fulde navn
+                2. Medlemmets adresse
+                3. Medlemmets alder
+                4. Medlemmets fødselsdato
+                5. Medlemmets telefonnumer
+                6. Medlemmets e-mail
+                """);
 
         System.out.println("Indtast medlemmets fulde navn: ");
-        String navn = scanner.nextLine();
+        String fuldNavn = "";
+        try {
+            fuldNavn = scanner.nextLine();
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst dit fulde navn");
+        }
 
         System.out.println("Indtast medlemmets adresse: ");
-        String adresse = scanner.nextLine();
+        String adresse = "";
+        try {
+            adresse = scanner.nextLine();
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst din adresse");
+        }
 
         System.out.println("Indtast medlemmets alder: ");
-        int alder = scanner.nextInt();
+        int alder = 0;
+        try {
+            alder = scanner.nextInt();
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst din alder");
+        }
         scanner.nextLine(); // For at fjerne newline fra scanner buffer
 
         System.out.println("Indtast medlemmets fødselsdato (åååå-mm-dd): ");
-        String fødselsdatoString = scanner.nextLine();
-        LocalDate fødselsdato = LocalDate.parse(fødselsdatoString);
+        LocalDate fødselsdato = null;
+        try {
+            String fødselsdatoinput = scanner.nextLine();
+            fødselsdato = LocalDate.parse(fødselsdatoinput);
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst din fødselsdato");
+        }
 
         System.out.println("Indtast medlemmets telefonnummer: ");
-        int telefonnummer = scanner.nextInt();
+        int telefonnummer = 0;
+        try {
+            telefonnummer = scanner.nextInt();
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst dit telefonnummer");
+        }
         scanner.nextLine(); // For at fjerne newline fra scanner buffer
 
         System.out.println("Indtast medlemmets e-mail: ");
-        String email = scanner.nextLine();
-
-        Medlem nytMedlem = new Medlem(navn, adresse, alder, fødselsdato, telefonnummer, email);
-        medlemsliste.add(nytMedlem);
-        System.out.println("Medlem registreret: " + nytMedlem.getFuldNavn());
-
-        Formand formand = new Formand();
-
-        System.out.println("Velkommen som formand for Svømmeklubben Delfinen!");
-        System.out.println("Vil du registrere et nyt medlem? (ja/nej)");
-
-        Scanner inputScanner = new Scanner(System.in);
-        String svar = inputScanner.nextLine();
-
-        while (svar.equalsIgnoreCase("ja")) {
-            formand.registrerNytMedlem();
-            System.out.println("Vil du registrere et nyt medlem? (ja/nej)");
-            svar = inputScanner.nextLine();
+        String email = "";
+        try {
+            email = scanner.nextLine();
+        } catch (NoSuchElementException e) {
+            System.out.println("Indtast venligst din e-mail");
         }
 
-        System.out.println("Medlemsliste:");
-        for (Medlem medlem : formand.medlemsliste) {
-            System.out.println(medlem.getFuldNavn() + " - " + medlem.getAlder() + " år");
-        }
-
-        for (int i = 0; i < 5; i++) {
-            int medlemsNummer;
-        }
-
-
-
+        Medlem medlem = new Medlem(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email);
+        return medlem;
     }
 }
