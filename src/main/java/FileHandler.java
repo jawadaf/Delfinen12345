@@ -9,26 +9,23 @@ public class FileHandler {
 
     private static Object medlemregister;
 
-    private File f = new File("medlemregister.csv");
-
     public void saveToCsvFile(ArrayList<Medlem> medlemList) {
-
         try {
-            PrintStream output = new PrintStream(f);
+           PrintStream out = new PrintStream(new File("medlemregister.csv"));
             for (Medlem medlem : medlemList) {
                 if (medlem != null) {
 
                     /*output.println(medlem.getFuldNavn() + " - " + medlem.getAdresse() + " - " + medlem.getAlder()
                             + " år" + " - " + medlem.getFødselsdato() + " - " + medlem.getTelefonnummer() + " - " +
                             medlem.getEmail());*/
-                    output.print(medlem.getFuldNavn());
+                    out.print(medlem.getFuldNavn());
                 } else {
                     System.out.println("Der er ingen medlemmer registeret");
                 }
 
 
             }
-            output.close();
+            out.close();
         }catch(FileNotFoundException e) {
                 throw new RuntimeException();
             }
