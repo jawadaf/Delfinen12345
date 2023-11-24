@@ -2,16 +2,42 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterController {
+    Database database = new Database();
+    private boolean isChanged = false;
 
-   /* Formand formand = new Formand();
-    private boolean isChanged = false; */
 
-    private ArrayList<Medlem> medlemmer = new ArrayList();
-    FileHandler fileHandler = new FileHandler();
+    public void tilføjelseAfMedlem (String fuldNavn,
+                                    String adresse,
+                                    int alder,
+                                    LocalDate fødselsdato,
+                                    int telefonnummer,
+                                    String email) {
 
-    public void start(){
+        isChanged = true;
+        database.tilføjMedlem(
+                fuldNavn,
+                adresse,
+                alder,
+                fødselsdato,
+                telefonnummer,
+                email);
 
-        UserInterface ui = new UserInterface();
+    }
+
+    public ArrayList<Medlem> hentetMedlem() {
+        return database.hentMedlem();
+    }
+
+
+    public void gemMedlem() {
+        database.gemMedlem();
+    }
+
+    public void exit() {
+    }
+
+
+        /* UserInterface ui = new UserInterface();
         //ui print greeting
         //ui print en menu
         Medlem medlem = ui.registrerNytMedlem();
@@ -22,26 +48,12 @@ public class RegisterController {
 
     public void saveNyMedlem() {
 
-        fileHandler.saveToCsvFile(medlemmer);
     }
+*/
 
 
+   /*
 
-   /* public void tilføjMedlem(String fuldNavn,
-                             String adresse,
-                             int alder,
-                             LocalDate fødeselsdato,
-                             int telefonnumer,
-                             String email) {
-    isChanged = true;
-    RegisterController.tilføjMedlem;(
-            String fuldNavn,
-            String adresse,
-            int alder,
-            LocalDate fødeselsdato,
-            int telefonnumer,
-            String email)
-    }
     public void medlemEdits (
             String fuldNavn,
             String adresse,
@@ -53,12 +65,7 @@ public class RegisterController {
         isChanged = true;
 
         RegisterController.medlemEdits(fuldNavn, adresse, alder, fødeselsdato, telefonnumer, email);*/
-    //}
-
-
-
-
-
+        //}
 
 
 

@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: rettelser">
+    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: rettelser i klasser">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2023_12_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2023_12_33__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
-    </list>
-    <list id="4846ec8d-2c13-4210-9da1-c5147462f611" name="Changes by Alhus" comment="...">
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+    </list>
+    <list id="ef691938-ee4e-460f-9e7e-948ee19213c7" name="Changes by Alhus" comment="Changes by Alhus">
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
     </list>
     <list id="22132033-13fd-44bc-a2c9-35b5ee13324a" name="Changes by bsenb" comment="" />
-    <list id="d646c0fb-d11e-4e29-86b7-a7fac1dbe03e" name="Changes by MUK" comment="Changes by MUK" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +34,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jawadaf"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3e5b0185-9380-46d9-913d-de59f7e039d5" />
+        <option name="url" value="https://github.com/jawadaf/Delfinen00.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/FileHandler.java">
+      <ranges>
+        <range start1="4" end1="5" start2="4" end2="4" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="12" end1="14" start2="11" end2="12" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="16" end1="21" start2="14" end2="15" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="24" end1="26" start2="18" end2="18" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="29" end1="30" start2="21" end2="22" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -49,6 +79,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
@@ -99,6 +130,7 @@
       <workItem from="1700564078759" duration="6124000" />
       <workItem from="1700751081262" duration="399000" />
       <workItem from="1700751495454" duration="426000" />
+      <workItem from="1700818062215" duration="24790000" />
     </task>
     <task id="LOCAL-00001" summary="000">
       <option name="closed" value="true" />
@@ -186,7 +218,14 @@
     <MESSAGE value="Jawad: Har oprettet klasse fileHandler og fil &quot;medlemregister&quot;" />
     <MESSAGE value="Changes by MUK" />
     <MESSAGE value="..." />
+    <MESSAGE value="Jawad:" />
+    <MESSAGE value="Jawad: gg" />
+    <MESSAGE value="Jawad: ggww" />
+    <MESSAGE value="Jawad: ggwwee" />
     <MESSAGE value="Jawad: rettelser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jawad: rettelser" />
+    <MESSAGE value="Changes by Alhus" />
+    <MESSAGE value="Jawad: rettelser1" />
+    <MESSAGE value="Jawad: rettelser i klasser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jawad: rettelser i klasser" />
   </component>
 </project>

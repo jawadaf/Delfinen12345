@@ -23,6 +23,12 @@ public class Medlem {
     }
 
     public Medlem(String fuldNavn, String adresse, int alder, LocalDate fødselsdato, int telefonnummer, String email) {
+        this.fuldNavn = fuldNavn;
+        this.adresse = adresse;
+        this.alder = alder;
+        this.fødselsdato = fødselsdato;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
     }
 
     // Getter metode

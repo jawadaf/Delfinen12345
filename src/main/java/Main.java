@@ -1,6 +1,10 @@
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
-        RegisterController rc = new RegisterController();
+        UserInterface ui = new UserInterface();
+        ui.printHeleUserInterface();
+    }
+        /*RegisterController rc = new RegisterController();
         rc.start();
 
         {
@@ -8,5 +12,6 @@ public class Main {
             ArrayList<Medlem> medlemListe = new ArrayList<>();
 
             fileHandler.saveToCsvFile(medlemListe);
-    }
+        }
+    }*/
 }

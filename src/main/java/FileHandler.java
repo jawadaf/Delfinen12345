@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -14,20 +13,14 @@ public class FileHandler {
            PrintStream out = new PrintStream(new File("medlemregister.csv"));
             for (Medlem medlem : medlemList) {
                 if (medlem != null) {
-
-                    /*output.println(medlem.getFuldNavn() + " - " + medlem.getAdresse() + " - " + medlem.getAlder()
-                            + " år" + " - " + medlem.getFødselsdato() + " - " + medlem.getTelefonnummer() + " - " +
-                            medlem.getEmail());*/
-                    out.print(medlem.getFuldNavn());
+                    out.println(medlem);
                 } else {
                     System.out.println("Der er ingen medlemmer registeret");
                 }
-
-
             }
             out.close();
         }catch(FileNotFoundException e) {
-                throw new RuntimeException();
+            System.out.println("Filen eksistere ikke.");
             }
         }
 
