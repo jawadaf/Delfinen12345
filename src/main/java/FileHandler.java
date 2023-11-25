@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    private static Object medlemregister;
 
     public void saveToCsvFile(ArrayList<Medlem> medlemList) {
         try {
