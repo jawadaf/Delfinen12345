@@ -20,7 +20,7 @@ public class UserInterface {
                 """);
     }
 
-    public Medlem printHeleUserInterface() {
+    public void printHeleUserInterface() {
         Scanner scanner = new Scanner(System.in);
         int isRunning = 0;
 
@@ -39,8 +39,17 @@ public class UserInterface {
             switch (isRunning) {
                 case 1 -> {
                     //opret dit medlem
+                    System.out.println("""
+                    Ved registrering af nyt medlem har jeg bruge for følgende:
+                    1. Medlemmets fulde navn
+                    2. Medlemmets adresse
+                    3. Medlemmets alder
+                    4. Medlemmets fødselsdato
+                    5. Medlemmets telefonnumer
+                    6. Medlemmets e-mail
+                    """);
 
-                    System.out.print("Indtast fulde navn på medlemmet.");
+                    System.out.print("Indtast fulde navn på medlemmet: ");
                     fuldNavn = null;
                     try {
                         fuldNavn = scanner.nextLine();
@@ -48,7 +57,7 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast adresse på medlemmet.");
+                    System.out.print("Indtast adresse på medlemmet: ");
                     String adresse = null;
                     try {
                         adresse = scanner.nextLine();
@@ -56,7 +65,7 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast alder på medlemmet.");
+                    System.out.print("Indtast alder på medlemmet: ");
                     int alder = 0;
                     try {
                         alder = scanner.nextInt();
@@ -64,20 +73,25 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast fødselsdato på medlemmet.");
+                    /*
+                    System.out.print("Indtast fødselsdato på medlemmet: ");
                     LocalDate fødselsdato = null;
                         try {
                             String fødselsdagsdato = scanner.nextLine();
-                            String[] fødselsdagsdatoComponents = fødselsdagsdato.split("åååå-mm-dd"); // eller måske fødselsdags.split("-")
+                            String[] fødselsdagsdatoComponents = fødselsdagsdato.split("-");
                             int year = Integer.parseInt(fødselsdagsdatoComponents[0]);
                             int month = Integer.parseInt(fødselsdagsdatoComponents[1]);
                             int day = Integer.parseInt(fødselsdagsdatoComponents[2]);
                             fødselsdato = LocalDate.of(year, month, day);
-                        } catch (NoSuchElementException e) { // eller måske catch (DateTimeParseException e) {
-                        System.out.println("Forkert input. Prøv igen.");
+                        } catch (DateTimeParseException e) {
+                            System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    /*System.out.print("Indtast fødselsdato på medlemmet.");
+                     */
+
+
+
+                    System.out.print("Indtast fødselsdato på medlemmet: ");
                     LocalDate fødselsdato = null;
                     scanner = new Scanner(System.in);
                     try {
@@ -89,8 +103,11 @@ public class UserInterface {
                         System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
                     }
 
-                     */
-                    System.out.print("Indtast telefonnummeret på medlemmet.");
+
+
+
+
+                    System.out.print("Indtast telefonnummeret på medlemmet: ");
                     int telefonnummer = 0;
                     try {
                         telefonnummer = scanner.nextInt();
@@ -98,7 +115,7 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast email på medlemmet.");
+                    System.out.print("Indtast email på medlemmet: ");
                     String email = null;
                     try {
                         email = scanner.nextLine();
@@ -114,8 +131,15 @@ public class UserInterface {
                             fødselsdato,
                             telefonnummer,
                             email);
+                    System.out.println(fuldNavn + " er blevet registreret.");
                 }
+
                 case 2 -> {
+                        System.out.println("Registreret medlem er blevet gemt.");
+                        registerController.gemMedlemer();
+                }
+
+                /* case 2 -> {
                     //vis en liste over medlemmer
                     ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
                     System.out.println("Liste over medlemmer");
@@ -133,95 +157,13 @@ public class UserInterface {
                         System.out.println("Medlemmets e-mail " + medlem.getEmail());
                         System.out.println();
                     }
+                   }
 
-                }
+                 */
                 case 3 -> registerController.exit();
-                default -> System.out.println("Invalid input. Please try again.");
+                default -> System.out.println("Forkert input. Prøv igen.");
 
             }
-
-
         }
-        //ArrayList<Medlem> medlemliste;
-        //UserInterface() {
-
-        //medlemliste = new ArrayList<>();
-        //scanner = new Scanner(System.in);
-        return null;
     }
-
-        public Medlem registrerNytMedlem() {
-            System.out.println("""
-                    Ved registrering af nyt medlem har jeg bruge for følgende:
-                    1. Medlemmets fulde navn
-                    2. Medlemmets adresse
-                    3. Medlemmets alder
-                    4. Medlemmets fødselsdato
-                    5. Medlemmets telefonnumer
-                    6. Medlemmets e-mail
-                    """);
-
-            System.out.println("Indtast medlemmets fulde navn: ");
-            String fuldNavn = "";
-            try {
-                fuldNavn = scanner.nextLine();
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst dit fulde navn");
-            }
-
-            System.out.println("Indtast medlemmets adresse: ");
-            String adresse = "";
-            try {
-                adresse = scanner.nextLine();
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst din adresse");
-            }
-
-            System.out.println("Indtast medlemmets alder: ");
-            int alder = 0;
-            try {
-                alder = scanner.nextInt();
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst din alder");
-            }
-            scanner.nextLine(); // For at fjerne newline fra scanner buffer
-
-            System.out.println("Indtast medlemmets fødselsdato (åååå-mm-dd): ");
-            LocalDate fødselsdato = null;
-            try {
-                String fødselsdatoinput = scanner.nextLine();
-                fødselsdato = LocalDate.parse(fødselsdatoinput);
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst din fødselsdato");
-            }
-
-            System.out.println("Indtast medlemmets telefonnummer: ");
-            int telefonnummer = 0;
-            try {
-                telefonnummer = scanner.nextInt();
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst dit telefonnummer");
-            }
-            scanner.nextLine(); // For at fjerne newline fra scanner buffer
-
-            System.out.println("Indtast medlemmets e-mail: ");
-            String email = "";
-            try {
-                email = scanner.nextLine();
-            } catch (NoSuchElementException e) {
-                System.out.println("Indtast venligst din e-mail");
-
-                // add medlem
-            }
-
-
-            Medlem medlem = new Medlem(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email);
-            return medlem;
-
-
-        }
-
-
-
-
 }
