@@ -30,7 +30,7 @@ public class Database {
         return medlemmer;
     }
 
-    public void gemMedlem() {
+    public void gemMedlemmer() {
         fileHandler.saveToCsvFile(medlemmer);
     }
 

@@ -4,8 +4,12 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class UserInterface {
+
     public RegisterController registerController;
-    private Scanner scanner;
+
+    public UserInterface() {
+        registerController = new RegisterController();
+    }
 
 
     public void showMenu() {
@@ -60,26 +64,18 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-
-
                     System.out.print("Indtast fødselsdato på medlemmet.");
                     LocalDate fødselsdato = null;
-                    scanner = new Scanner(System.in);
                         try {
                             String fødselsdagsdato = scanner.nextLine();
-                            String[] fødselsdagsdatoComponents = fødselsdagsdato.split("åååå-mm-dd");
+                            String[] fødselsdagsdatoComponents = fødselsdagsdato.split("åååå-mm-dd"); // eller måske fødselsdags.split("-")
                             int year = Integer.parseInt(fødselsdagsdatoComponents[0]);
                             int month = Integer.parseInt(fødselsdagsdatoComponents[1]);
                             int day = Integer.parseInt(fødselsdagsdatoComponents[2]);
                             fødselsdato = LocalDate.of(year, month, day);
-                        } catch (NoSuchElementException e) {
+                        } catch (NoSuchElementException e) { // eller måske catch (DateTimeParseException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
-
-
-
-
-
 
                     /*System.out.print("Indtast fødselsdato på medlemmet.");
                     LocalDate fødselsdato = null;
@@ -94,26 +90,23 @@ public class UserInterface {
                     }
 
                      */
-
-
-
-
-
-                    System.out.print("Indtast telefon-nummeret på medlemmet.");
+                    System.out.print("Indtast telefonnummeret på medlemmet.");
                     int telefonnummer = 0;
                     try {
                         telefonnummer = scanner.nextInt();
-                    } catch (NoSuchElementException e) {
+                    } catch (InputMismatchException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast e-mail på medlemmet.");
+                    System.out.print("Indtast email på medlemmet.");
                     String email = null;
                     try {
                         email = scanner.nextLine();
                     } catch (NoSuchElementException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
+
+
                     registerController.tilføjelseAfMedlem(
                             fuldNavn,
                             adresse,

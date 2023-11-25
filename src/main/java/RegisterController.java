@@ -29,44 +29,13 @@ public class RegisterController {
     }
 
 
-    public void gemMedlem() {
-        database.gemMedlem();
+    public void gemMedlemer() {
+        database.gemMedlemmer();
     }
 
     public void exit() {
+        if (isChanged) {
+            database.gemMedlemmer();
+        }
     }
-
-
-        /* UserInterface ui = new UserInterface();
-        //ui print greeting
-        //ui print en menu
-        Medlem medlem = ui.registrerNytMedlem();
-        medlemmer.add(medlem);
-        saveNyMedlem();
-
-    }
-
-    public void saveNyMedlem() {
-
-    }
-*/
-
-
-   /*
-
-    public void medlemEdits (
-            String fuldNavn,
-            String adresse,
-            int alder,
-            LocalDate fødeselsdato,
-            int telefonnumer,
-            String email) {
-
-        isChanged = true;
-
-        RegisterController.medlemEdits(fuldNavn, adresse, alder, fødeselsdato, telefonnumer, email);*/
-        //}
-
-
-
 }
