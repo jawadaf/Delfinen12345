@@ -31,7 +31,11 @@ public class Database {
     }
 
     public void gemMedlemmer() {
-        fileHandler.saveToCsvFile(medlemmer);
+        fileHandler.printMedlem(medlemmer);
+    }
+
+    public void loadList() {
+        medlemmer = fileHandler.loadFromCsvFile();
     }
 
 

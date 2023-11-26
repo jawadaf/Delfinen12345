@@ -11,7 +11,14 @@ public class Medlem {
     private String medlemskabType;
     private String medlemskabStatus;*/
 
-    public Medlem(String fuldNavn, String adresse, int alder, int year, int month, int day, int telefonnummer, String email) {
+    public Medlem(String fuldNavn,
+                  String adresse,
+                  int alder,
+                  int year,
+                  int month,
+                  int day,
+                  int telefonnummer,
+                  String email) {
         this.fuldNavn = fuldNavn;
         this.adresse = adresse;
         this.alder = alder;
@@ -22,13 +29,26 @@ public class Medlem {
 
     }
 
-    public Medlem(String fuldNavn, String adresse, int alder, LocalDate fødselsdato, int telefonnummer, String email) {
+    public Medlem(String fuldNavn,
+                  String adresse,
+                  int alder,
+                  LocalDate fødselsdato,
+                  int telefonnummer,
+                  String email) {
         this.fuldNavn = fuldNavn;
         this.adresse = adresse;
         this.alder = alder;
         this.fødselsdato = fødselsdato;
         this.telefonnummer = telefonnummer;
         this.email = email;
+    }
+
+    public Medlem(String fuldNavn,
+                  String adresse,
+                  int alder,
+                  String fødselsdato,
+                  int telefonnummer,
+                  String email) {
     }
 
     // Getter metode
