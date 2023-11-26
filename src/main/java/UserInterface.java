@@ -100,7 +100,8 @@ public class UserInterface {
                     // Fødselsdato
 
                     System.out.print("Indtast fødselsdato på medlemmet: ");
-                    LocalDate fødselsdato = null;
+                    LocalDate localDate = null;    // denne burde ikke være her
+                    LocalDate fødselsdato = localDate;   // denne skal hedde LocalDate fødselsdato = null;
                     scanner = new Scanner(System.in);
                     try {
                         String fødselsdagsdato = scanner.nextLine();
@@ -115,6 +116,7 @@ public class UserInterface {
                     System.out.print("Indtast telefonnummeret på medlemmet: ");
                     int telefonnummer = 0;
                     try {
+                        // int telefonnummer = 0;
                         telefonnummer = scanner.nextInt();
                     } catch (InputMismatchException e) {
                         System.out.println("Forkert input. Prøv igen.");
@@ -126,12 +128,14 @@ public class UserInterface {
                     String email = null;
                     scanner = new Scanner(System.in);
                     try {
+                       // String email = null;
                         email = scanner.nextLine();
                     } catch (NoSuchElementException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-
+                    //int telefonnummer = 0;
+                    //String email = null;
                     registerController.tilføjelseAfMedlem(
                             fuldNavn,
                             adresse,
@@ -150,19 +154,19 @@ public class UserInterface {
                 case 3 -> {
                     //vis en liste over medlemmer
                     ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
-                    System.out.println("Liste over medlemmer");
+                    System.out.println("Liste over medlemmer: ");
                     for (Medlem medlem : medlemListe) {
-                        System.out.println("Medlemmets navn " + medlem.getFuldNavn());
+                        System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
                         System.out.println();
-                        System.out.println("Medlemmets adresse " + medlem.getAdresse());
+                        System.out.println("Medlemmets adresse: " + medlem.getAdresse());
                         System.out.println();
-                        System.out.println("Medlemmets alder " + medlem.getAlder());
+                        System.out.println("Medlemmets alder: " + medlem.getAlder());
                         System.out.println();
-                        System.out.println("Medlemmets telefonnummer " + medlem.getTelefonnummer());
+                        System.out.println("Medlemmets telefonnummer: " + medlem.getTelefonnummer());
                         System.out.println();
-                        System.out.println("Medlemmets fødselsdato " + medlem.getFødselsdato());
+                        System.out.println("Medlemmets fødselsdato: " + medlem.getFødselsdato());
                         System.out.println();
-                        System.out.println("Medlemmets e-mail " + medlem.getEmail());
+                        System.out.println("Medlemmets e-mail: " + medlem.getEmail());
                         System.out.println();
                     }
                    }

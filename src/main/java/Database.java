@@ -20,7 +20,7 @@ public class Database {
                 fødselsdato,
                 telefonnummer,
                 email);
-        if (nyMedlem != null) {
+        if (nyMedlem != null ) {
             medlemmer.add(nyMedlem);
         }
     }

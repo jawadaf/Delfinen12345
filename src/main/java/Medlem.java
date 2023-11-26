@@ -11,23 +11,6 @@ public class Medlem {
     private String medlemskabType;
     private String medlemskabStatus;*/
 
-    public Medlem(String fuldNavn,
-                  String adresse,
-                  int alder,
-                  int year,
-                  int month,
-                  int day,
-                  int telefonnummer,
-                  String email) {
-        this.fuldNavn = fuldNavn;
-        this.adresse = adresse;
-        this.alder = alder;
-        this.fødselsdato = LocalDate.of(year, month, day);
-        this.telefonnummer = telefonnummer;
-        this.email = email;
-
-
-    }
 
     public Medlem(String fuldNavn,
                   String adresse,
