@@ -16,15 +16,17 @@ public class UserInterface {
         System.out.println(""" 
                 1. Opret et medlem.
                 2. Gem registreret medlem.
-                3. Aflsut programmet.
+                3. Vis liste over medlemmer.
+                4. Aflsut programmet.
                 """);
     }
 
     public void printHeleUserInterface() {
+        registerController.loadList();
         Scanner scanner = new Scanner(System.in);
         int isRunning = 0;
 
-        while (isRunning != 3) {
+        while (isRunning != 4) {
             showMenu();
             try {
                 isRunning = scanner.nextInt();
@@ -35,12 +37,12 @@ public class UserInterface {
 
             scanner.nextLine();
 
-            String fuldNavn = null;
+            String fuldNavn;
             switch (isRunning) {
                 case 1 -> {
                     //opret dit medlem
                     System.out.println("""
-                    Ved registrering af nyt medlem har jeg bruge for følgende:
+                    Ved registrering af nyt medlem har jeg som formand bruge for følgende:
                     1. Medlemmets fulde navn
                     2. Medlemmets adresse
                     3. Medlemmets alder
@@ -48,6 +50,8 @@ public class UserInterface {
                     5. Medlemmets telefonnumer
                     6. Medlemmets e-mail
                     """);
+
+                    // Fulde navn
 
                     System.out.print("Indtast fulde navn på medlemmet: ");
                     fuldNavn = null;
@@ -57,6 +61,8 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
+                    // Adresse
+
                     System.out.print("Indtast adresse på medlemmet: ");
                     String adresse = null;
                     try {
@@ -65,11 +71,13 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
+                    // Alder
+
                     System.out.print("Indtast alder på medlemmet: ");
                     int alder = 0;
                     try {
                         alder = scanner.nextInt();
-                    } catch (NoSuchElementException e) {
+                    } catch (InputMismatchException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
@@ -89,7 +97,7 @@ public class UserInterface {
 
                      */
 
-
+                    // Fødselsdato
 
                     System.out.print("Indtast fødselsdato på medlemmet: ");
                     LocalDate fødselsdato = null;
@@ -98,14 +106,11 @@ public class UserInterface {
                         String fødselsdagsdato = scanner.nextLine();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                         fødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
-
                     } catch (DateTimeParseException e) {
                         System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
                     }
 
-
-
-
+                    // Telefonnummer
 
                     System.out.print("Indtast telefonnummeret på medlemmet: ");
                     int telefonnummer = 0;
@@ -115,8 +120,11 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
+                    // Email
+
                     System.out.print("Indtast email på medlemmet: ");
                     String email = null;
+                    scanner = new Scanner(System.in);
                     try {
                         email = scanner.nextLine();
                     } catch (NoSuchElementException e) {
@@ -139,7 +147,7 @@ public class UserInterface {
                         registerController.gemMedlemer();
                 }
 
-                /* case 2 -> {
+                case 3 -> {
                     //vis en liste over medlemmer
                     ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
                     System.out.println("Liste over medlemmer");
@@ -158,9 +166,7 @@ public class UserInterface {
                         System.out.println();
                     }
                    }
-
-                 */
-                case 3 -> registerController.exit();
+                   case 4 -> registerController.exit();
                 default -> System.out.println("Forkert input. Prøv igen.");
 
             }

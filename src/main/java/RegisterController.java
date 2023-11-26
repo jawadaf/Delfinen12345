@@ -33,6 +33,10 @@ public class RegisterController {
         database.gemMedlemmer();
     }
 
+    public void loadList() {
+        database.loadList();
+    }
+
     public void exit() {
         if (isChanged) {
             database.gemMedlemmer();
