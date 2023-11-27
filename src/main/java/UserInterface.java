@@ -5,14 +5,18 @@ import java.util.*;
 
 public class UserInterface {
 
+    private Scanner sc;
+
     public RegisterController registerController;
 
     public UserInterface() {
+        sc = new Scanner(System.in);
         registerController = new RegisterController();
     }
 
 
-    public void showMenu() {
+
+    public void formandMenu() {
         System.out.println(""" 
                 1. Opret et medlem.
                 2. Gem registreret medlem.
@@ -21,7 +25,177 @@ public class UserInterface {
                 5. Rediger medlems oplysninger
                 6. Aflsut programmet.
                 """);
+        int input = læsInt();
+        switch (input){
+            case 1 -> tilføjNytMedlem();
+            case 2 -> gemMedlem();
+            case 3 -> visMedlemsListe();
+        }
     }
+
+    public void tilføjNytMedlem(){
+        //opret dit medlem
+        System.out.println("""
+                            Ved registrering af nyt medlem har jeg som formand bruge for følgende:
+                            1. Medlemmets fulde navn
+                            2. Medlemmets adresse
+                            3. Medlemmets alder
+                            4. Medlemmets fødselsdato
+                            5. Medlemmets telefonnumer
+                            6. Medlemmets e-mail
+                            7. Medlemmets Medlemskabstype
+                            8. Medlemmets Medlembskabstatus
+                            """);
+        // Fulde navn
+        System.out.print("Indtast fulde navn på medlemmet: ");
+        String fuldNavn = null;
+        try {
+            fuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+        // Adresse
+
+        System.out.print("Indtast adresse på medlemmet: ");
+        String adresse = null;
+        try {
+            adresse = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+        // Alder
+
+        System.out.print("Indtast alder på medlemmet: ");
+        int alder = 0;
+        int medlemskabType = 0;
+        try {
+            alder = læsInt();
+            medlemskabType = alder;
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+        // Fødselsdato
+
+        System.out.print("Indtast fødselsdato på medlemmet: ");
+        LocalDate localDate = null;    // denne burde ikke være her
+        LocalDate fødselsdato = localDate;   // denne skal hedde LocalDate fødselsdato = null;
+
+        try {
+            String fødselsdagsdato = læsString();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            fødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
+        }
+
+        // Telefonnummer
+
+        System.out.print("Indtast telefonnummeret på medlemmet: ");
+        int telefonnummer = 0;
+        try {
+            // int telefonnummer = 0;
+            telefonnummer = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+        // Email
+
+        System.out.print("Indtast email på medlemmet: ");
+        String email = null;
+        try {
+            // String email = null;
+            email = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+       /* System.out.print("Indtast Aktivitetsform på medlemmet: ");
+        String aktivitetsform = null;
+        try {
+            aktivitetsform = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }*/
+        // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
+
+        System.out.println("Indtast medlemmets medlemskabstatus; true = aktivt eller false = passivt  ");
+        boolean aktivt;
+        boolean medlemskabStatus = false;
+        try {
+            aktivt = sc.nextBoolean();
+            System.out.println("Du er aktiv medlem.");
+            medlemskabStatus = aktivt;
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
+
+        tilføjNyMedlem(
+                fuldNavn,
+                adresse,
+                alder,
+                fødselsdato,
+                telefonnummer,
+                email,
+                medlemskabStatus);
+        System.out.println(fuldNavn + " er blevet registreret.");
+    }
+
+    public void tilføjNyMedlem(String fuldNavn,
+                               String adresse,
+                               int alder,
+                               LocalDate fødselsdato,
+                               int telefonnummer,
+                               String email,
+                               boolean medlemskabStatus) {
+        System.out.println("""
+                1.Tilføj motionist
+                2.Tilføj konkurrence svømmer
+                0. kommer tilbage til at starte menuen.
+                """);
+        int input = læsInt();
+        if (input == 1) {
+            registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus);
+            System.out.println("Medlem tilføjet som motionist.");
+        } else if (input == 2) {
+            String aktivitetsform = null;
+            System.out.print("Indtast Aktivitetsform på medlemmet: ");
+            aktivitetsform = læsString();
+            registerController.tilføjKonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
+            System.out.println("Medlem tilføjet som konkurrence svømmer.");
+        } else if (input == 0) {
+            System.out.println("Medlemmet ikke tilføjet.");
+        }
+    }
+
+    public void gemMedlem(){
+        System.out.println("Registreret medlem er blevet gemt.");
+        registerController.gemMedlemer();
+    }
+
+    public void visMedlemsListe() {
+        ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
+        System.out.println("Liste over medlemmer: ");
+        for (Medlem medlem : medlemListe) {
+            System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
+            System.out.println();
+            System.out.println("Medlemmets adresse: " + medlem.getAdresse());
+            System.out.println();
+            System.out.println("Medlemmets alder: " + medlem.getAlder());
+            System.out.println();
+            System.out.println("Medlemmets telefonnummer: " + medlem.getTelefonnummer());
+            System.out.println();
+            System.out.println("Medlemmets fødselsdato: " + medlem.getFødselsdato());
+            System.out.println();
+            System.out.println("Medlemmets e-mail: " + medlem.getEmail());
+            System.out.println();
+        }
+    }
+
+    // Malou
 
     public void printHeleUserInterface() {
         registerController.loadList();
@@ -29,7 +203,7 @@ public class UserInterface {
         int isRunning = 0;
 
         while (isRunning != 7) {
-            showMenu();
+            formandMenu();
             try {
                 isRunning = scanner.nextInt();
             } catch (Exception e) {
@@ -80,27 +254,13 @@ public class UserInterface {
 
                     System.out.print("Indtast alder på medlemmet: ");
                     int alder = 0;
+                    int medlemskabType = 0;
                     try {
                         alder = scanner.nextInt();
+                        medlemskabType = alder;
                     } catch (InputMismatchException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
-
-                    /*
-                    System.out.print("Indtast fødselsdato på medlemmet: ");
-                    LocalDate fødselsdato = null;
-                        try {
-                            String fødselsdagsdato = scanner.nextLine();
-                            String[] fødselsdagsdatoComponents = fødselsdagsdato.split("-");
-                            int year = Integer.parseInt(fødselsdagsdatoComponents[0]);
-                            int month = Integer.parseInt(fødselsdagsdatoComponents[1]);
-                            int day = Integer.parseInt(fødselsdagsdatoComponents[2]);
-                            fødselsdato = LocalDate.of(year, month, day);
-                        } catch (DateTimeParseException e) {
-                            System.out.println("Forkert input. Prøv igen.");
-                    }
-
-                     */
 
                     // Fødselsdato
 
@@ -139,18 +299,18 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    System.out.print("Indtast Aktivitetsform på medlemmet; True = aktivt eller false = passivt: ");
-                    boolean aktivitetsform = true;
+                    System.out.print("Indtast Aktivitetsform på medlemmet: ");
+                    String aktivitetsform = null;
                     scanner = new Scanner(System.in);
                     try {
-                        aktivitetsform = scanner.nextBoolean();
+                        aktivitetsform = scanner.nextLine();
                     } catch (NoSuchElementException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
                     // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
 
                     System.out.println("Indtast medlemmets medlemskabstatus; true = aktivt eller false = passivt  ");
-                    boolean aktivt = true;
+                    boolean aktivt;
                     boolean medlemskabStatus = false;
                     scanner = new Scanner(System.in);
                     try {
@@ -162,16 +322,19 @@ public class UserInterface {
                     }
                     // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
 
-
+/*
                     System.out.println("Indtast medlemmets medlemskabtype");
-                    boolean medlemskabType = true;
+                    boolean medlemskabType = false;
                     scanner = new Scanner(System.in);
                     try {
-                        boolean medlemskabtype = scanner.nextBoolean();
+                        medlemskabType = scanner.nextBoolean();
                     } catch (NoSuchElementException e) {
                         System.out.println("Forkert input. Prøv igen.");
                     }
                     // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
+
+ */
+
 
 
 
@@ -189,6 +352,9 @@ public class UserInterface {
                         medlemskabType);
                 System.out.println(fuldNavn + " er blevet registreret.");
             }
+
+
+
 
             case 2 -> {
                 System.out.println("Registreret medlem er blevet gemt.");
@@ -315,5 +481,22 @@ public class UserInterface {
             }
         }
     }
+
+
+
+    public String læsString() {
+        return sc.nextLine();
+    }
+
+    public int læsInt(){
+        while (!sc.hasNextInt()){
+            System.out.println("Det er ikke en int");
+            sc.next();
+        }
+        int i = sc.nextInt();
+        sc.nextLine();
+        return i;
+    }
+
 }
 

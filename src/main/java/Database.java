@@ -3,8 +3,10 @@ import java.util.ArrayList;
 
 public class Database {
 
-    FileHandler fileHandler = new FileHandler();
+    private FileHandler fileHandler = new FileHandler();
     private ArrayList<Medlem> medlemmer = new ArrayList<>();
+    private Medlem medlem = new Medlem();
+    private ArrayList<Medlem> konkurrenceSvømmer = new ArrayList<>();
 
     public void tilføjMedlem(String fuldNavn,
                              String adresse,
@@ -12,8 +14,8 @@ public class Database {
                              LocalDate fødselsdato,
                              int telefonnummer,
                              String email,
-                             boolean aktivitetsform,
-                             boolean medlemskabType,
+                             String aktivitetsform,
+                             int medlemskabType,
                              boolean medlemskabStatus) {
 
         Medlem nyMedlem = new Medlem(
@@ -29,6 +31,28 @@ public class Database {
         if (nyMedlem != null ) {
             medlemmer.add(nyMedlem);
         }
+
+    }
+
+    public void tilføjKonkurrenceSvømmer(String fuldNavn,
+                                         String adresse,
+                                         int alder,
+                                         LocalDate fødselsdato,
+                                         int telefonnummer,
+                                         String email,
+                                         String aktivitetsForm,
+                                         boolean medlemskabStatus) {
+        medlemmer.add(new KonkurrenceSvømmere(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabStatus));
+    }
+
+    public void tilføjMotionist(String fuldNavn,
+                                         String adresse,
+                                         int alder,
+                                         LocalDate fødselsdato,
+                                         int telefonnummer,
+                                         String email,
+                                         boolean medlemskabStatus) {
+        medlemmer.add(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus));
     }
 
 
@@ -43,6 +67,11 @@ public class Database {
     public void loadList() {
         medlemmer = fileHandler.loadFromCsvFile();
     }
+
+    public void getMedlemskabType(int alder) {
+        medlem.setMedlemskabType(alder);
+    }
+
 
     public void sletMedlem(String name) {
         Medlem sletterMedlem = null;
@@ -62,8 +91,8 @@ public class Database {
                               int telefonnummer,
                               LocalDate fødselsdato,
                               String email,
-                              boolean aktivitetsform,
-                              boolean medlemskabType,
+                              String aktivitetsform,
+                              int medlemskabType,
                               boolean medlemStatus){
         for (Medlem medlem : medlemmer) {
             if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {

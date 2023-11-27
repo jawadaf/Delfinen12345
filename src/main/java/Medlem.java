@@ -7,8 +7,8 @@ public class Medlem {
     private LocalDate fødselsdato;
     private int telefonnummer;
     private String email;
-    private boolean aktivitetsform;
-    private boolean medlemskabType;
+    private String aktivitetsform;
+    private int medlemskabType;
     private boolean medlemskabStatus;
 
 
@@ -18,8 +18,8 @@ public class Medlem {
                   LocalDate fødselsdato,
                   int telefonnummer,
                   String email,
-                  boolean aktivitetsform,
-                  boolean medlemskabsType,
+                  String aktivitetsform,
+                  int medlemskabsType,
                   boolean medlemskabStatus) {
 
         this.fuldNavn = fuldNavn;
@@ -36,13 +36,61 @@ public class Medlem {
     public Medlem(String fuldNavn,
                   String adresse,
                   int alder,
-                  String fødselsdato,
+                  LocalDate fødselsdato,
                   int telefonnummer,
                   String email,
-                  boolean aktivitetsfor,
-                  boolean medlemskabStatus,
-                  boolean medlemskabType) {
+                  int medlemskabsType,
+                  boolean medlemskabStatus) {
+
+        this.fuldNavn = fuldNavn;
+        this.adresse = adresse;
+        this.alder = alder;
+        this.fødselsdato = fødselsdato;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
+        this.medlemskabType = medlemskabsType;
+        this.medlemskabStatus = medlemskabStatus;
     }
+
+
+
+    public Medlem(){
+    }
+
+    public Medlem(String fuldNavn,
+                  String adresse,
+                  int alder,
+                  LocalDate fødselsdato,
+                  int telefonnummer,
+                  String email,
+                  String aktivitetsForm,
+                  boolean medlemskabStatus) {
+        this.fuldNavn = fuldNavn;
+        this.adresse = adresse;
+        this.alder = alder;
+        this.fødselsdato = fødselsdato;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
+        this.aktivitetsform = aktivitetsForm;
+        this.medlemskabStatus = medlemskabStatus;
+    }
+
+    public Medlem(String fuldNavn,
+                  String adresse,
+                  int alder,
+                  LocalDate fødselsdato,
+                  int telefonnummer,
+                  String email,
+                  boolean medlemskabStatus) {
+        this.fuldNavn = fuldNavn;
+        this.adresse = adresse;
+        this.alder = alder;
+        this.fødselsdato = fødselsdato;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
+        this.medlemskabStatus = medlemskabStatus;
+    }
+
 
     // Getter metode
 
@@ -70,7 +118,7 @@ public class Medlem {
         return email;
     }
 
-    public boolean getAktivitetsform() {
+    public String getAktivitetsform() {
         return aktivitetsform;
     }
 
@@ -78,8 +126,12 @@ public class Medlem {
         return medlemskabStatus;
     }
 
-    public boolean getMedlemskabType() {
-        return medlemskabType;
+    public void setMedlemskabType(int alder) {
+        if (alder<18) {
+            System.out.println("Du er registreret som junior. ");
+        } else {
+            System.out.println("Du er registreret som senior. ");
+        }
     }
 
 
@@ -110,13 +162,11 @@ public class Medlem {
         this.email = email;
     }
 
-    public void setAktivitetsform(boolean aktivitetsform) {
+    public void setAktivitetsform(String aktivitetsform) {
         this.aktivitetsform = aktivitetsform;
     }
 
-    public void setMedlemskabType (boolean medlemskabType) {
-        this.medlemskabType = medlemskabType;
-    }
+
 
     public void setMedlemskabStatus (boolean medlemskabStatus) {
         this.medlemskabStatus = medlemskabStatus;

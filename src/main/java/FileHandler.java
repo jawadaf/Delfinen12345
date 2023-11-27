@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,13 +40,14 @@ public class FileHandler {
                     String fuldNavn = attributer[0].trim();
                     String adresse = attributer[1].trim();
                     int alder = Integer.parseInt(attributer[2].trim());
-                    String fødselsdato = attributer[3].trim();
+                    LocalDate fødselsdato = LocalDate.parse(attributer[3].trim());
                     int telefonnummer = Integer.parseInt(attributer[4].trim());
                     String email = attributer[5].trim();
-                    boolean aktivitetsform = Boolean.parseBoolean(attributer[6].trim());
-                    boolean medlemskabStatus = Boolean.parseBoolean(attributer [7].trim());
-                    boolean medlemskabType = Boolean.parseBoolean(attributer[8].trim());
+                    //String aktivitetsform = attributer[6].trim();
+                    int medlemskabType = Integer.parseInt(attributer[6].trim());
+                    boolean medlemskabStatus = Boolean.parseBoolean(attributer[7].trim());
 
+//Todo tilføj aktivitetsform
                     Medlem indlæsData = new Medlem(
                             fuldNavn,
                             adresse,
@@ -53,13 +55,13 @@ public class FileHandler {
                             fødselsdato,
                             telefonnummer,
                             email,
-                            medlemskabStatus,
-                            aktivitetsform,
-                            medlemskabType);
+                            medlemskabType,
+                            medlemskabStatus
+                            );
 
                     information.add(indlæsData);
                 } else {
-                    System.out.println("Lengden er ikke lige med 9.");
+                    System.out.println("Længden er ikke lige med 9.");
                 }
             }
             sc.close();

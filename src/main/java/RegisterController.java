@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterController {
-    Database database = new Database();
+    private Database database = new Database();
     private boolean isChanged = false;
 
 
@@ -12,9 +12,9 @@ public class RegisterController {
                                     LocalDate fødselsdato,
                                     int telefonnummer,
                                     String email,
-                                    boolean aktivitetsform,
+                                    String aktivitetsform,
                                     boolean medlemskabStatus,
-                                    boolean medlemskabType) {
+                                    int medlemskabType) {
 
         isChanged = true;
         database.tilføjMedlem(
@@ -25,9 +25,30 @@ public class RegisterController {
                 telefonnummer,
                 email,
                 aktivitetsform,
-                medlemskabStatus,
-                medlemskabType);
+                medlemskabType,
+                medlemskabStatus);
 
+    }
+
+    public void tilføjKonkurrenceSvømmer(String fuldNavn,
+                                         String adresse,
+                                         int alder,
+                                         LocalDate fødselsdato,
+                                         int telefonnummer,
+                                         String email,
+                                         String aktivitetsForm,
+                                         boolean medlemskabStatus) {
+        database.tilføjKonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabStatus);
+    }
+
+    public void tilføjMotionist(String fuldNavn,
+                                String adresse,
+                                int alder,
+                                LocalDate fødselsdato,
+                                int telefonnummer,
+                                String email,
+                                boolean medlemskabStatus) {
+        database.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus);
     }
 
     public ArrayList<Medlem> hentetMedlem() {
@@ -48,15 +69,19 @@ public class RegisterController {
         database.sletMedlem(fuldNavn);
     }
 
+    public void seMedlemskabType(int alder) {
+        database.getMedlemskabType(alder);
+    }
+
     public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,
                               int telefonnummer,
                               LocalDate fødselsdato,
                               String email,
-                              boolean aktivitetsform,
+                              String aktivitetsform,
                               boolean medlemskabStatus,
-                              boolean medlemskabType){
+                              int medlemskabType){
 
         isChanged = true;
         database.redigerMedlem(
@@ -67,8 +92,9 @@ public class RegisterController {
                 fødselsdato,
                 email,
                 aktivitetsform,
-                medlemskabStatus,
-                medlemskabType);
+                medlemskabType,
+                medlemskabStatus
+                );
     }
 
 
