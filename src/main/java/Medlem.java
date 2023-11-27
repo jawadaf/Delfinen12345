@@ -17,13 +17,20 @@ public class Medlem {
                   int alder,
                   LocalDate fødselsdato,
                   int telefonnummer,
-                  String email) {
+                  String email,
+                  boolean aktivitetsform,
+                  boolean medlemskabsType,
+                  boolean medlemskabStatus) {
+
         this.fuldNavn = fuldNavn;
         this.adresse = adresse;
         this.alder = alder;
         this.fødselsdato = fødselsdato;
         this.telefonnummer = telefonnummer;
         this.email = email;
+        this.aktivitetsform = aktivitetsform;
+        this.medlemskabType = medlemskabsType;
+        this.medlemskabStatus = medlemskabStatus;
     }
 
     public Medlem(String fuldNavn,
@@ -31,7 +38,10 @@ public class Medlem {
                   int alder,
                   String fødselsdato,
                   int telefonnummer,
-                  String email) {
+                  String email,
+                  boolean aktivitetsfor,
+                  boolean medlemskabStatus,
+                  boolean medlemskabType) {
     }
 
     // Getter metode
@@ -99,6 +109,20 @@ public class Medlem {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void setAktivitetsform(boolean aktivitetsform) {
+        this.aktivitetsform = aktivitetsform;
+    }
+
+    public void setMedlemskabType (boolean medlemskabType) {
+        this.medlemskabType = medlemskabType;
+    }
+
+    public void setMedlemskabStatus (boolean medlemskabStatus) {
+        this.medlemskabStatus = medlemskabStatus;
+    }
+
+
 
     @Override
     public String toString() {

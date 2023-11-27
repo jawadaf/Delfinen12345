@@ -36,7 +36,7 @@ public class FileHandler {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 String[] attributer = line.split(",");
-                if (attributer.length == 6) {
+                if (attributer.length == 9) {
 
                     String fuldNavn = attributer[0].trim();
                     String adresse = attributer[1].trim();
@@ -44,6 +44,9 @@ public class FileHandler {
                     String fødselsdato = attributer[3].trim();
                     int telefonnummer = Integer.parseInt(attributer[4].trim());
                     String email = attributer[5].trim();
+                    boolean aktivitetsform = Boolean.parseBoolean(attributer[6].trim());
+                    boolean medlemskabStatus = Boolean.parseBoolean(attributer [7].trim());
+                    boolean medlemskabType = Boolean.parseBoolean(attributer[8].trim());
 
                     Medlem indlæsData = new Medlem(
                             fuldNavn,
@@ -51,7 +54,11 @@ public class FileHandler {
                             alder,
                             fødselsdato,
                             telefonnummer,
-                            email);
+                            email,
+                            medlemskabStatus,
+                            aktivitetsform,
+                            medlemskabType);
+
                     information.add(indlæsData);
                 } else {
                     System.out.println("Lengden er ikke lige med 6.");

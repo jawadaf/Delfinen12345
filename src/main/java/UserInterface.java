@@ -136,17 +136,56 @@ public class UserInterface {
                         System.out.println("Forkert input. Prøv igen.");
                     }
 
-                    //int telefonnummer = 0;
-                    //String email = null;
-                    registerController.tilføjelseAfMedlem(
-                            fuldNavn,
-                            adresse,
-                            alder,
-                            fødselsdato,
-                            telefonnummer,
-                            email);
-                    System.out.println(fuldNavn + " er blevet registreret.");
-                }
+                    System.out.print("Indtast Aktivitetsform på medlemmet; True = aktivt eller false = passivt: ");
+                    boolean aktivitetsform = true;
+                    scanner = new Scanner(System.in);
+                    try {
+                        aktivitetsform = scanner.nextBoolean();
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Forkert input. Prøv igen.");
+                    }
+                    // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
+
+                    System.out.println("Indtast medlemmets medlemskabstatus; true = aktivt eller false = passivt  ");
+                    boolean aktivt = true;
+                    boolean medlemskabStatus = false;
+                    scanner = new Scanner(System.in);
+                    try {
+                        aktivt = scanner.nextBoolean();
+                        System.out.println("Du er aktiv medlem.");
+                        medlemskabStatus = aktivt;
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Forkert input. Prøv igen.");
+                    }
+                    // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
+
+
+                    System.out.println("Indtast medlemmets medlemskabtype");
+                    boolean medlemskabType = true;
+                    scanner = new Scanner(System.in);
+                    try {
+                        boolean medlemskabtype = scanner.nextBoolean();
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Forkert input. Prøv igen.");
+                    }
+                    // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
+
+
+
+                //int telefonnummer = 0;
+                //String email = null;
+                registerController.tilføjelseAfMedlem(
+                        fuldNavn,
+                        adresse,
+                        alder,
+                        fødselsdato,
+                        telefonnummer,
+                        email,
+                        aktivitetsform,
+                        medlemskabStatus,
+                        medlemskabType);
+                System.out.println(fuldNavn + " er blevet registreret.");
+            }
 
                 case 2 -> {
                         System.out.println("Registreret medlem er blevet gemt.");

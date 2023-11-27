@@ -11,7 +11,10 @@ public class RegisterController {
                                     int alder,
                                     LocalDate fødselsdato,
                                     int telefonnummer,
-                                    String email) {
+                                    String email,
+                                    boolean aktivitetsform,
+                                    boolean medlemskabStatus,
+                                    boolean medlemskabType) {
 
         isChanged = true;
         database.tilføjMedlem(
@@ -20,7 +23,10 @@ public class RegisterController {
                 alder,
                 fødselsdato,
                 telefonnummer,
-                email);
+                email,
+                aktivitetsform,
+                medlemskabStatus,
+                medlemskabType);
 
     }
 

@@ -11,7 +11,10 @@ public class Database {
                              int alder,
                              LocalDate fødselsdato,
                              int telefonnummer,
-                             String email) {
+                             String email,
+                             boolean aktivitetsform,
+                             boolean medlemskabType,
+                             boolean medlemskabStatus) {
 
         Medlem nyMedlem = new Medlem(
                 fuldNavn,
@@ -19,7 +22,10 @@ public class Database {
                 alder,
                 fødselsdato,
                 telefonnummer,
-                email);
+                email,
+                aktivitetsform,
+                medlemskabType,
+                medlemskabStatus);
         if (nyMedlem != null ) {
             medlemmer.add(nyMedlem);
         }
