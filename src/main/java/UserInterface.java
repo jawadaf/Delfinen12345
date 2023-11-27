@@ -17,7 +17,9 @@ public class UserInterface {
                 1. Opret et medlem.
                 2. Gem registreret medlem.
                 3. Vis liste over medlemmer.
-                4. Aflsut programmet.
+                4. Slet medlem.
+                5. Rediger medlems oplysninger
+                6. Aflsut programmet.
                 """);
     }
 
@@ -26,7 +28,7 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         int isRunning = 0;
 
-        while (isRunning != 4) {
+        while (isRunning != 7) {
             showMenu();
             try {
                 isRunning = scanner.nextInt();
@@ -37,7 +39,7 @@ public class UserInterface {
 
             scanner.nextLine();
 
-            String fuldNavn;
+            String fuldNavn = null;
             switch (isRunning) {
                 case 1 -> {
                     //opret dit medlem
@@ -128,7 +130,7 @@ public class UserInterface {
                     String email = null;
                     scanner = new Scanner(System.in);
                     try {
-                       // String email = null;
+                        // String email = null;
                         email = scanner.nextLine();
                     } catch (NoSuchElementException e) {
                         System.out.println("Forkert input. Prøv igen.");

@@ -37,6 +37,38 @@ public class RegisterController {
         database.loadList();
     }
 
+    public void sletterMedlem (String fuldNavn) {
+        isChanged = true;
+        database.sletMedlem(fuldNavn);
+    }
+
+    public void redigerMedlem(String fuldNavn,
+                              String adresse,
+                              int alder,
+                              int telefonnummer,
+                              LocalDate fødselsdato,
+                              String email,
+                              boolean aktivitetsform,
+                              boolean medlemskabStatus,
+                              boolean medlemskabType){
+
+        isChanged = true;
+        database.redigerMedlem(
+                fuldNavn,
+                adresse,
+                alder,
+                telefonnummer,
+                fødselsdato,
+                email,
+                aktivitetsform,
+                medlemskabStatus,
+                medlemskabType);
+    }
+
+
+
+
+
     public void exit() {
         if (isChanged) {
             database.gemMedlemmer();

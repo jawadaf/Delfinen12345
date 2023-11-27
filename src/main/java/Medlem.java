@@ -60,6 +60,20 @@ public class Medlem {
         return email;
     }
 
+    public boolean getAktivitetsform() {
+        return aktivitetsform;
+    }
+
+    public boolean getMedlemskabStatus() {
+        return medlemskabStatus;
+    }
+
+    public boolean getMedlemskabType() {
+        return medlemskabType;
+    }
+
+
+
     // Setter metode
 
     public void setFuldNavn(String fuldNavn) {
