@@ -3,9 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -61,7 +59,7 @@ public class FileHandler {
 
                     information.add(indlæsData);
                 } else {
-                    System.out.println("Lengden er ikke lige med 6.");
+                    System.out.println("Lengden er ikke lige med 9.");
                 }
             }
             sc.close();

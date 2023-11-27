@@ -44,14 +44,17 @@ public class UserInterface {
                 case 1 -> {
                     //opret dit medlem
                     System.out.println("""
-                    Ved registrering af nyt medlem har jeg som formand bruge for følgende:
-                    1. Medlemmets fulde navn
-                    2. Medlemmets adresse
-                    3. Medlemmets alder
-                    4. Medlemmets fødselsdato
-                    5. Medlemmets telefonnumer
-                    6. Medlemmets e-mail
-                    """);
+                            Ved registrering af nyt medlem har jeg som formand bruge for følgende:
+                            1. Medlemmets fulde navn
+                            2. Medlemmets adresse
+                            3. Medlemmets alder
+                            4. Medlemmets fødselsdato
+                            5. Medlemmets telefonnumer
+                            6. Medlemmets e-mail
+                            7. Medlemmets Aktivitetsform
+                            8. Medlemmets Medlemskabstype
+                            9. Medlemmets Medlembskabstatus
+                            """);
 
                     // Fulde navn
 
@@ -187,32 +190,127 @@ public class UserInterface {
                 System.out.println(fuldNavn + " er blevet registreret.");
             }
 
-                case 2 -> {
-                        System.out.println("Registreret medlem er blevet gemt.");
-                        registerController.gemMedlemer();
+            case 2 -> {
+                System.out.println("Registreret medlem er blevet gemt.");
+                registerController.gemMedlemer();
+            }
+
+            case 3 -> {
+                //vis en liste over medlemmer
+                ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
+                System.out.println("Liste over medlemmer: ");
+                for (Medlem medlem : medlemListe) {
+                    System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
+                    System.out.println();
+                    System.out.println("Medlemmets adresse: " + medlem.getAdresse());
+                    System.out.println();
+                    System.out.println("Medlemmets alder: " + medlem.getAlder());
+                    System.out.println();
+                    System.out.println("Medlemmets telefonnummer: " + medlem.getTelefonnummer());
+                    System.out.println();
+                    System.out.println("Medlemmets fødselsdato: " + medlem.getFødselsdato());
+                    System.out.println();
+                    System.out.println("Medlemmets e-mail: " + medlem.getEmail());
+                    System.out.println();
+                }
+            }
+            case 4 -> {
+                System.out.println("Skriv navnet på medlemmet der skal slettes.");
+                String sletterMedlem = null;
+                try {
+                    sletterMedlem = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøve igen.");
+                }
+                registerController.sletterMedlem(fuldNavn);
+
+                System.out.println("Medlem er blevet slettet.");
+            }
+            case 5 -> {
+                System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+                String redigerMedlem = null;
+                try {
+                    redigerMedlem = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
                 }
 
-                case 3 -> {
-                    //vis en liste over medlemmer
-                    ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
-                    System.out.println("Liste over medlemmer: ");
-                    for (Medlem medlem : medlemListe) {
-                        System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
-                        System.out.println();
-                        System.out.println("Medlemmets adresse: " + medlem.getAdresse());
-                        System.out.println();
-                        System.out.println("Medlemmets alder: " + medlem.getAlder());
-                        System.out.println();
-                        System.out.println("Medlemmets telefonnummer: " + medlem.getTelefonnummer());
-                        System.out.println();
-                        System.out.println("Medlemmets fødselsdato: " + medlem.getFødselsdato());
-                        System.out.println();
-                        System.out.println("Medlemmets e-mail: " + medlem.getEmail());
-                        System.out.println();
-                    }
-                   }
-                   case 4 -> registerController.exit();
-                default -> System.out.println("Forkert input. Prøv igen.");
+                System.out.print("Rediger navnet på medlemmet: ");
+                String nytFuldNavn = null;
+                try {
+                    nytFuldNavn = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger adresse på medlemmet: ");
+                String nyAdresse = null;
+                try {
+                    nyAdresse = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger alder på medlemmet: ");
+                int nyAlder = 0;
+                try {
+                    nyAlder = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger fødselsdato på medlemmet?: ");
+                String nyFødselsdato = null;
+                try {
+                    nyFødselsdato = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger telefonnummeret på medlemmet: ");
+                int nytTelefonnummer = 0;
+                try {
+                    nytTelefonnummer = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+                System.out.print("Rediger email på medlemmet: ");
+                String nyEmail = null;
+                try {
+                    nyEmail = scanner.nextLine();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger aktivitetsform på medlemmet: ");
+                boolean nyAktivitetsform = true;
+                try {
+                    nyAktivitetsform = scanner.nextBoolean();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger medlemstype på medlemmet: ");
+                boolean nyMedlemsType = true;
+                try {
+                    nyMedlemsType = scanner.nextBoolean();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+                System.out.print("Rediger medlemsstatus på medlemmet: ");
+                boolean nyMedlemsstatus = true;
+                try {
+                    nyMedlemsstatus = scanner.nextBoolean();
+                } catch (NoSuchElementException e) {
+                    System.out.println("Forkert input! Prøv igen.");
+                }
+
+
+            }
+            case 6 -> registerController.exit();
+            default -> System.out.println("Forkert input. Prøv igen.");
+
 
             }
         }

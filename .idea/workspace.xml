@@ -6,12 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: rettelser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
-    <list id="ef691938-ee4e-460f-9e7e-948ee19213c7" name="Changes by Alhus" comment="Changes by Alhus" />
-    <list id="22132033-13fd-44bc-a2c9-35b5ee13324a" name="Changes by bsenb" comment="" />
+    <list id="ef691938-ee4e-460f-9e7e-948ee19213c7" name="Changes by Alhus" comment="Changes by Alhus">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+    </list>
+    <list id="3742bfbd-1ba3-45f4-915d-2cc46b79e248" name="Changes by bsenb" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+    </list>
+    <list id="c84e3967-b02c-4d20-9c77-9df3ef36953e" name="Changes by MUK" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +40,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -42,6 +61,57 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/UserInterface.java">
+      <ranges>
+        <range start1="19" end1="20" start2="19" end2="22" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="28" end1="29" start2="30" end2="31" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="39" end1="40" start2="41" end2="42" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="44" end1="52" start2="46" end2="57" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="130" end1="131" start2="135" end2="136" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="136" end1="147" start2="141" end2="191" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="148" end1="152" start2="192" end2="196" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="153" end1="174" start2="197" end2="313" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="179" end1="179" start2="318" end2="319" changelist="c84e3967-b02c-4d20-9c77-9df3ef36953e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Database.java">
+      <ranges>
+        <range start1="13" end1="14" start2="13" end2="17" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="21" end1="22" start2="24" end2="28" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="40" end1="42" start2="46" end2="81" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="43" end1="43" start2="82" end2="83" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/RegisterController.java">
+      <ranges>
+        <range start1="13" end1="14" start2="13" end2="17" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="22" end1="23" start2="25" end2="29" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="38" end1="38" start2="44" end2="76" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/FileHandler.java">
+      <ranges>
+        <range start1="5" end1="6" start2="5" end2="5" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="7" end1="8" start2="6" end2="6" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="38" end1="39" start2="36" end2="37" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="46" end1="46" start2="44" end2="47" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="53" end1="54" start2="54" end2="59" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="56" end1="57" start2="61" end2="62" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Medlem.java">
+      <ranges>
+        <range start1="9" end1="12" start2="9" end2="12" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="19" end1="20" start2="19" end2="24" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="26" end1="26" start2="30" end2="33" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="33" end1="34" start2="40" end2="44" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="61" end1="61" start2="71" end2="85" changelist="ef691938-ee4e-460f-9e7e-948ee19213c7" />
+        <range start1="87" end1="87" start2="111" end2="125" changelist="3742bfbd-1ba3-45f4-915d-2cc46b79e248" />
+        <range start1="95" end1="96" start2="133" end2="137" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+      </ranges>
+    </file>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -51,21 +121,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "jawad",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -95,9 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UserInterface" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Formand" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.UserInterface" />
-        <item itemvalue="Application.Formand" />
       </list>
     </recent_temporary>
   </component>
@@ -113,7 +185,7 @@
       <workItem from="1700751081262" duration="399000" />
       <workItem from="1700751495454" duration="426000" />
       <workItem from="1700818062215" duration="24790000" />
-      <workItem from="1700930056783" duration="14210000" />
+      <workItem from="1700930056783" duration="26980000" />
     </task>
     <task id="LOCAL-00001" summary="000">
       <option name="closed" value="true" />
@@ -227,11 +299,30 @@
       <option name="project" value="LOCAL" />
       <updated>1701007286218</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Jawad: rettelser">
+      <option name="closed" value="true" />
+      <created>1701009251455</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1701009251456</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="000" />

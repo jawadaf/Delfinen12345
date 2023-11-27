@@ -7,9 +7,9 @@ public class Medlem {
     private LocalDate fødselsdato;
     private int telefonnummer;
     private String email;
-   /* private String aktivitetsform;
-    private String medlemskabType;
-    private String medlemskabStatus;*/
+    private boolean aktivitetsform;
+    private boolean medlemskabType;
+    private boolean medlemskabStatus;
 
 
     public Medlem(String fuldNavn,
@@ -131,7 +131,10 @@ public class Medlem {
                 alder + ", " +
                 fødselsdato + ", " +
                 telefonnummer + ", " +
-                email;
+                email + ", " +
+                aktivitetsform + ", " +
+                medlemskabStatus + ", " +
+                medlemskabType;
     }
 }
 
