@@ -4,6 +4,11 @@ import java.util.ArrayList;
 public class RegisterController {
     private Database database = new Database();
     private boolean isChanged = false;
+    private HoldController holdController;
+
+    public RegisterController() {
+        this.holdController = new HoldController();
+    }
 
 
     public void tilføjelseAfMedlem (String fuldNavn,
@@ -55,6 +60,24 @@ public class RegisterController {
     public ArrayList<Medlem> hentetMedlem() {
         return database.hentMedlem();
     }
+
+    public void opretHold(String holdNavn) {
+        holdController.opretHold(holdNavn);
+    }
+
+    public void tilføjMedlemTilHold(Medlem medlem, String holdNavn) {
+        holdController.tilføjMedlemTilHold(visHoldMedlemmer(String holdNavn));
+    }
+
+    public void fjernMedlemFraHold(Medlem medlem, String holdNavn) {
+        holdController.fjernMedlemFraHold(medlem, holdNavn);
+    }
+
+    public void visHoldMedlemmer(String holdNavn) {
+        holdController.visHoldMedlemmer(holdNavn);
+    }
+
+
 
 
     public void gemMedlemer() {
