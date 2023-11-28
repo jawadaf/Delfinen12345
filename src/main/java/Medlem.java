@@ -125,6 +125,9 @@ public class Medlem {
     public boolean getMedlemskabStatus() {
         return medlemskabStatus;
     }
+    public int getMedlemskabType() {
+        return medlemskabType;
+    }
 
     public void setMedlemskabType(int alder) {
         if (alder<18) {
@@ -186,6 +189,8 @@ public class Medlem {
                 medlemskabStatus + ", " +
                 medlemskabType;
     }
+
+
 }
 
 

@@ -6,17 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: rettelser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Motionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Motionist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
     <list id="ef691938-ee4e-460f-9e7e-948ee19213c7" name="Changes by Alhus" comment="Changes by Alhus" />
-    <list id="3742bfbd-1ba3-45f4-915d-2cc46b79e248" name="Changes by bsenb" comment="" />
-    <list id="c84e3967-b02c-4d20-9c77-9df3ef36953e" name="Changes by MUK" comment="" />
+    <list id="ea92869d-9aed-4222-8903-e95d26f0da3c" name="Changes by bsenb" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -48,7 +48,7 @@ public class UserInterface {
         int input = læsInt();
         switch (input){
             case 1 -> tilføjNytMedlem();
-            case 2 -> gemMedlem();
+            case 2 -> {registerController.gemMedlemer();}
             case 3 -> visMedlemsListe();
             case 5 -> redigerMedlem();
             case 6 -> registerController.exit();
@@ -186,6 +186,7 @@ public class UserInterface {
         int input = læsInt();
         if (input == 1) {
             registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
+           // registerController.gemMedlemer();
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
             System.out.print("Indtast Aktivitetsform på medlemmet: ");
@@ -599,7 +600,7 @@ public class UserInterface {
             sc.next();
         }
         String i = sc.nextLine();
-        sc.nextInt();
+       // sc.nextInt();
         return i;
     }
 
