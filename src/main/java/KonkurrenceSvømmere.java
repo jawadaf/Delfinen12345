@@ -1,7 +1,4 @@
-import java.sql.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class KonkurrenceSvømmere extends Medlem {
     private Resultat[] discipliner = new Resultat[4];

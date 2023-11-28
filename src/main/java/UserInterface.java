@@ -16,8 +16,12 @@ public class UserInterface {
 
 
     public void startMenu() {
-        System.out.println("Tast 1 for formand. " +
-                "Tast 0 for exit");
+        System.out.println("""
+                Tast 1 for formand. 
+                Tast 2 for træner. 
+                Tast 0 for exit.
+                
+                """);
 
     }
 
@@ -28,6 +32,7 @@ public class UserInterface {
             int input = læsInt();
             switch (input) {
                 case 1 -> formandMenu();
+                case 2 -> trænerMenu();
                 default -> isKør = false;
             }
         }
@@ -52,9 +57,22 @@ public class UserInterface {
             case 3 -> visMedlemsListe();
             case 4 -> sletMedlem();
             case 5 -> redigerMedlem();
-            case 6 -> registerController.exit();
+            case 6 -> tilføjMedlemTilHold();
+            case 7 -> gemMedlemTilHold();
+            case 8 -> fjernMedlemFraHold();
+            case 9 -> visMedlemmerForValgteHold();
+            case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
         }
+    }
+
+    public void trænerMenu() {
+        System.out.println("""
+                1. Tilføj medlem til hold.
+                2. Gem medlem til hold.
+                3. Fjern medlem fra hold.
+                4. Vis medlemmer for valgte hold.                
+                """);
     }
 
     public void tilføjNytMedlem(){
@@ -316,6 +334,49 @@ public class UserInterface {
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
+    }
+
+    // Træner
+
+    public void tilføjMedlemTilHold() {
+        System.out.println("Indtast medlemmests navn for at tilføje ind i et hold");
+
+    }
+
+    public void gemMedlemTilHold() {
+
+    }
+
+    public void fjernMedlemFraHold() {
+
+    }
+
+    public void visMedlemmerForValgteHold() {
+
+    }
+
+
+
+
+
+    public String læsString() {
+        while (!sc.hasNextLine()) {
+            System.out.println("Det er ikke er en string");
+            sc.next();
+        }
+        String i = sc.nextLine();
+        // sc.nextInt();
+        return i;
+    }
+
+    public int læsInt(){
+        while (!sc.hasNextInt()){
+            System.out.println("Det er ikke en int");
+            sc.next();
+        }
+        int i = sc.nextInt();
+        sc.nextLine();
+        return i;
     }
 
     // Malou
@@ -610,25 +671,7 @@ public class UserInterface {
 
 
 
-    public String læsString() {
-        while (!sc.hasNextLine()) {
-            System.out.println("Det er ikke er en string");
-            sc.next();
-        }
-        String i = sc.nextLine();
-       // sc.nextInt();
-        return i;
-    }
 
-    public int læsInt(){
-        while (!sc.hasNextInt()){
-            System.out.println("Det er ikke en int");
-            sc.next();
-        }
-        int i = sc.nextInt();
-        sc.nextLine();
-        return i;
-    }
 
 }
 
