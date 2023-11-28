@@ -50,6 +50,7 @@ public class UserInterface {
             case 1 -> tilføjNytMedlem();
             case 2 -> {registerController.gemMedlemer();}
             case 3 -> visMedlemsListe();
+            case 4 -> sletMedlem();
             case 5 -> redigerMedlem();
             case 6 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
@@ -221,6 +222,21 @@ public class UserInterface {
             System.out.println();
         }
     }
+
+    public void sletMedlem() {
+        System.out.println("Skriv navnet på medlemmet der skal slettes.");
+        String sletterMedlem = null;
+        String fuldNavn = null;
+        try {
+            sletterMedlem = læsString();
+            registerController.sletterMedlem(fuldNavn);
+            System.out.println("Medlem er blevet slettet.");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøve igen.");
+        }
+    }
+
+
     public void redigerMedlem() {
         System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
         String redigerMedlem = null;
