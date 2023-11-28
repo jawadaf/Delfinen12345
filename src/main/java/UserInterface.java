@@ -15,6 +15,25 @@ public class UserInterface {
     }
 
 
+    public void startMenu() {
+        System.out.println("Tast 1 for formand. " +
+                "Tast 0 for exit");
+
+    }
+
+    public void startMenuKommando() {
+        boolean isKør = true;
+        while (isKør) {
+            startMenu();
+            int input = læsInt();
+            switch (input) {
+                case 1 -> formandMenu();
+                default -> isKør = false;
+            }
+        }
+    }
+
+
 
     public void formandMenu() {
         System.out.println(""" 
@@ -25,11 +44,15 @@ public class UserInterface {
                 5. Rediger medlems oplysninger
                 6. Aflsut programmet.
                 """);
+
         int input = læsInt();
         switch (input){
             case 1 -> tilføjNytMedlem();
             case 2 -> gemMedlem();
             case 3 -> visMedlemsListe();
+            case 5 -> redigerMedlem();
+            case 6 -> registerController.exit();
+            default -> System.out.println("Forkert input. Prøv igen.");
         }
     }
 
@@ -113,6 +136,8 @@ public class UserInterface {
             System.out.println("Forkert input. Prøv igen.");
         }
 
+        String aktivitetsform = null;
+
        /* System.out.print("Indtast Aktivitetsform på medlemmet: ");
         String aktivitetsform = null;
         try {
@@ -140,6 +165,7 @@ public class UserInterface {
                 fødselsdato,
                 telefonnummer,
                 email,
+                aktivitetsform,
                 medlemskabStatus);
         System.out.println(fuldNavn + " er blevet registreret.");
     }
@@ -150,6 +176,7 @@ public class UserInterface {
                                LocalDate fødselsdato,
                                int telefonnummer,
                                String email,
+                               String aktivitetsform,
                                boolean medlemskabStatus) {
         System.out.println("""
                 1.Tilføj motionist
@@ -158,10 +185,9 @@ public class UserInterface {
                 """);
         int input = læsInt();
         if (input == 1) {
-            registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus);
+            registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
-            String aktivitetsform = null;
             System.out.print("Indtast Aktivitetsform på medlemmet: ");
             aktivitetsform = læsString();
             registerController.tilføjKonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
@@ -194,10 +220,90 @@ public class UserInterface {
             System.out.println();
         }
     }
+    public void redigerMedlem() {
+        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+        String redigerMedlem = null;
+        try {
+            redigerMedlem = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger navnet på medlemmet: ");
+        String nytFuldNavn = null;
+        try {
+            nytFuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger adresse på medlemmet: ");
+        String nyAdresse = null;
+        try {
+            nyAdresse = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger alder på medlemmet: ");
+        int nyAlder = 0;
+        try {
+            nyAlder = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger fødselsdato på medlemmet?: ");
+        String nyFødselsdato = null;
+        try {
+            nyFødselsdato = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger telefonnummeret på medlemmet: ");
+        int nytTelefonnummer = 0;
+        try {
+            nytTelefonnummer = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+        System.out.print("Rediger email på medlemmet: ");
+        String nyEmail = null;
+        try {
+            nyEmail = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger aktivitetsform på medlemmet: ");
+        boolean nyAktivitetsform = true;
+        try {
+            nyAktivitetsform = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger medlemstype på medlemmet: ");
+        boolean nyMedlemsType = true;
+        try {
+            nyMedlemsType = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger medlemsstatus på medlemmet: ");
+        boolean nyMedlemsstatus = true;
+        try {
+            nyMedlemsstatus = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+    }
 
     // Malou
 
-    public void printHeleUserInterface() {
+    /* public void printHeleUserInterface() {
         registerController.loadList();
         Scanner scanner = new Scanner(System.in);
         int isRunning = 0;
@@ -333,7 +439,9 @@ public class UserInterface {
                     }
                     // HUSK LOWERCASE METODE TIL BOOLEANS /TRUE/true/TrUe/
 
- */
+
+
+
 
 
 
@@ -481,11 +589,18 @@ public class UserInterface {
             }
         }
     }
+    */
 
 
 
     public String læsString() {
-        return sc.nextLine();
+        while (!sc.hasNextLine()) {
+            System.out.println("Det er ikke er en string");
+            sc.next();
+        }
+        String i = sc.nextLine();
+        sc.nextInt();
+        return i;
     }
 
     public int læsInt(){

@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: rettelser">
-      <change afterPath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Motionist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Resultat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Medlem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Motionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Motionist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>

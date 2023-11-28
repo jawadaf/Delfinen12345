@@ -47,8 +47,9 @@ public class RegisterController {
                                 LocalDate fødselsdato,
                                 int telefonnummer,
                                 String email,
+                                String aktivitetsform,
                                 boolean medlemskabStatus) {
-        database.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus);
+        database.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
     }
 
     public ArrayList<Medlem> hentetMedlem() {

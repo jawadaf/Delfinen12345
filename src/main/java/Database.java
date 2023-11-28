@@ -51,8 +51,9 @@ public class Database {
                                          LocalDate fødselsdato,
                                          int telefonnummer,
                                          String email,
+                                         String aktivitetsform,
                                          boolean medlemskabStatus) {
-        medlemmer.add(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, medlemskabStatus));
+        medlemmer.add(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus));
     }
 
 

@@ -43,11 +43,11 @@ public class FileHandler {
                     LocalDate fødselsdato = LocalDate.parse(attributer[3].trim());
                     int telefonnummer = Integer.parseInt(attributer[4].trim());
                     String email = attributer[5].trim();
-                    //String aktivitetsform = attributer[6].trim();
+                    String aktivitetsform = attributer[6].trim();
                     int medlemskabType = Integer.parseInt(attributer[6].trim());
                     boolean medlemskabStatus = Boolean.parseBoolean(attributer[7].trim());
 
-//Todo tilføj aktivitetsform
+
                     Medlem indlæsData = new Medlem(
                             fuldNavn,
                             adresse,
@@ -55,6 +55,7 @@ public class FileHandler {
                             fødselsdato,
                             telefonnummer,
                             email,
+                            aktivitetsform,
                             medlemskabType,
                             medlemskabStatus
                             );
