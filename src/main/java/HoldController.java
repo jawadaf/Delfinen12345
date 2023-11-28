@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 
 public class HoldController {
-    private ArrayList<Medlem> holdListe;
+    private ArrayList<Hold> holdListe;
     private ArrayList<Hold> juniorHold;
     private ArrayList<Hold> seniorHold;
 
@@ -30,9 +30,8 @@ public class HoldController {
         System.out.println("Holdet med navnet " + fuldNavn + " blev ikke fundet");
     }
 
-    public void visHoldMedlemmer(String holdNavn) {
-        for (Medlem medlem : holdListe){
-            Hold hold = new Hold(holdNavn);
+    public void visHoldMedlemmer() {
+        for (Hold hold : holdListe){
             if (hold.getHoldNavn().equalsIgnoreCase(holdNavn)){
                 hold.visMedlemmer(ArrayList<medlem> visHoldMedlemmer(holdNavn));
             }

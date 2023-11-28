@@ -73,7 +73,7 @@ public class RegisterController {
         holdController.fjernMedlemFraHold(medlem, holdNavn);
     }
 
-    public visHoldMedlemmer() {
+    public ArrayList<Hold> visHoldMedlemmer() {
        return holdController.visHoldMedlemmer();
     }
 

@@ -75,6 +75,8 @@ public class UserInterface {
                 """);
     }
 
+    // Formand ____________________________________________________________________
+
     public void tilføjNytMedlem(){
         //opret dit medlem
         System.out.println("""
@@ -336,7 +338,7 @@ public class UserInterface {
         }
     }
 
-    // Træner
+    // Træner___________________________________________________________________
 
     public void tilføjMedlemTilHold() {
         System.out.println("Indtast medlemmests fulde navn for at tilføje ind i et hold");
