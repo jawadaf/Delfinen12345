@@ -339,21 +339,52 @@ public class UserInterface {
     // Træner
 
     public void tilføjMedlemTilHold() {
-        System.out.println("Indtast medlemmests navn for at tilføje ind i et hold");
-
+        System.out.println("Indtast medlemmests fulde navn for at tilføje ind i et hold");
+        String fuldNavn = null;
+        try {
+            fuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
     }
 
     public void gemMedlemTilHold() {
-
+        System.out.println("Indtast fulde navn for at få medlemmet gemt.");
+        String fuldNavn = null;
+        try {
+            fuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
     }
 
     public void fjernMedlemFraHold() {
-
+        System.out.println("Indtast fulde navn for at få medlemmet fjernet fra hold.");
+        String fuldNavn = null;
+        try {
+            fuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
     }
 
     public void visMedlemmerForValgteHold() {
-
+        Medlem medlem = new Medlem();
+        ArrayList<Hold> juniorHold = registerController.visHoldMedlemmer();
+        System.out.println("Liste over medlemmer i junior hold: ");
+        for (Hold hold : juniorHold) {
+            System.out.println("Medlemmets navn: " + medlem.getFuldNavn() + ", " + medlem.getAlder());
+        }
+        ArrayList<Hold> seniorHold = registerController.visHoldMedlemmer();
+        System.out.println("Liste over medlemmer i senior hold: ");
+        for (Hold hold : seniorHold) {
+            System.out.println("Medlemmets navn: " + medlem.getFuldNavn() + ", " + medlem.getAlder());
+        }
     }
+
+
+
+
 
 
 

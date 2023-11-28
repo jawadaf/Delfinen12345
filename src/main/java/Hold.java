@@ -2,22 +2,21 @@ import java.util.ArrayList;
 
 public class Hold {
     private String holdNavn;
-    private ArrayList<Medlem> medlemmer;
+
     private ArrayList<Hold> seniorHold = new ArrayList<>();
     private ArrayList<Hold> juniorHold = new ArrayList<>();
-    private Hold hold;
+    private ArrayList<Hold> top5 = new ArrayList<>();
 
     Medlem medlem = new Medlem();
 
     public Hold(String holdNavn) {
         this.holdNavn = holdNavn;
-        this.medlemmer = new ArrayList<>();
 
     }
 
     public void tilføjMedlemTilHold(Medlem medlem) {
         if (medlem.getAlder() < 18) {
-            juniorHold.add(hold);
+            medlem.add(juniorHold);
         } else if (medlem.getAlder() > 18) {
             seniorHold.add(hold);
         }
