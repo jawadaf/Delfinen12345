@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: userstorie 3">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad: igang med userstorie 3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/TidsRegistrering.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Træner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Delfinen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Delfinen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Hold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Hold.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HoldController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/KonkurrenceSvømmere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Motionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Motionist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Resultat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <list id="ea92869d-9aed-4222-8903-e95d26f0da3c" name="Changes by bsenb" comment="Changes by bsenb" />
     <option name="SHOW_DIALOG" value="false" />
@@ -294,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701185332687</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Jawad: igang med userstorie 3">
+      <option name="closed" value="true" />
+      <created>1701252898275</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1701252898275</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +332,7 @@
     <MESSAGE value="Changes by bsenb" />
     <MESSAGE value="Jawad: userstorie 3 er lavet færdigt i UserInterface.&#10;Mangler at få kaldt på metoder i klasserne Hold, HoldContoller og RegisterController." />
     <MESSAGE value="Jawad: userstorie 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jawad: userstorie 3" />
+    <MESSAGE value="Jawad: igang med userstorie 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jawad: igang med userstorie 3" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 package datasource;
 
-import domain.KonkurrenceSvømmere;
+import domain.KonkurrenceSvømmer;
 import domain.Medlem;
 import domain.Motionist;
 
@@ -16,7 +16,7 @@ public class FileHandler {
     public void saveMedlem(ArrayList<Medlem> medlemListe ) {
         try (PrintStream out = new PrintStream(new FileOutputStream(f, true))) {
             for (Medlem medlem : medlemListe) {
-                if (medlem instanceof KonkurrenceSvømmere) {
+                if (medlem instanceof KonkurrenceSvømmer) {
                     out.println(medlem.getFuldNavn() + ", " +
                             medlem.getAdresse() + ", " +
                             medlem.getAlder() + ", " +
@@ -69,8 +69,8 @@ public class FileHandler {
                         information.add(motionist);
                     } else if (attributer.length == 10) {
                         int medlemskabsType = Integer.parseInt(attributer[7].trim());
-                        KonkurrenceSvømmere konkurrenceSvømmere = new KonkurrenceSvømmere(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabsType, medlemskabStatus);
-                        information.add(konkurrenceSvømmere);
+                        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabsType, medlemskabStatus);
+                        information.add(konkurrenceSvømmer);
                     }
                 } else {
                     System.out.println("Ugyldig linje " + line);

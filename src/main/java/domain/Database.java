@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Database {
 
+
     private FileHandler fileHandler;
     private ArrayList<Medlem> medlemmer;
     private Medlem medlem;
@@ -16,6 +17,7 @@ public class Database {
     private ArrayList<Hold> juniorHold;
     private ArrayList<Hold> seniorHold;
     private Hold hold;
+    private Træner træner;
 
     public Database() {
         this.holdListe = new ArrayList<>();
@@ -26,10 +28,11 @@ public class Database {
         this.juniorHold = new ArrayList<>();
         this.seniorHold = new ArrayList<>();
         this.hold = new Hold();
+        this.træner = new Træner("Mike");
     }
 
     // Medlem_________________________________________________
-    public void tilføjMedlem(String fuldNavn,
+    public Medlem tilføjMedlem(String fuldNavn,
                              String adresse,
                              int alder,
                              LocalDate fødselsdato,
@@ -41,11 +44,12 @@ public class Database {
 
         Medlem nyMedlem;
         if (aktivitetsform.equalsIgnoreCase("Konkurrencesvømmer")) {
-            nyMedlem = new KonkurrenceSvømmere(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            nyMedlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
         } else {
             nyMedlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
         }
         medlemmer.add(nyMedlem);
+        return medlem;
         }
 
     public ArrayList<Medlem> hentMedlem() {
@@ -103,6 +107,10 @@ public class Database {
         holdListe.add(nythold);
     }
 
+    public void tilføjMedlemTilHold(Medlem medlem) {
+        hold.tilføjMedlemTilHold(medlem);
+    }
+
     public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
         Hold fundetHold = findHold(fuldNavn);
         if (fundetHold != null) {
@@ -155,6 +163,14 @@ public class Database {
         } else {
             System.out.println("Holdet med navnet " + holdNavn + " ikke fundet.");
         }
+    }
+
+    public ArrayList<Medlem> getKonkurrenceSvømmer() {
+        for (Medlem medlem : medlemmer) {
+            if (medlem instanceof KonkurrenceSvømmer) {
+                konkurrenceSvømmer.add(medlem);
+            }
+        } return konkurrenceSvømmer;
     }
 
     // FileHandler_____________________________________________

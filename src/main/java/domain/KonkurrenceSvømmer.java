@@ -2,18 +2,18 @@ package domain;
 
 import java.time.LocalDate;
 
-public class KonkurrenceSvømmere extends Medlem {
+public class KonkurrenceSvømmer extends Medlem {
     private Resultat[] discipliner = new Resultat[4];
 
-    public KonkurrenceSvømmere(String fuldNavn,
-                               String adresse,
-                               int alder,
-                               LocalDate fødselsdato,
-                               int telefonnummer,
-                               String email,
-                               String aktivitetsForm,
-                               int medlemskabsType,
-                               boolean medlemskabStatus) {
+    public KonkurrenceSvømmer(String fuldNavn,
+                              String adresse,
+                              int alder,
+                              LocalDate fødselsdato,
+                              int telefonnummer,
+                              String email,
+                              String aktivitetsForm,
+                              int medlemskabsType,
+                              boolean medlemskabStatus) {
 
         super(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabsType, medlemskabStatus);
         setMedlemskabType(alder);

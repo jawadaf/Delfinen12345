@@ -12,27 +12,19 @@ public class RegisterController {
     }
 
     // Medlem_______________________________________________________________________
-    public void tilføjelseAfMedlem (String fuldNavn,
-                                    String adresse,
-                                    int alder,
-                                    LocalDate fødselsdato,
-                                    int telefonnummer,
-                                    String email,
-                                    String aktivitetsform,
-                                    int medlemskabType,
-                                    boolean medlemskabStatus) {
-
+    public Medlem tilføjelseAfMedlem (Medlem medlem) {
         isChanged = true;
         database.tilføjMedlem(
-                fuldNavn,
-                adresse,
-                alder,
-                fødselsdato,
-                telefonnummer,
-                email,
-                aktivitetsform,
-                medlemskabType,
-                medlemskabStatus);
+                medlem.getFuldNavn(),
+                medlem.getAdresse(),
+                medlem.getAlder(),
+                medlem.getFødselsdato(),
+                medlem.getTelefonnummer(),
+                medlem.getEmail(),
+                medlem.getAktivitetsform(),
+                medlem.getMedlemskabType(),
+                medlem.getMedlemskabStatus());
+        return medlem;
     }
 
     public ArrayList<Medlem> hentetMedlem() {
@@ -81,6 +73,10 @@ public class RegisterController {
         database.opretHold(holdNavn);
     }
 
+    public void tilføjMedlemTilHold(Medlem medlem) {
+        database.tilføjMedlemTilHold(medlem);
+    }
+
 
     public void fjernMedlemFraHold(String fuldNavn, String holdNavn) {
         database.fjernMedlemFraHold(fuldNavn, holdNavn);
@@ -103,6 +99,11 @@ public class RegisterController {
     public ArrayList<Hold> getJuniorHold() {
         return database.getJuniorHold();
     }
+
+    public ArrayList<Medlem> getKonkurrenceSvømmere() {
+        return database.getKonkurrenceSvømmer();
+    }
+
 
 
 
