@@ -1,16 +1,17 @@
+package domain;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterController {
-    private Database database = new Database();
+    private Database database;
     private boolean isChanged = false;
-    private HoldController holdController;
 
     public RegisterController() {
-        this.holdController = new HoldController();
+        this.database = new Database();
     }
 
-
+    // Medlem_______________________________________________________________________
     public void tilføjelseAfMedlem (String fuldNavn,
                                     String adresse,
                                     int alder,
@@ -18,8 +19,8 @@ public class RegisterController {
                                     int telefonnummer,
                                     String email,
                                     String aktivitetsform,
-                                    boolean medlemskabStatus,
-                                    int medlemskabType) {
+                                    int medlemskabType,
+                                    boolean medlemskabStatus) {
 
         isChanged = true;
         database.tilføjMedlem(
@@ -32,60 +33,14 @@ public class RegisterController {
                 aktivitetsform,
                 medlemskabType,
                 medlemskabStatus);
-
-    }
-
-    public void tilføjKonkurrenceSvømmer(String fuldNavn,
-                                         String adresse,
-                                         int alder,
-                                         LocalDate fødselsdato,
-                                         int telefonnummer,
-                                         String email,
-                                         String aktivitetsForm,
-                                         boolean medlemskabStatus) {
-        database.tilføjKonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabStatus);
-    }
-
-    public void tilføjMotionist(String fuldNavn,
-                                String adresse,
-                                int alder,
-                                LocalDate fødselsdato,
-                                int telefonnummer,
-                                String email,
-                                String aktivitetsform,
-                                boolean medlemskabStatus) {
-        database.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
     }
 
     public ArrayList<Medlem> hentetMedlem() {
         return database.hentMedlem();
     }
 
-    public void opretHold(String holdNavn) {
-        holdController.opretHold(holdNavn);
-    }
-
-    public void tilføjMedlemTilHold(Medlem medlem, String holdNavn) {
-        holdController.tilføjMedlemTilHold(visHoldMedlemmer(String holdNavn));
-    }
-
-    public void fjernMedlemFraHold(Medlem medlem, String holdNavn) {
-        holdController.fjernMedlemFraHold(medlem, holdNavn);
-    }
-
-    public ArrayList<Hold> visHoldMedlemmer() {
-       return holdController.visHoldMedlemmer();
-    }
-
-
-
-
     public void gemMedlemer() {
         database.gemMedlemmer();
-    }
-
-    public void loadList() {
-        database.loadList();
     }
 
     public void sletterMedlem (String fuldNavn) {
@@ -118,8 +73,45 @@ public class RegisterController {
                 aktivitetsform,
                 medlemskabType,
                 medlemskabStatus
-                );
+        );
     }
+
+    // Hold____________________________________________________________________________
+    public void opretHold(String holdNavn) {
+        database.opretHold(holdNavn);
+    }
+
+
+    public void fjernMedlemFraHold(String fuldNavn, String holdNavn) {
+        database.fjernMedlemFraHold(fuldNavn, holdNavn);
+    }
+
+    public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
+        database.tilføjMedlemTilHold(fuldNavn, holdNavn);
+    }
+
+   /* public ArrayList<Domain.Hold> visHoldMedlemmer() {
+       return database.visHoldMedlemmer();
+    }
+
+    */
+
+    public ArrayList<Hold> getSeniorHold() {
+        return database.getSeniorHold();
+    }
+
+    public ArrayList<Hold> getJuniorHold() {
+        return database.getJuniorHold();
+    }
+
+
+
+    // FildHandler__________________________________________________________________
+    public void loadList() {
+        database.loadList();
+    }
+
+
 
 
 

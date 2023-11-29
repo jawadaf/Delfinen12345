@@ -1,3 +1,5 @@
+package domain;
+
 public class Resultat {
     private String disciplineNavn;
     private double tid;

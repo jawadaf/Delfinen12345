@@ -1,29 +1,32 @@
+package domain;
+
 import java.util.ArrayList;
 
 public class Hold {
     private String holdNavn;
-
+    private ArrayList<Medlem> medlemmer = new ArrayList<>();
     private ArrayList<Hold> seniorHold = new ArrayList<>();
     private ArrayList<Hold> juniorHold = new ArrayList<>();
     private ArrayList<Hold> top5 = new ArrayList<>();
 
-    Medlem medlem = new Medlem();
 
     public Hold(String holdNavn) {
         this.holdNavn = holdNavn;
 
     }
 
-    public void tilføjMedlemTilHold(Medlem medlem) {
-        if (medlem.getAlder() < 18) {
-            medlem.add(juniorHold);
-        } else if (medlem.getAlder() > 18) {
-            seniorHold.add(hold);
-        }
+    public Hold() {
     }
 
-    public void gemMedlemTilHold() {
+
+    public void tilføjMedlemTilHold(Medlem medlem) {
         medlemmer.add(medlem);
+        if (medlem.getAlder() < 18) {
+            juniorHold.add(this);
+        } else {
+            seniorHold.add(this);
+        }
+
     }
 
     public void fjernMedlemFraHold(Medlem medlem) {
@@ -37,12 +40,21 @@ public class Hold {
         }
     }
 
+    public ArrayList<Medlem> getMedlemmer() {
+        return medlemmer;
+    }
+
     public String getHoldNavn() {
         return holdNavn;
 
     }
 
-    public String getHoldnavn() {
-        return null;
+    public ArrayList<Hold> getJuniorHold() {
+        return juniorHold;
     }
+
+    public ArrayList<Hold> getSeniorHold() {
+        return seniorHold;
+    }
+
 }

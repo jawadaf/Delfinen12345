@@ -1,3 +1,9 @@
+package ui;
+
+import domain.Hold;
+import domain.Medlem;
+import domain.RegisterController;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -53,14 +59,10 @@ public class UserInterface {
         int input = læsInt();
         switch (input){
             case 1 -> tilføjNytMedlem();
-            case 2 -> {registerController.gemMedlemer();}
+            case 2 -> gemMedlem();
             case 3 -> visMedlemsListe();
             case 4 -> sletMedlem();
             case 5 -> redigerMedlem();
-            case 6 -> tilføjMedlemTilHold();
-            case 7 -> gemMedlemTilHold();
-            case 8 -> fjernMedlemFraHold();
-            case 9 -> visMedlemmerForValgteHold();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
         }
@@ -73,6 +75,15 @@ public class UserInterface {
                 3. Fjern medlem fra hold.
                 4. Vis medlemmer for valgte hold.                
                 """);
+        int input = læsInt();
+        switch (input) {
+            case 1 -> tilføjMedlemTilHold();
+            case 2 -> gemMedlemTilHold();
+            case 3 -> fjernMedlemFraHold();
+            case 4 -> visMedlemmerForValgteHold();
+            case 10 -> registerController.exit();
+            default -> System.out.println("Forkert input. Prøv igen.");
+        }
     }
 
     // Formand ____________________________________________________________________
@@ -187,6 +198,7 @@ public class UserInterface {
                 telefonnummer,
                 email,
                 aktivitetsform,
+                medlemskabType,
                 medlemskabStatus);
         System.out.println(fuldNavn + " er blevet registreret.");
     }
@@ -198,6 +210,7 @@ public class UserInterface {
                                int telefonnummer,
                                String email,
                                String aktivitetsform,
+                               int medlemslabsType,
                                boolean medlemskabStatus) {
         System.out.println("""
                 1.Tilføj motionist
@@ -206,13 +219,13 @@ public class UserInterface {
                 """);
         int input = læsInt();
         if (input == 1) {
-            registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
+            registerController.tilføjelseAfMedlem(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus);
            // registerController.gemMedlemer();
-            System.out.println("Medlem tilføjet som motionist.");
+            System.out.println("Domain.Medlem tilføjet som motionist.");
         } else if (input == 2) {
             System.out.print("Indtast Aktivitetsform på medlemmet: ");
             aktivitetsform = læsString();
-            registerController.tilføjKonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabStatus);
+            registerController.tilføjelseAfMedlem(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus);
             System.out.println("Medlem tilføjet som konkurrence svømmer.");
         } else if (input == 0) {
             System.out.println("Medlemmet ikke tilføjet.");
@@ -250,7 +263,7 @@ public class UserInterface {
         try {
             sletterMedlem = læsString();
             registerController.sletterMedlem(fuldNavn);
-            System.out.println("Medlem er blevet slettet.");
+            System.out.println("Domain.Medlem er blevet slettet.");
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøve igen.");
         }
@@ -342,9 +355,12 @@ public class UserInterface {
 
     public void tilføjMedlemTilHold() {
         System.out.println("Indtast medlemmests fulde navn for at tilføje ind i et hold");
-        String fuldNavn = null;
+        String fuldNavn;
+        String holdNavn;
         try {
             fuldNavn = læsString();
+            holdNavn = læsString();
+            registerController.tilføjMedlemTilHold(fuldNavn, holdNavn);
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
@@ -372,15 +388,21 @@ public class UserInterface {
 
     public void visMedlemmerForValgteHold() {
         Medlem medlem = new Medlem();
-        ArrayList<Hold> juniorHold = registerController.visHoldMedlemmer();
+        ArrayList<Hold> juniorHold = registerController.getJuniorHold();
         System.out.println("Liste over medlemmer i junior hold: ");
         for (Hold hold : juniorHold) {
-            System.out.println("Medlemmets navn: " + medlem.getFuldNavn() + ", " + medlem.getAlder());
+            System.out.println("Domain.Hold: " + hold.getHoldNavn());
+            for (Medlem junior : hold.getMedlemmer()) {
+                System.out.println("Medlemmets navn: " + junior.getFuldNavn() + ", alder: " + junior.getAlder());
+            }
         }
-        ArrayList<Hold> seniorHold = registerController.visHoldMedlemmer();
+        ArrayList<Hold> seniorHold = registerController.getSeniorHold();
         System.out.println("Liste over medlemmer i senior hold: ");
         for (Hold hold : seniorHold) {
-            System.out.println("Medlemmets navn: " + medlem.getFuldNavn() + ", " + medlem.getAlder());
+            System.out.println("Domain.Hold: " + hold.getHoldNavn());
+            for (Medlem senior : hold.getMedlemmer()) {
+                System.out.println("Medlemmets navn: " + senior.getFuldNavn() + ", alder: " + senior.getAlder());
+            }
         }
     }
 
@@ -582,9 +604,9 @@ public class UserInterface {
 
             case 3 -> {
                 //vis en liste over medlemmer
-                ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
+                ArrayList<Domain.Medlem> medlemListe = registerController.hentetMedlem();
                 System.out.println("Liste over medlemmer: ");
-                for (Medlem medlem : medlemListe) {
+                for (Domain.Medlem medlem : medlemListe) {
                     System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
                     System.out.println();
                     System.out.println("Medlemmets adresse: " + medlem.getAdresse());
@@ -609,7 +631,7 @@ public class UserInterface {
                 }
                 registerController.sletterMedlem(fuldNavn);
 
-                System.out.println("Medlem er blevet slettet.");
+                System.out.println("Domain.Medlem er blevet slettet.");
             }
             case 5 -> {
                 System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");

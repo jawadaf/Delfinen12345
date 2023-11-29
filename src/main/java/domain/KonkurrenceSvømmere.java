@@ -1,3 +1,5 @@
+package domain;
+
 import java.time.LocalDate;
 
 public class KonkurrenceSvømmere extends Medlem {
@@ -10,9 +12,10 @@ public class KonkurrenceSvømmere extends Medlem {
                                int telefonnummer,
                                String email,
                                String aktivitetsForm,
+                               int medlemskabsType,
                                boolean medlemskabStatus) {
 
-        super(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabStatus);
+        super(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabsType, medlemskabStatus);
         setMedlemskabType(alder);
         setAktivitetsform("Konkurrencesvømmer");
     }
