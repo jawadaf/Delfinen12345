@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Medlem {
     private String fuldNavn;
@@ -12,6 +13,16 @@ public class Medlem {
     private String aktivitetsform;
     private int medlemskabType;
     private boolean medlemskabStatus;
+
+    Hold hold = new Hold();
+
+    public String getHoldNavn() {
+        return hold.getHoldNavn();
+    }
+
+    public ArrayList<Hold> holdListe() {
+        return holdListe();
+    }
 
 
     public Medlem(String fuldNavn,

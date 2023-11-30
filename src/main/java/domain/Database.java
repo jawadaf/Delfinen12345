@@ -14,8 +14,8 @@ public class Database {
     private Medlem medlem;
     private ArrayList<Medlem> konkurrenceSvømmer;
     private ArrayList<Hold> holdListe;
-    private ArrayList<Hold> juniorHold;
-    private ArrayList<Hold> seniorHold;
+    private ArrayList<Medlem> juniorHold;
+    private ArrayList<Medlem> seniorHold;
     private Hold hold;
     private Træner træner;
 
@@ -181,12 +181,22 @@ public class Database {
     public void gemMedlemmer() {
         fileHandler.saveMedlem(medlemmer);
     }
-    public ArrayList<Hold> getSeniorHold() {
+
+    public ArrayList<Medlem> getSeniorHold() {
+        return hold.getSeniorHold();
+    }
+
+    public ArrayList<Medlem> getJuniorHold() {
+        return hold.getJuniorHold();
+    }
+    /* public ArrayList<Hold> getSeniorHold() {
         return hold.getSeniorHold();
     }
 
     public ArrayList<Hold> getJuniorHold() {
         return hold.getJuniorHold();
     }
+
+     */
 
 }

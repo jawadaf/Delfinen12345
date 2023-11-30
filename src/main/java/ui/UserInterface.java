@@ -100,13 +100,15 @@ public class UserInterface {
                 8. Medlemmets Medlembskabstatus
                 """);
         // Fulde navn
+
         System.out.print("Indtast fulde navn på medlemmet: ");
-        String fuldNavn = null;
-        try {
-            fuldNavn = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input. Prøv igen.");
-        }
+        String fuldNavn = "";
+            try {
+                fuldNavn = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input. Prøv igen.");
+            }
+
 
         // Adresse
 
@@ -132,16 +134,16 @@ public class UserInterface {
 
         // Fødselsdato
 
-        System.out.print("Indtast fødselsdato på medlemmet: ");
-        LocalDate localDate = null;    // denne burde ikke være her
-        LocalDate fødselsdato = localDate;   // denne skal hedde LocalDate fødselsdato = null;
-
+        System.out.print("Indtast fødselsdato på medlemmet (åååå-mm-dd): ");
+        LocalDate localDate = null;
+        LocalDate fødselsdato = localDate;
         try {
             String fødselsdagsdato = læsString();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             fødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
         } catch (DateTimeParseException e) {
             System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
+            sc.nextLine();
         }
 
         // Telefonnummer
@@ -170,13 +172,20 @@ public class UserInterface {
 
         System.out.println("Indtast medlemmets medlemskabstatus; true = aktivt eller false = passivt  ");
         boolean aktivt;
+        boolean passiv;
         boolean medlemskabStatus = false;
+
         try {
             aktivt = sc.nextBoolean();
-            System.out.println("Du er aktiv medlem.");
+
             medlemskabStatus = aktivt;
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input. Prøv igen.");
+        }
+        if (medlemskabStatus == false) {
+            System.out.println("Du er passiv medlem.");
+        } else {
+            System.out.println("Du er aktiv medlem.");
         }
 
         tilføjNyMedlem(
@@ -210,7 +219,7 @@ public class UserInterface {
         if (input == 1) {
             Medlem medlem = registerController.tilføjelseAfMedlem(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus));
             registerController.tilføjMedlemTilHold(medlem);
-            System.out.println("Domain.Medlem tilføjet som motionist.");
+            System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
             System.out.print("Indtast Aktivitetsform på medlemmet: ");
             aktivitetsform = læsString();
@@ -253,7 +262,7 @@ public class UserInterface {
         try {
             sletterMedlem = læsString();
             registerController.sletterMedlem(fuldNavn);
-            System.out.println("Domain.Medlem er blevet slettet.");
+            System.out.println("Medlem er blevet slettet.");
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøve igen.");
         }
@@ -377,11 +386,27 @@ public class UserInterface {
     }
 
     public void visMedlemmerForValgteHold() {
+        ArrayList<Medlem> juniorHold = registerController.getJuniorHold();
+        System.out.println("Liste over medlemmer i junior hold: ");
+        for (Medlem medlem1 : juniorHold) {
+            System.out.println("Medlemmets navn: " + medlem1.getFuldNavn() + ", alder: " + medlem1.getAlder());
+
+        }
+
+        ArrayList<Medlem> seniorHold = registerController.getSeniorHold();
+        System.out.println("Liste over medlemmer i senior hold: ");
+        for (Medlem medlem1 : seniorHold) {
+            System.out.println("Medlemmets navn: " + medlem1.getFuldNavn() + ", alder: " + medlem1.getAlder());
+        }
+
+    }
+
+    /*public void visMedlemmerForValgteHold() {
         Medlem medlem = new Medlem();
         ArrayList<Hold> juniorHold = registerController.getJuniorHold();
         System.out.println("Liste over medlemmer i junior hold: ");
         for (Hold hold : juniorHold) {
-            System.out.println("Domain.Hold: " + hold.getHoldNavn());
+            System.out.println("Hold: " + hold.getHoldNavn());
             for (Medlem junior : hold.getMedlemmer()) {
                 System.out.println("Medlemmets navn: " + junior.getFuldNavn() + ", alder: " + junior.getAlder());
             }
@@ -389,12 +414,14 @@ public class UserInterface {
         ArrayList<Hold> seniorHold = registerController.getSeniorHold();
         System.out.println("Liste over medlemmer i senior hold: ");
         for (Hold hold : seniorHold) {
-            System.out.println("Domain.Hold: " + hold.getHoldNavn());
+            System.out.println("Hold: " + hold.getHoldNavn());
             for (Medlem senior : hold.getMedlemmer()) {
                 System.out.println("Medlemmets navn: " + senior.getFuldNavn() + ", alder: " + senior.getAlder());
             }
         }
     }
+
+     */
 
     private void tilføjDiscipliner() {
         ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = new ArrayList<>();

@@ -92,13 +92,24 @@ public class RegisterController {
 
     */
 
-    public ArrayList<Hold> getSeniorHold() {
+
+    public ArrayList<Medlem> getSeniorHold() {
+        return database.getSeniorHold();
+    }
+
+    public ArrayList<Medlem> getJuniorHold() {
+        return database.getJuniorHold();
+    }
+
+    /* public ArrayList<Hold> getSeniorHold() {
         return database.getSeniorHold();
     }
 
     public ArrayList<Hold> getJuniorHold() {
         return database.getJuniorHold();
     }
+
+     */
 
     public ArrayList<Medlem> getKonkurrenceSvømmere() {
         return database.getKonkurrenceSvømmer();
