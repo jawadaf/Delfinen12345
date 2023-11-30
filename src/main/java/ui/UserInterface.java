@@ -485,7 +485,7 @@ public class UserInterface {
 
     public String læsString() {
         while (!sc.hasNextLine()) {
-            System.out.println("Det er ikke er en string");
+            System.out.println("Det er ikke en string");
             sc.next();
         }
         String i = sc.nextLine();
