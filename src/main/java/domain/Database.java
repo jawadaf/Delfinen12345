@@ -123,6 +123,7 @@ public class Database {
         }
     }
 
+
     public Hold findHold(String holdNavn) {
         for (Hold hold : holdListe) {
             if (hold.getHoldNavn().equalsIgnoreCase(holdNavn)) {
