@@ -4,7 +4,8 @@ import datasource.FileHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Database {
 
@@ -75,7 +76,10 @@ public class Database {
         if (sletterMedlem != null) {
             medlemmer.remove(sletterMedlem);
         }
+
     }
+
+
     public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,

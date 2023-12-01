@@ -529,9 +529,9 @@ public class UserInterface {
             System.out.println("Det er ikke en string");
             sc.next();
         }
-        String i = sc.nextLine();
-        // sc.nextInt();
-        return i;
+        String s = sc.nextLine();
+        //sc.nextLine();
+        return s;
     }
 
     public int læsInt() {
