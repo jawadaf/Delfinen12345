@@ -20,10 +20,10 @@ public class UserInterface {
 
     public void startMenu() {
         System.out.println("""
-                Tast 1 for formand. 
-                Tast 2 for træner. 
+                Tast 1 for formand.
+                Tast 2 for træner.
+                Tast 3 for kassere.
                 Tast 0 for exit.
-                                
                 """);
 
     }
@@ -36,6 +36,7 @@ public class UserInterface {
             switch (input) {
                 case 1 -> formandMenu();
                 case 2 -> trænerMenu();
+                case 3 -> kassereMenu();
                 default -> isKør = false;
             }
         }
@@ -81,6 +82,22 @@ public class UserInterface {
             case 5 -> tilføjDiscipliner();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
+        }
+    }
+
+    public void kassereMenu() {
+        System.out.println("""
+                1. Kontingent for et medlem baseret på dets alder og aktivitetsform.
+                2. Oversigt over kontingentindbetalinger.
+                3. Vis en liste over medlemmer i restance.
+                """);
+        int input = læsInt();
+        switch (input) {
+            case 1 -> kontingent();
+            case 2 -> kontingenindbetalinger();
+            case 3 -> listeOverMedlemmerIRestance();
+            case 10 -> registerController.exit();
+            default -> System.out.println("Forkert input! Prøv igen.");
         }
     }
 
@@ -262,6 +279,7 @@ public class UserInterface {
         try {
             sletterMedlem = læsString();
             registerController.sletterMedlem(fuldNavn);
+            registerController.equals(sletterMedlem);
             System.out.println("Medlem er blevet slettet.");
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøve igen.");
@@ -378,8 +396,11 @@ public class UserInterface {
     public void fjernMedlemFraHold() {
         System.out.println("Indtast fulde navn for at få medlemmet fjernet fra hold.");
         String fuldNavn = null;
+        String holdNavn = null;
         try {
             fuldNavn = læsString();
+            holdNavn = læsString();
+            registerController.fjernMedlemFraHold(fuldNavn, holdNavn);
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
@@ -481,6 +502,26 @@ public class UserInterface {
     }
 
      */
+
+    // Kassere __________________________________________________________
+
+
+    public void kontingent() {
+
+    }
+
+    public void kontingenindbetalinger() {
+
+    }
+
+    public void listeOverMedlemmerIRestance() {
+
+    }
+
+
+
+
+
 
 
     public String læsString() {

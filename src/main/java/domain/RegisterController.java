@@ -11,7 +11,7 @@ public class RegisterController {
         this.database = new Database();
     }
 
-    // Medlem_______________________________________________________________________
+    // Medlem _______________________________________________________________________
     public Medlem tilføjelseAfMedlem (Medlem medlem) {
         isChanged = true;
         database.tilføjMedlem(
@@ -44,6 +44,8 @@ public class RegisterController {
         database.getMedlemskabType(alder);
     }
 
+
+
     public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,
@@ -68,7 +70,7 @@ public class RegisterController {
         );
     }
 
-    // Hold____________________________________________________________________________
+    // Hold ____________________________________________________________________________
     public void opretHold(String holdNavn) {
         database.opretHold(holdNavn);
     }
@@ -114,6 +116,11 @@ public class RegisterController {
     public ArrayList<Medlem> getKonkurrenceSvømmere() {
         return database.getKonkurrenceSvømmer();
     }
+
+
+
+    // Kassere __________________________________________________________
+
 
 
 

@@ -31,7 +31,7 @@ public class Database {
         this.træner = new Træner("Mike");
     }
 
-    // Medlem_________________________________________________
+    // Medlem _________________________________________________________________________
     public Medlem tilføjMedlem(String fuldNavn,
                              String adresse,
                              int alder,
@@ -63,10 +63,11 @@ public class Database {
     }
 
 
-    public void sletMedlem(String name) {
+    public void sletMedlem(String fuldNavn) {
+
         Medlem sletterMedlem = null;
         for (Medlem medlem : medlemmer) {
-            if (medlem.getFuldNavn().equalsIgnoreCase(name)) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
                 sletterMedlem = medlem;
                 break;
             }
@@ -100,7 +101,7 @@ public class Database {
     }
 
 
-   // Hold___________________________________________________
+   // Hold ______________________________________________________________
 
     public void opretHold (String holdNavn) {
         Hold nythold = new Hold(holdNavn);
@@ -110,6 +111,23 @@ public class Database {
     public void tilføjMedlemTilHold(Medlem medlem) {
         hold.tilføjMedlemTilHold(medlem);
     }
+
+    public ArrayList<Medlem> getSeniorHold() {
+        return hold.getSeniorHold();
+    }
+
+    public ArrayList<Medlem> getJuniorHold() {
+        return hold.getJuniorHold();
+    }
+    /* public ArrayList<Hold> getSeniorHold() {
+        return hold.getSeniorHold();
+    }
+
+    public ArrayList<Hold> getJuniorHold() {
+        return hold.getJuniorHold();
+    }
+
+     */
 
     public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
         Hold fundetHold = findHold(fuldNavn);
@@ -174,6 +192,15 @@ public class Database {
         } return konkurrenceSvømmer;
     }
 
+
+    // Kassere __________________________________________________________
+
+
+
+
+
+
+
     // FileHandler_____________________________________________
     public void loadList() {
         medlemmer = fileHandler.loadFromCsvFile();
@@ -183,21 +210,9 @@ public class Database {
         fileHandler.saveMedlem(medlemmer);
     }
 
-    public ArrayList<Medlem> getSeniorHold() {
-        return hold.getSeniorHold();
-    }
 
-    public ArrayList<Medlem> getJuniorHold() {
-        return hold.getJuniorHold();
-    }
-    /* public ArrayList<Hold> getSeniorHold() {
-        return hold.getSeniorHold();
-    }
 
-    public ArrayList<Hold> getJuniorHold() {
-        return hold.getJuniorHold();
-    }
 
-     */
+
 
 }
