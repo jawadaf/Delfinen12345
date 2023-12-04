@@ -121,6 +121,10 @@ public class RegisterController {
 
     // Kassere __________________________________________________________
 
+public String kassereOversigt(){
+    return database.kassereOversigt();
+}
+
 
 
 

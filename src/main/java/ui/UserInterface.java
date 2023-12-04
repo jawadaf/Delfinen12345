@@ -49,8 +49,7 @@ public class UserInterface {
                 2. Gem registreret medlem.
                 3. Vis liste over medlemmer.
                 4. Slet medlem.
-                5. Rediger medlems oplysninger
-                6. Aflsut programmet.
+                5. Afslut programmet.
                 """);
 
         int input = læsInt();
@@ -592,6 +591,7 @@ public class UserInterface {
      */
 
     // Kassere __________________________________________________________
+
 
     public String kontingent() {
         registerController.kassereOversigt();
