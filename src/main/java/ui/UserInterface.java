@@ -101,6 +101,93 @@ public class UserInterface {
         }
     }
 
+
+
+    // Medlem____________________________________________________________________
+
+        public void medlemMenu() {
+            System.out.println("Indtast det fulde navn på medlemmet");
+                    String medlemMenu = null;
+            try {
+                medlemMenu = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger navnet på medlemmet: ");
+            String nytFuldNavn = null;
+            try {
+                nytFuldNavn = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger adresse på medlemmet: ");
+            String nyAdresse = null;
+            try {
+                nyAdresse = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger alder på medlemmet: ");
+            int nyAlder = 0;
+            try {
+                nyAlder = læsInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger fødselsdato på medlemmet?: ");
+                    String nyFødselsdato = null;
+            try {
+                nyFødselsdato = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger telefonnummeret på medlemmet");
+            int nytTelefonnummer = 0;
+            try {
+                nytTelefonnummer = læsInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+            System.out.print("Rediger email på medlemmet: ");
+            String nyEmail = null;
+            try {
+                nyEmail = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger aktivitetsform på medlemmet:" );
+            boolean nyAktivitetsform = true;
+            try {
+                nyAktivitetsform = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger medlemstype på medlemmet: ");
+            boolean nyMedlemsType = true;
+            try {
+                nyMedlemsType = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger medlemsstatus på medlemmet:");
+            boolean nyMedlemsstatus = true;
+            try {
+                nyMedlemsstatus = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+        }
+
+
+
     // Formand ____________________________________________________________________
 
     public void tilføjNytMedlem() {
@@ -372,12 +459,13 @@ public class UserInterface {
 
     public void tilføjMedlemTilHold() {
         System.out.println("Indtast medlemmests fulde navn for at tilføje ind i et hold");
-        String fuldNavn;
-        String holdNavn;
+        //String fuldNavn;
+        //String holdNavn;
+        Medlem medlem = null;
         try {
-            fuldNavn = læsString();
-            holdNavn = læsString();
-            registerController.tilføjMedlemTilHold(fuldNavn, holdNavn);
+           // fuldNavn = læsString();
+            //holdNavn = læsString();
+            registerController.tilføjMedlemTilHold(medlem);
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
@@ -505,8 +593,12 @@ public class UserInterface {
 
     // Kassere __________________________________________________________
 
+    public String kontingent() {
+        registerController.kassereOversigt();
+        {
 
-    public void kontingent() {
+        }
+        return registerController.kassereOversigt();
 
     }
 
@@ -517,9 +609,6 @@ public class UserInterface {
     public void listeOverMedlemmerIRestance() {
 
     }
-
-
-
 
 
 

@@ -25,7 +25,7 @@ public class Database {
         this.fileHandler = new FileHandler();
         this.medlemmer = new ArrayList<>();
         this.medlem = new Medlem();
-        this.konkurrenceSvømmer =  new ArrayList<>();
+        this.konkurrenceSvømmer = new ArrayList<>();
         this.juniorHold = new ArrayList<>();
         this.seniorHold = new ArrayList<>();
         this.hold = new Hold();
@@ -34,14 +34,14 @@ public class Database {
 
     // Medlem _________________________________________________________________________
     public Medlem tilføjMedlem(String fuldNavn,
-                             String adresse,
-                             int alder,
-                             LocalDate fødselsdato,
-                             int telefonnummer,
-                             String email,
-                             String aktivitetsform,
-                             int medlemskabType,
-                             boolean medlemskabStatus) {
+                               String adresse,
+                               int alder,
+                               LocalDate fødselsdato,
+                               int telefonnummer,
+                               String email,
+                               String aktivitetsform,
+                               int medlemskabType,
+                               boolean medlemskabStatus) {
 
         Medlem nyMedlem;
         if (aktivitetsform.equalsIgnoreCase("Konkurrencesvømmer")) {
@@ -51,12 +51,11 @@ public class Database {
         }
         medlemmer.add(nyMedlem);
         return medlem;
-        }
+    }
 
     public ArrayList<Medlem> hentMedlem() {
         return medlemmer;
     }
-
 
 
     public void getMedlemskabType(int alder) {
@@ -88,7 +87,7 @@ public class Database {
                               String email,
                               String aktivitetsform,
                               int medlemskabType,
-                              boolean medlemStatus){
+                              boolean medlemStatus) {
         for (Medlem medlem : medlemmer) {
             if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
                 medlem.setAdresse(adresse);
@@ -105,9 +104,9 @@ public class Database {
     }
 
 
-   // Hold ______________________________________________________________
+    // Hold ______________________________________________________________
 
-    public void opretHold (String holdNavn) {
+    public void opretHold(String holdNavn) {
         Hold nythold = new Hold(holdNavn);
         holdListe.add(nythold);
     }
@@ -133,7 +132,7 @@ public class Database {
 
      */
 
-    public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
+    /*public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
         Hold fundetHold = findHold(fuldNavn);
         if (fundetHold != null) {
             Medlem fundetMedlem = findMedlem(fuldNavn);
@@ -145,13 +144,16 @@ public class Database {
         }
     }
 
+     */
+
 
     public Hold findHold(String holdNavn) {
         for (Hold hold : holdListe) {
             if (hold.getHoldNavn().equalsIgnoreCase(holdNavn)) {
                 return hold;
             }
-        } return null;
+        }
+        return null;
     }
 
     public Medlem findMedlem(String fuldNavn) {
@@ -161,7 +163,8 @@ public class Database {
                     return medlem;
                 }
             }
-        } return null;
+        }
+        return null;
 
     }
 
@@ -193,16 +196,36 @@ public class Database {
             if (medlem instanceof KonkurrenceSvømmer) {
                 konkurrenceSvømmer.add(medlem);
             }
-        } return konkurrenceSvømmer;
+        }
+        return konkurrenceSvømmer;
     }
 
 
     // Kassere __________________________________________________________
 
 
-
-
-
+    public String kassereOversigt() {
+        if (medlem.getAlder() < 18) {
+            if (medlem.getMedlemskabStatus() == true) {
+                System.out.println("Som medlem under 18 skal du betale 1000 kr årligt.");
+            }
+        }
+        if (medlem.getAlder() > 18) {
+            if (medlem.getMedlemskabStatus() == true) {
+                System.out.println("Som medlem over 18 skal du betale 1600 kr årligt");
+            }
+        }
+        if (medlem.getAlder() > 60) {
+            if (medlem.getMedlemskabStatus() == true) {
+                System.out.println("Som medlem over 60 skal du betale 1200 kr årligt");
+            }
+        }
+        if (medlem.getMedlemskabStatus()) {
+            if (medlem.getMedlemskabStatus() == false) {
+                System.out.println("Som passivt medlem skal du betale 500 kr årligt");
+            }
+        } return kassereOversigt().toString();
+    }
 
 
     // FileHandler_____________________________________________
@@ -213,9 +236,6 @@ public class Database {
     public void gemMedlemmer() {
         fileHandler.saveMedlem(medlemmer);
     }
-
-
-
 
 
 
