@@ -7,8 +7,8 @@ public class Hold {
     private ArrayList<Medlem> medlemmer = new ArrayList<>();
     //private ArrayList<Hold> seniorHold = new ArrayList<>();
     //private ArrayList<Hold> juniorHold = new ArrayList<>();
-    private ArrayList<Medlem> juniorHold = new ArrayList<>();
-    private ArrayList<Medlem> seniorHold = new ArrayList<>();
+    private ArrayList<Hold> juniorHold = new ArrayList<>();
+    private ArrayList<Hold> seniorHold = new ArrayList<>();
     private ArrayList<Hold> holdListe = new ArrayList<>();
     private ArrayList<Hold> top5 = new ArrayList<>();
 
@@ -25,12 +25,21 @@ public class Hold {
     public void tilføjMedlemTilHold(Medlem medlem) {
         medlemmer.add(medlem);
         if (medlem.getAlder() < 18) {
+            juniorHold.add(this);
+        } else {
+            seniorHold.add(this);
+        }
+
+    }
+    /*public void tilføjMedlemTilHold(Medlem medlem) {
+        medlemmer.add(medlem);
+        if (medlem.getAlder() < 18) {
             juniorHold.add(medlem);
         } else {
             seniorHold.add(medlem);
         }
 
-    }
+    }*/
 
     public void fjernMedlemFraHold(Medlem medlem) {
         medlemmer.remove(medlem);
@@ -62,22 +71,23 @@ public class Hold {
         return holdNavn;
 
     }
-    public ArrayList<Medlem> getJuniorHold() {
-        return juniorHold;
-    }
 
-    public ArrayList<Medlem> getSeniorHold() {
-        return seniorHold;
-    }
-
-    /*public ArrayList<Hold> getJuniorHold() {
+    public ArrayList<Hold> getJuniorHold() {
         return juniorHold;
     }
 
     public ArrayList<Hold> getSeniorHold() {
         return seniorHold;
     }
+    /*public ArrayList<Medlem> getJuniorHold() {
+        return juniorHold;
+    }
 
-     */
+    public ArrayList<Medlem> getSeniorHold() {
+        return seniorHold;
+    }*/
+
+
+
 
 }

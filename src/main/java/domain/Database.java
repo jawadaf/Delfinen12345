@@ -115,11 +115,11 @@ public class Database {
         hold.tilføjMedlemTilHold(medlem);
     }
 
-    public ArrayList<Medlem> getSeniorHold() {
+    public ArrayList<Hold> getSeniorHold() {
         return hold.getSeniorHold();
     }
 
-    public ArrayList<Medlem> getJuniorHold() {
+    public ArrayList<Hold> getJuniorHold() {
         return hold.getJuniorHold();
     }
     /* public ArrayList<Hold> getSeniorHold() {

@@ -95,12 +95,16 @@ public class RegisterController {
     */
 
 
-    public ArrayList<Medlem> getSeniorHold() {
+    public ArrayList<Hold> getSeniorHold() {
         return database.getSeniorHold();
     }
 
-    public ArrayList<Medlem> getJuniorHold() {
+    public ArrayList<Hold> getJuniorHold() {
         return database.getJuniorHold();
+    }
+
+    public ArrayList<Medlem> getKonkurrenceSvømmere() {
+        return database.getKonkurrenceSvømmer();
     }
 
     /* public ArrayList<Hold> getSeniorHold() {
@@ -113,9 +117,7 @@ public class RegisterController {
 
      */
 
-    public ArrayList<Medlem> getKonkurrenceSvømmere() {
-        return database.getKonkurrenceSvømmer();
-    }
+
 
 
 
@@ -145,4 +147,6 @@ public String kassereOversigt(){
             database.gemMedlemmer();
         }
     }
+
+
 }

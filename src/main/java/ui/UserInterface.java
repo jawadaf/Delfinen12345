@@ -494,19 +494,119 @@ public class UserInterface {
     }
 
     public void visMedlemmerForValgteHold() {
-        ArrayList<Medlem> juniorHold = registerController.getJuniorHold();
-        System.out.println("Liste over medlemmer i junior hold: ");
-        for (Medlem medlem1 : juniorHold) {
-            System.out.println("Medlemmets navn: " + medlem1.getFuldNavn() + ", alder: " + medlem1.getAlder());
+        System.out.println("Vælg en holdtype:");
+        System.out.println("1. Junior Hold");
+        System.out.println("2. Senior Hold");
+
+        int holdTypeValg = læsInt();
+        ArrayList<Hold> valgteHold;
+
+        if (holdTypeValg == 1) {
+            valgteHold = registerController.getJuniorHold();
+        } else if (holdTypeValg == 2) {
+            valgteHold = registerController.getSeniorHold();
+        } else {
+            System.out.println("Ugyldigt valg. Prøv igen");
+            return;
 
         }
 
-        ArrayList<Medlem> seniorHold = registerController.getSeniorHold();
-        System.out.println("Liste over medlemmer i senior hold: ");
-        for (Medlem medlem1 : seniorHold) {
-            System.out.println("Medlemmets navn: " + medlem1.getFuldNavn() + ", alder: " + medlem1.getAlder());
+        visHoldOgMedlemmer(valgteHold);
+    }
+
+    public void valgteHold() {
+        System.out.println("""
+                1. Vis juniorhold.
+                2. Vis SeniorHold
+                3. Konkurrencesvømmer
+                4. Top 5 for hver disciplin
+                """);
+        int input = læsInt();
+        switch (input) {
+            case 1 -> visJuniorHold();
+            case 2 -> visSeniorHold();
+            case 3 -> koncurrenceSvømmer();
+            case 4 -> top5ForHverDisciplin();
+            case 10 -> registerController.exit();
+            default -> System.out.println("Forkert input. Prøv igen.");
         }
 
+    }
+
+    public void visJuniorHold() {
+        int input = læsInt();
+        if (input == 1) {
+            ArrayList<Hold> juniorHold = new ArrayList<>();
+            System.out.println("Junior hold");
+
+            for (Hold hold : juniorHold) {
+                System.out.println(hold.getHoldNavn());
+            }
+        }
+    }
+
+    public void visSeniorHold() {
+        int input = læsInt();
+        if (input == 2) {
+            ArrayList<Hold> seniorHold = new ArrayList<>();
+            System.out.println("Senior Hold");
+
+            for (Hold hold : seniorHold) {
+                System.out.println(hold.getHoldNavn());
+            }
+        }
+    }
+
+    public void koncurrenceSvømmer() {
+        int input = læsInt();
+        if (input == 3) {
+
+            ArrayList<Hold> konkurrenceSvømmer = new ArrayList<>();
+            System.out.println("Koncurrence Svømmer");
+
+            for (Hold hold : konkurrenceSvømmer) {
+                System.out.println(hold.getHoldNavn());
+            }
+        }
+    }
+
+    public void top5ForHverDisciplin() {
+        int input = læsInt();
+        if (input == 4) {
+            ArrayList<Hold> top5ForHverDisplin = new ArrayList<>();
+            System.out.println("Top 5 for hver disciplin");
+
+            for (Hold hold : top5ForHverDisplin) {
+                System.out.println(hold.getHoldNavn());
+            }
+        }
+    }
+
+
+    public void visHoldOgMedlemmer(ArrayList<Hold> holdListe) {
+        // du har nu valgt en liste, nu skal du printe den ud
+        //for hvert medlem på listen skal du printe det ud med medlem navn osv.,
+        for (int i = 0; i < holdListe.size(); i++) {
+            System.out.println((i + 1) + ". " + holdListe.get(i).getHoldNavn());
+        }
+        System.out.println("Vælg et hold:");
+        int holdValg = læsInt();
+
+        if (holdValg > 0 && holdValg <= holdListe.size()) {
+            Hold valgtHold = holdListe.get(holdValg - 1);
+            ArrayList<Medlem> holdMedlemmer = valgtHold.getMedlemmer();
+
+            if (holdMedlemmer.isEmpty()) {
+                System.out.println("Der er ingen medlemmer på dette hold.");
+            } else {
+                System.out.println("Medlemmer på holdet '" + valgtHold.getHoldNavn() + "':");
+                for (Medlem medlem : holdMedlemmer) {
+                    System.out.println("Navn: " + medlem.getFuldNavn() + ", Alder: " + medlem.getAlder());
+                }
+            }
+        } else {
+            System.out.println("Ugyldigt holdvalg. Prøv igen.");
+        }
     }
 
     /*public void visMedlemmerForValgteHold() {
@@ -590,6 +690,16 @@ public class UserInterface {
 
      */
 
+
+
+
+
+
+
+
+
+
+
     // Kassere __________________________________________________________
 
 
@@ -634,3 +744,6 @@ public class UserInterface {
     }
 
 }
+
+
+
