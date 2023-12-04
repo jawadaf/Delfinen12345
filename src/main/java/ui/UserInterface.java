@@ -23,6 +23,7 @@ public class UserInterface {
                 Tast 1 for formand.
                 Tast 2 for træner.
                 Tast 3 for kassere.
+                Tast 4 for medlem.
                 Tast 0 for exit.
                 """);
 
@@ -37,6 +38,7 @@ public class UserInterface {
                 case 1 -> formandMenu();
                 case 2 -> trænerMenu();
                 case 3 -> kassereMenu();
+                case 4 -> medlemMenu();
                 default -> isKør = false;
             }
         }
@@ -206,11 +208,11 @@ public class UserInterface {
 
         System.out.print("Indtast fulde navn på medlemmet: ");
         String fuldNavn = "";
-            try {
-                fuldNavn = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input. Prøv igen.");
-            }
+        try {
+            fuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input. Prøv igen.");
+        }
 
 
         // Adresse
@@ -711,6 +713,7 @@ public class UserInterface {
         return registerController.kassereOversigt();
 
     }
+
 
     public void kontingenindbetalinger() {
 

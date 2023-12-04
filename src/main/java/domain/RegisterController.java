@@ -1,5 +1,6 @@
 package domain;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -83,10 +84,9 @@ public class RegisterController {
     public void fjernMedlemFraHold(String fuldNavn, String holdNavn) {
         database.fjernMedlemFraHold(fuldNavn, holdNavn);
     }
+    
 
-    public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
-        database.tilføjMedlemTilHold(fuldNavn, holdNavn);
-    }
+
 
    /* public ArrayList<Domain.Hold> visHoldMedlemmer() {
        return database.visHoldMedlemmer();
