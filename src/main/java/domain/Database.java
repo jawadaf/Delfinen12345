@@ -4,19 +4,17 @@ import datasource.FileHandler;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class Database {
-
-
     private FileHandler fileHandler;
     private ArrayList<Medlem> medlemmer;
     private Medlem medlem;
     private ArrayList<Medlem> konkurrenceSvømmer;
+    private ArrayList<Medlem> motionist;
     private ArrayList<Hold> holdListe;
     private ArrayList<Medlem> juniorHold;
     private ArrayList<Medlem> seniorHold;
+    private ArrayList<Medlem> top5;
     private Hold hold;
     private Træner træner;
 
@@ -26,8 +24,10 @@ public class Database {
         this.medlemmer = new ArrayList<>();
         this.medlem = new Medlem();
         this.konkurrenceSvømmer = new ArrayList<>();
+        this.motionist = new ArrayList<>();
         this.juniorHold = new ArrayList<>();
         this.seniorHold = new ArrayList<>();
+        this.top5 = new ArrayList<>();
         this.hold = new Hold();
         this.træner = new Træner("Mike");
     }
@@ -111,85 +111,77 @@ public class Database {
         holdListe.add(nythold);
     }
 
-    public void tilføjMedlemTilHold(Medlem medlem) {
-        hold.tilføjMedlemTilHold(medlem);
+
+    public void tilføjMedlemTilJuniorEllerSenior(int alder) {
+        Medlem medlem = new Medlem();
+        medlemmer.add(medlem);
+        if (alder < 18) {
+            juniorHold.add(medlem);
+        } else {
+            seniorHold.add(medlem);
+        }
+
     }
 
-    public ArrayList<Hold> getSeniorHold() {
-        return hold.getSeniorHold();
+
+    public void fjernMedlemFraHold(Medlem medlem) {
+        medlemmer.remove(medlem);
+        if (medlem instanceof KonkurrenceSvømmer) {
+            konkurrenceSvømmer.remove(medlem);
+            motionist.add(medlem);
+        } else {
+            motionist.remove(medlem);
+            konkurrenceSvømmer.add(medlem);
+        }
     }
 
-    public ArrayList<Hold> getJuniorHold() {
-        return hold.getJuniorHold();
-    }
-    /* public ArrayList<Hold> getSeniorHold() {
-        return hold.getSeniorHold();
-    }
-
-    public ArrayList<Hold> getJuniorHold() {
-        return hold.getJuniorHold();
+    /* public void fjernMedlemFraHold(Medlem medlem) {
+        medlemmer.remove(medlem);
     }
 
      */
 
-    /*public void tilføjMedlemTilHold(String fuldNavn, String holdNavn) {
-        Hold fundetHold = findHold(fuldNavn);
-        if (fundetHold != null) {
-            Medlem fundetMedlem = findMedlem(fuldNavn);
-            if (fundetHold != null) {
-                fundetHold.tilføjMedlemTilHold(fundetMedlem);
+    public ArrayList<Medlem> visKonkurrenceSvømmerPåHold() {
+        System.out.println("Medlemmer på konkurrencesvømmere holdet: ");
+        for (Medlem medlem : medlemmer) {
+            if (medlem instanceof KonkurrenceSvømmer) {
+                konkurrenceSvømmer.add(medlem);
             }
-        } else {
-            System.out.println("Holdet med navnet " + holdNavn + " blev ikke fundet");
-        }
+        } return konkurrenceSvømmer;
     }
 
-     */
+    public ArrayList<Medlem> getMedlemmer() {
+        return medlemmer;
+    }
 
 
-    public Hold findHold(String holdNavn) {
-        for (Hold hold : holdListe) {
-            if (hold.getHoldNavn().equalsIgnoreCase(holdNavn)) {
-                return hold;
+    public ArrayList<Medlem> getJuniorHold() {
+        return juniorHold;
+
+    }
+
+    public ArrayList<Medlem> getSeniorHold() {
+        seniorHold.addAll((medlemmer));
+        return medlemmer;
+    }
+
+    public Medlem søgEfterMedlem(String fuldNavn) {
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getFuldNavn().toLowerCase().contains(fuldNavn.toLowerCase())) {
+                return medlem;
             }
-        }
-        return null;
+        } return null;
     }
 
-    public Medlem findMedlem(String fuldNavn) {
-        for (Hold hold : holdListe) {
-            for (Medlem medlem : hold.getMedlemmer()) {
-                if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
-                    return medlem;
-                }
-            }
-        }
-        return null;
-
-    }
-
-    public void visHoldMedlemmer(String holdNavn) {
-        Hold fundetHold = findHold(holdNavn);
-        if (fundetHold != null) {
-            fundetHold.visMedlemmer();
-        } else {
-            System.out.println("Holdet med navnet " + holdNavn + " blev ikke fundet");
-        }
-    }
-
-    public void fjernMedlemFraHold(String fuldNavn, String holdNavn) {
-        Hold fundetHold = findHold(holdNavn);
-        if (fundetHold != null) {
-            Medlem fundetMedlem = findMedlem(fuldNavn);
-            if (fundetMedlem != null) {
-                fundetHold.fjernMedlemFraHold(fundetMedlem);
+    public void fjernMedlemFraHold(String fuldNavn) {
+        if (fuldNavn != null) {
+            Medlem fundetMedlem = søgEfterMedlem(fuldNavn);
+                fjernMedlemFraHold(fundetMedlem);
             } else {
                 System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
             }
-        } else {
-            System.out.println("Holdet med navnet " + holdNavn + " ikke fundet.");
         }
-    }
+
 
     public ArrayList<Medlem> getKonkurrenceSvømmer() {
         for (Medlem medlem : medlemmer) {

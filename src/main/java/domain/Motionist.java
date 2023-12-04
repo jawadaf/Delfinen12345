@@ -15,7 +15,7 @@ public class Motionist extends Medlem {
                      boolean medlemskabStatus) {
         super(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabsType, medlemskabStatus);
         setMedlemskabType(alder);
-        setAktivitetsform("Domain.Motionist");
+        setAktivitetsform("Motionist");
     }
 
 

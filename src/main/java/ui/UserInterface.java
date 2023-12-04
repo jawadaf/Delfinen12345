@@ -68,19 +68,17 @@ public class UserInterface {
 
     public void trænerMenu() {
         System.out.println("""
-                1. Tilføj medlem til hold.
+                1. Tilføj medlem til desciplin.
                 2. Gem medlem til hold.
                 3. Fjern medlem fra hold.
-                4. Vis medlemmer for valgte hold.
-                5. Vis discipliner.                
+                4. Vis medlemmer for valgte hold.                
                 """);
         int input = læsInt();
         switch (input) {
-            case 1 -> tilføjMedlemTilHold();
+            case 1 -> tilføjMedlemmerTilDiscipliner();
             case 2 -> gemMedlemTilHold();
             case 3 -> fjernMedlemFraHold();
             case 4 -> visMedlemmerForValgteHold();
-            case 5 -> tilføjDiscipliner();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
         }
@@ -323,13 +321,15 @@ public class UserInterface {
         int input = læsInt();
         if (input == 1) {
             Medlem medlem = registerController.tilføjelseAfMedlem(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus));
-            registerController.tilføjMedlemTilHold(medlem);
+            medlem.setAlder(alder);
+            registerController.tilføjMedlemTilJuniorEllerSenior(alder);
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
             System.out.print("Indtast Aktivitetsform på medlemmet: ");
             aktivitetsform = læsString();
             Medlem medlem = registerController.tilføjelseAfMedlem(new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus));
-            registerController.tilføjMedlemTilHold(medlem);
+            medlem.setAlder(alder);
+            registerController.tilføjMedlemTilJuniorEllerSenior(alder);
             System.out.println("Medlem tilføjet som konkurrence svømmer.");
         } else if (input == 0) {
             System.out.println("Medlemmet ikke tilføjet.");
@@ -466,7 +466,8 @@ public class UserInterface {
         try {
            // fuldNavn = læsString();
             //holdNavn = læsString();
-            registerController.tilføjMedlemTilHold(medlem);
+           // medlem.setAlder(alder);
+           // registerController.tilføjMedlemTilJuniorEllerSenior(medlem);
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
@@ -485,11 +486,9 @@ public class UserInterface {
     public void fjernMedlemFraHold() {
         System.out.println("Indtast fulde navn for at få medlemmet fjernet fra hold.");
         String fuldNavn = null;
-        String holdNavn = null;
         try {
             fuldNavn = læsString();
-            holdNavn = læsString();
-            registerController.fjernMedlemFraHold(fuldNavn, holdNavn);
+            registerController.fjernMedlemFraHold(fuldNavn);
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
         }
@@ -499,21 +498,26 @@ public class UserInterface {
         System.out.println("Vælg en holdtype:");
         System.out.println("1. Junior Hold");
         System.out.println("2. Senior Hold");
+        System.out.println("3. Konkurrencesvømmere");
+        System.out.println("4. Top 5 hver for disciplin");
 
         int holdTypeValg = læsInt();
-        ArrayList<Hold> valgteHold;
+        ArrayList<Medlem> valgteHold = new ArrayList<>();
 
         if (holdTypeValg == 1) {
             valgteHold = registerController.getJuniorHold();
+            System.out.println(valgteHold);
         } else if (holdTypeValg == 2) {
             valgteHold = registerController.getSeniorHold();
+            System.out.println(valgteHold);
+        } else if (holdTypeValg == 3) {
+            valgteHold = registerController.getKonkurrenceSvømmere();
+            System.out.println(valgteHold);
         } else {
             System.out.println("Ugyldigt valg. Prøv igen");
-            return;
-
         }
 
-        visHoldOgMedlemmer(valgteHold);
+        //visHoldOgMedlemmer(valgteHold);
     }
 
     public void valgteHold() {
@@ -585,7 +589,7 @@ public class UserInterface {
     }
 
 
-    public void visHoldOgMedlemmer(ArrayList<Hold> holdListe) {
+    /*public void visHoldOgMedlemmer(ArrayList<Hold> holdListe) {
         // du har nu valgt en liste, nu skal du printe den ud
         //for hvert medlem på listen skal du printe det ud med medlem navn osv.,
         for (int i = 0; i < holdListe.size(); i++) {
@@ -611,6 +615,8 @@ public class UserInterface {
         }
     }
 
+     */
+
     /*public void visMedlemmerForValgteHold() {
         Medlem medlem = new Medlem();
         ArrayList<Hold> juniorHold = registerController.getJuniorHold();
@@ -633,7 +639,7 @@ public class UserInterface {
 
      */
 
-    private void tilføjDiscipliner() {
+    private void tilføjMedlemmerTilDiscipliner() {
         ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = new ArrayList<>();
         for (Medlem medlem : registerController.getKonkurrenceSvømmere()) {
             if (medlem instanceof KonkurrenceSvømmer) {

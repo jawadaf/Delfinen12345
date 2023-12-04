@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Hold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Hold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Motionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Motionist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
-    </list>
-    <list id="f7f9fd00-a5bd-4c40-9e59-00aa39df9b42" name="Changes by Alhus" comment="Changes by Alhus" />
-    <list id="1729e8ee-5232-43da-b329-0aaa6e004c49" name="Changes by MUK" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,20 +47,6 @@
         <option name="url" value="https://github.com/jawadaf/Delfinen00.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/ui/UserInterface.java">
-      <ranges>
-        <range start1="22" end1="24" start2="22" end2="25" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="25" end1="26" start2="26" end2="26" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="38" end1="38" start2="38" end2="39" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="85" end1="85" start2="86" end2="102" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="380" end1="380" start2="397" end2="398" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="382" end1="382" start2="400" end2="402" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="483" end1="483" start2="503" end2="523" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="490" end1="493" start2="530" end2="533" changelist="1729e8ee-5232-43da-b329-0aaa6e004c49" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -339,7 +324,55 @@
       <option name="project" value="LOCAL" />
       <updated>1701353429617</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701429192163</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1701429192163</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Changes by MUK">
+      <option name="closed" value="true" />
+      <created>1701429244087</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701429244087</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701690559599</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1701690559599</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701690591001</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1701690591001</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Changes by bsenb">
+      <option name="closed" value="true" />
+      <created>1701690625418</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1701690625418</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Changes by MUK">
+      <option name="closed" value="true" />
+      <created>1701690646741</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701690646741</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +395,6 @@
     <MESSAGE value="Jawad: rettet lidt på klasserne og metoderne og fik tilføjet '@Override'" />
     <MESSAGE value="Jawad: Har oprettet fil &quot;medlemregister&quot;" />
     <MESSAGE value="Jawad: Har oprettet klasse fileHandler og fil &quot;medlemregister&quot;" />
-    <MESSAGE value="Changes by MUK" />
     <MESSAGE value="..." />
     <MESSAGE value="Jawad: gg" />
     <MESSAGE value="Jawad: ggww" />
@@ -370,12 +402,13 @@
     <MESSAGE value="Jawad: rettelser1" />
     <MESSAGE value="Jawad: rettelser i klasser" />
     <MESSAGE value="Jawad: rettelser" />
-    <MESSAGE value="Changes by bsenb" />
     <MESSAGE value="Jawad: userstorie 3 er lavet færdigt i UserInterface.&#10;Mangler at få kaldt på metoder i klasserne Hold, HoldContoller og RegisterController." />
     <MESSAGE value="Jawad: userstorie 3" />
     <MESSAGE value="Jawad: igang med userstorie 3" />
     <MESSAGE value="Changes by Alhus" />
+    <MESSAGE value="Changes by bsenb" />
     <MESSAGE value="Jawad:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
+    <MESSAGE value="Changes by MUK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by MUK" />
   </component>
 </project>

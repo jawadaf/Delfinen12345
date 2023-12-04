@@ -1,6 +1,5 @@
 package domain;
 
-import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -76,15 +75,15 @@ public class RegisterController {
         database.opretHold(holdNavn);
     }
 
-    public void tilføjMedlemTilHold(Medlem medlem) {
-        database.tilføjMedlemTilHold(medlem);
+    public void tilføjMedlemTilJuniorEllerSenior(int alder) {
+        database.tilføjMedlemTilJuniorEllerSenior(alder);
     }
 
 
-    public void fjernMedlemFraHold(String fuldNavn, String holdNavn) {
-        database.fjernMedlemFraHold(fuldNavn, holdNavn);
+    public void fjernMedlemFraHold(String fuldNavn) {
+        database.fjernMedlemFraHold(fuldNavn);
     }
-    
+
 
 
 
@@ -95,17 +94,18 @@ public class RegisterController {
     */
 
 
-    public ArrayList<Hold> getSeniorHold() {
+    public ArrayList<Medlem> getSeniorHold() {
         return database.getSeniorHold();
     }
 
-    public ArrayList<Hold> getJuniorHold() {
+    public ArrayList<Medlem> getJuniorHold() {
         return database.getJuniorHold();
     }
 
     public ArrayList<Medlem> getKonkurrenceSvømmere() {
         return database.getKonkurrenceSvømmer();
     }
+
 
     /* public ArrayList<Hold> getSeniorHold() {
         return database.getSeniorHold();
