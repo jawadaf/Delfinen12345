@@ -64,8 +64,7 @@ public class RegisterController {
                 email,
                 aktivitetsform,
                 medlemskabType,
-                medlemskabStatus
-        );
+                medlemskabStatus);
     }
 
     public void redigereMedlem(String fuldNavn,

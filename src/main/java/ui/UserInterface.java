@@ -162,7 +162,7 @@ public class UserInterface {
         try {
             alder = læsInt();
 
-            if (medlemskabType < 18){
+            if (medlemskabType < 18) {
                 registerController.tilføjMedlemTilJuniorEllerSenior(alder);
                 medlemskabType = 1;
             } else {
@@ -288,6 +288,118 @@ public class UserInterface {
     public void gemMedlem() {
         System.out.println("Registreret medlem er blevet gemt.");
         registerController.gemMedlemer();
+    }
+
+
+    public void redigerMedlem() {
+        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+        String redigerMedlem = null;
+        try {
+            redigerMedlem = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Nyt fuld navn
+
+        System.out.print("Rediger navnet på medlemmet: ");
+        String nytFuldNavn = null;
+        try {
+            nytFuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny adresse
+
+        System.out.print("Rediger adresse på medlemmet: ");
+        String nyAdresse = null;
+        try {
+            nyAdresse = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny alder
+
+        System.out.print("Rediger alder på medlemmet: ");
+        int nyAlder = 0;
+        try {
+            nyAlder = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny fødselsdato
+
+        System.out.print("Rediger fødselsdato på medlemmet (åååå-mm-dd): ");
+        LocalDate nyFødselsdato = null;
+        LocalDate fødselsdato = nyFødselsdato;
+        try {
+            String fødselsdagsdato = læsString();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            fødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
+        } catch (DateTimeParseException e) {
+            System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
+            sc.nextLine();
+        }
+
+        // Nyt telefonnummer
+
+        System.out.print("Rediger telefonnummeret på medlemmet: ");
+        int nytTelefonnummer = 0;
+        try {
+            nytTelefonnummer = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny email
+
+        System.out.print("Rediger email på medlemmet: ");
+        String nyEmail = null;
+        try {
+            nyEmail = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny aktivitetsform
+
+        System.out.print("Rediger aktivitetsform på medlemmet (Motionist/Konkurrencesvømmer): ");
+        String nyAktivitetsform = null;
+        try {
+            nyAktivitetsform = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        // Ny medlemskabsstatus
+
+        System.out.print("Rediger medlemsstatus på medlemmet (tast 'true' for aktiv, tast 'false' for passiv: ");
+        boolean nyMedlemsstatus = true;
+        try {
+            nyMedlemsstatus = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        registerController.redigereMedlem(
+                nytFuldNavn,
+                nyAdresse,
+                nyAlder,
+                nytTelefonnummer,
+                nyFødselsdato,
+                nyEmail,
+                nyAktivitetsform,
+                nyMedlemsstatus);
+    }
+
+    public void gemRedigeretMedlem () {
+        System.out.println("De redigeret oplysninger er blevet gemt");
+        if (registerController.redigereMedlem(sletMedlem(String))) {
+
+        }
     }
 
 
