@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
+    </list>
+    <list id="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" name="Changes by Alhus" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +49,30 @@
         <option name="url" value="https://github.com/jawadaf/Delfinen00.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/domain/RegisterController.java">
+      <ranges>
+        <range start1="66" end1="68" start2="66" end2="67" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
+        <range start1="69" end1="69" start2="68" end2="89" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/ui/UserInterface.java">
+      <ranges>
+        <range start1="52" end1="55" start2="52" end2="57" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="61" end1="64" start2="63" end2="67" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="102" end1="106" start2="105" end2="105" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="107" end1="131" start2="106" end2="119" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="132" end1="190" start2="120" end2="120" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="234" end1="235" start2="164" end2="165" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
+        <range start1="264" end1="265" start2="194" end2="194" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="362" end1="362" start2="291" end2="292" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="363" end1="363" start2="293" end2="405" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
+        <range start1="397" end1="429" start2="439" end2="439" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="430" end1="477" start2="440" end2="440" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+        <range start1="752" end1="752" start2="715" end2="816" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -383,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701769382081</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701770677023</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1701770677023</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,16 +460,5 @@
     <MESSAGE value="Changes by MUK" />
     <MESSAGE value="Jawad:" />
     <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ui/UserInterface.java</url>
-          <line>665</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

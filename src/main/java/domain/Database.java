@@ -105,6 +105,28 @@ public class Database {
         }
     }
 
+    public void redigereMedlem(String fuldNavn,
+                              String adresse,
+                              int alder,
+                              int telefonnummer,
+                              LocalDate fødselsdato,
+                              String email,
+                              String aktivitetsform,
+                              boolean medlemStatus) {
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
+                medlem.setAdresse(adresse);
+                medlem.setAlder(alder);
+                medlem.setTelefonnummer(telefonnummer);
+                medlem.setFødselsdato(fødselsdato);
+                medlem.setEmail(email);
+                medlem.setAktivitetsform(aktivitetsform);
+                medlem.setMedlemskabStatus(medlemStatus);
+                return;
+            }
+        }
+    }
+
 
     // Hold ______________________________________________________________
 

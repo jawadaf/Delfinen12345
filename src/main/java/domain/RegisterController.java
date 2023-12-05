@@ -68,6 +68,27 @@ public class RegisterController {
         );
     }
 
+    public void redigereMedlem(String fuldNavn,
+                              String adresse,
+                              int alder,
+                              int telefonnummer,
+                              LocalDate fødselsdato,
+                              String email,
+                              String aktivitetsform,
+                              boolean medlemskabStatus){
+
+        isChanged = true;
+       return new database.redigereMedlem(
+                fuldNavn,
+                adresse,
+                alder,
+                telefonnummer,
+                fødselsdato,
+                email,
+                aktivitetsform,
+                medlemskabStatus);
+            }
+
     // Hold ____________________________________________________________________________
     public void opretHold(String holdNavn) {
         database.opretHold(holdNavn);

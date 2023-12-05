@@ -50,18 +50,21 @@ public class UserInterface {
         System.out.println(""" 
                 1. Opret et medlem.
                 2. Gem registreret medlem.
-                3. Vis liste over medlemmer.
-                4. Slet medlem.
-                5. Afslut programmet.
+                3. Redigere medlem
+                4. Gem redigeret medlem.
+                5. Vis liste over medlemmer.
+                6. Slet medlem.
+                7. Afslut programmet.
                 """);
 
         int input = læsInt();
         switch (input) {
             case 1 -> tilføjNytMedlem();
             case 2 -> gemMedlem();
-            case 3 -> visMedlemsListe();
-            case 4 -> sletMedlem();
-            case 5 -> redigerMedlem();
+            case 3 -> redigerMedlem();
+            case 4 -> gemRedigeretMedlem();
+            case 5 -> visMedlemsListe();
+            case 6 -> sletMedlem();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
         }
@@ -101,92 +104,19 @@ public class UserInterface {
         }
     }
 
-
-
-    // Medlem____________________________________________________________________
-
-        public void medlemMenu() {
-            System.out.println("Indtast det fulde navn på medlemmet");
-                    String medlemMenu = null;
-            try {
-                medlemMenu = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger navnet på medlemmet: ");
-            String nytFuldNavn = null;
-            try {
-                nytFuldNavn = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger adresse på medlemmet: ");
-            String nyAdresse = null;
-            try {
-                nyAdresse = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger alder på medlemmet: ");
-            int nyAlder = 0;
-            try {
-                nyAlder = læsInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger fødselsdato på medlemmet?: ");
-                    String nyFødselsdato = null;
-            try {
-                nyFødselsdato = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger telefonnummeret på medlemmet");
-            int nytTelefonnummer = 0;
-            try {
-                nytTelefonnummer = læsInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-            System.out.print("Rediger email på medlemmet: ");
-            String nyEmail = null;
-            try {
-                nyEmail = læsString();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger aktivitetsform på medlemmet:" );
-            boolean nyAktivitetsform = true;
-            try {
-                nyAktivitetsform = sc.nextBoolean();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger medlemstype på medlemmet: ");
-            boolean nyMedlemsType = true;
-            try {
-                nyMedlemsType = sc.nextBoolean();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
-
-            System.out.print("Rediger medlemsstatus på medlemmet:");
-            boolean nyMedlemsstatus = true;
-            try {
-                nyMedlemsstatus = sc.nextBoolean();
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input! Prøv igen.");
-            }
+    public void medlemMenu() {
+        System.out.println("""
+                1. Rediger oplysninger for det valgte medlem.
+                2. Gem redigeret medlem.
+                3. Se liste over kontingenter.
+                """);
+        int input = læsInt();
+        switch (input) {
+            case 1 -> redigerMedlemOplysninger();
+            case 2 -> gemRedigeretMedlem();
+            case 3 -> seKontingenter();
         }
-
-
+    }
 
     // Formand ____________________________________________________________________
 
@@ -262,7 +192,6 @@ public class UserInterface {
         System.out.print("Indtast telefonnummeret på medlemmet: ");
         int telefonnummer = 0;
         try {
-            // int telefonnummer = 0;
             telefonnummer = læsInt();
         } catch (InputMismatchException e) {
             System.out.println("Forkert input. Prøv igen.");
@@ -361,6 +290,7 @@ public class UserInterface {
         registerController.gemMedlemer();
     }
 
+
     public void visMedlemsListe() {
         ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
         System.out.println("Liste over medlemmer: ");
@@ -395,86 +325,7 @@ public class UserInterface {
     }
 
 
-    public void redigerMedlem() {
-        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
-        String redigerMedlem = null;
-        try {
-            redigerMedlem = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
 
-        System.out.print("Rediger navnet på medlemmet: ");
-        String nytFuldNavn = null;
-        try {
-            nytFuldNavn = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger adresse på medlemmet: ");
-        String nyAdresse = null;
-        try {
-            nyAdresse = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger alder på medlemmet: ");
-        int nyAlder = 0;
-        try {
-            nyAlder = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger fødselsdato på medlemmet?: ");
-        String nyFødselsdato = null;
-        try {
-            nyFødselsdato = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger telefonnummeret på medlemmet: ");
-        int nytTelefonnummer = 0;
-        try {
-            nytTelefonnummer = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-        System.out.print("Rediger email på medlemmet: ");
-        String nyEmail = null;
-        try {
-            nyEmail = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger aktivitetsform på medlemmet: ");
-        boolean nyAktivitetsform = true;
-        try {
-            nyAktivitetsform = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger medlemstype på medlemmet: ");
-        boolean nyMedlemsType = true;
-        try {
-            nyMedlemsType = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger medlemsstatus på medlemmet: ");
-        boolean nyMedlemsstatus = true;
-        try {
-            nyMedlemsstatus = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-    }
 
     // Træner___________________________________________________________________
 
@@ -750,6 +601,107 @@ public class UserInterface {
     public void listeOverMedlemmerIRestance() {
 
     }
+
+
+    // Medlem____________________________________________________________________
+
+
+
+    public void redigerMedlemOplysninger() {
+        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+        String redigerMedlem = null;
+        try {
+            redigerMedlem = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger navnet på medlemmet: ");
+        String nytFuldNavn = null;
+        try {
+            nytFuldNavn = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger adresse på medlemmet: ");
+        String nyAdresse = null;
+        try {
+            nyAdresse = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger alder på medlemmet: ");
+        int nyAlder = 0;
+        try {
+            nyAlder = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger fødselsdato på medlemmet: ");
+        String nyFødselsdato = null;
+        try {
+            nyFødselsdato = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger telefonnummeret på medlemmet");
+        int nytTelefonnummer = 0;
+        try {
+            nytTelefonnummer = læsInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+        System.out.print("Rediger email på medlemmet: ");
+        String nyEmail = null;
+        try {
+            nyEmail = læsString();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger aktivitetsform på medlemmet:" );
+        boolean nyAktivitetsform = true;
+        try {
+            nyAktivitetsform = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger medlemstype på medlemmet: ");
+        boolean nyMedlemsType = true;
+        try {
+            nyMedlemsType = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+
+        System.out.print("Rediger medlemsstatus på medlemmet:");
+        boolean nyMedlemsstatus = true;
+        try {
+            nyMedlemsstatus = sc.nextBoolean();
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+        }
+    }
+
+
+
+    public void gemMedlemmetsRedigering() {
+        System.out.println("Oplysningerne er blevet redigeret.");
+        registerController.gemMedlemer();
+    }
+
+
+
+    public void seKontingenter() {
+
+    }
+
+
 
 
 
