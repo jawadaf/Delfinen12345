@@ -524,7 +524,7 @@ public class UserInterface {
         System.out.println("4. Top 5 hver for disciplin");
 
         int holdTypeValg = læsInt();
-        ArrayList<Medlem> valgteHold = new ArrayList<>();
+        ArrayList<Medlem> valgteHold;
 
         if (holdTypeValg == 1) {
             valgteHold = registerController.getJuniorHold();

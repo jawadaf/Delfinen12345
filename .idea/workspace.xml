@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701700194729</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701769382081</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1701769382081</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -417,5 +421,16 @@
     <MESSAGE value="Changes by MUK" />
     <MESSAGE value="Jawad:" />
     <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ui/UserInterface.java</url>
+          <line>665</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

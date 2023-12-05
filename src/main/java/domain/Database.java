@@ -9,7 +9,7 @@ public class Database {
     private FileHandler fileHandler;
     private ArrayList<Medlem> medlemmer;
     private Medlem medlem;
-    private ArrayList<Medlem> konkurrenceSvømmer;
+    private ArrayList<Medlem> konkurrenceSvømmere;
     private ArrayList<Medlem> motionist;
     private ArrayList<Hold> holdListe;
     private ArrayList<Medlem> juniorHold;
@@ -23,7 +23,7 @@ public class Database {
         this.fileHandler = new FileHandler();
         this.medlemmer = new ArrayList<>();
         this.medlem = new Medlem();
-        this.konkurrenceSvømmer = new ArrayList<>();
+        this.konkurrenceSvømmere = new ArrayList<>();
         this.motionist = new ArrayList<>();
         this.juniorHold = new ArrayList<>();
         this.seniorHold = new ArrayList<>();
@@ -47,8 +47,10 @@ public class Database {
         Medlem nyMedlem;
         if (aktivitetsform.equalsIgnoreCase("Konkurrencesvømmer")) {
             nyMedlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            konkurrenceSvømmere.add(nyMedlem);
         } else {
             nyMedlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            konkurrenceSvømmere.add(nyMedlem);
         }
         medlemmer.add(nyMedlem);
     }
@@ -127,11 +129,11 @@ public class Database {
     public void fjernMedlemFraHold(Medlem medlem) {
         medlemmer.remove(medlem);
         if (medlem instanceof KonkurrenceSvømmer) {
-            konkurrenceSvømmer.remove(medlem);
+            konkurrenceSvømmere.remove(medlem);
             motionist.add(medlem);
         } else {
             motionist.remove(medlem);
-            konkurrenceSvømmer.add(medlem);
+            konkurrenceSvømmere.add(medlem);
         }
     }
 
@@ -145,9 +147,9 @@ public class Database {
         System.out.println("Medlemmer på konkurrencesvømmere holdet: ");
         for (Medlem medlem : medlemmer) {
             if (medlem instanceof KonkurrenceSvømmer) {
-                konkurrenceSvømmer.add(medlem);
+                konkurrenceSvømmere.add(medlem);
             }
-        } return konkurrenceSvømmer;
+        } return konkurrenceSvømmere;
     }
 
     public ArrayList<Medlem> getMedlemmer() {
@@ -186,10 +188,10 @@ public class Database {
     public ArrayList<Medlem> getKonkurrenceSvømmer() {
         for (Medlem medlem : medlemmer) {
             if (medlem instanceof KonkurrenceSvømmer) {
-                konkurrenceSvømmer.add(medlem);
+                konkurrenceSvømmere.add(medlem);
             }
         }
-        return konkurrenceSvømmer;
+        return konkurrenceSvømmere;
     }
 
 
