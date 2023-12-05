@@ -16,6 +16,7 @@ public class UserInterface {
     public UserInterface() {
         sc = new Scanner(System.in);
         registerController = new RegisterController();
+        registerController.loadList();
     }
 
     public void startMenu() {
@@ -230,7 +231,14 @@ public class UserInterface {
         int medlemskabType = 0;
         try {
             alder = læsInt();
-            medlemskabType = alder;
+
+            if (medlemskabType < 18){
+                registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+                medlemskabType = 1;
+            } else {
+                registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+                medlemskabType = 2;
+            }
         } catch (InputMismatchException e) {
             System.out.println("Forkert input. Prøv igen.");
         }
@@ -275,36 +283,48 @@ public class UserInterface {
 
         System.out.println("Indtast medlemmets medlemskabstatus; true = aktivt eller false = passivt  ");
         boolean aktivt;
-        boolean passiv;
         boolean medlemskabStatus = false;
 
         try {
             aktivt = sc.nextBoolean();
-
             medlemskabStatus = aktivt;
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input. Prøv igen.");
         }
+
         if (medlemskabStatus == false) {
             System.out.println("Du er passiv medlem.");
         } else {
             System.out.println("Du er aktiv medlem.");
         }
 
-        tilføjNyMedlem(
-                fuldNavn,
-                adresse,
-                alder,
-                fødselsdato,
-                telefonnummer,
-                email,
-                aktivitetsform,
-                medlemskabType,
-                medlemskabStatus);
+        System.out.println("""
+                1.Tilføj motionist
+                2.Tilføj konkurrence svømmer
+                0. kommer tilbage til at starte menuen.
+                """);
+        int input = læsInt();
+        if (input == 1) {
+            aktivitetsform = "Motionist";
+            Medlem medlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            registerController.tilføjelseAfMedlem(medlem);
+            System.out.println("Medlem tilføjet som motionist.");
+        } else if (input == 2) {
+            aktivitetsform = "Konkurrencesvømmer";
+            Medlem medlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            registerController.tilføjelseAfMedlem(medlem);
+            System.out.println("Medlem tilføjet som konkurrence svømmer.");
+        } else if (input == 0) {
+            System.out.println("Medlemmet ikke tilføjet.");
+        }
+
+
         System.out.println(fuldNavn + " er blevet registreret.");
     }
 
-    public void tilføjNyMedlem(String fuldNavn,
+    /*public void tilføjNyMedlem(String fuldNavn,
                                String adresse,
                                int alder,
                                LocalDate fødselsdato,
@@ -323,18 +343,18 @@ public class UserInterface {
             Medlem medlem = registerController.tilføjelseAfMedlem(new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus));
             medlem.setAlder(alder);
             registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            aktivitetsform = "Motionist";
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
-            System.out.print("Indtast Aktivitetsform på medlemmet: ");
-            aktivitetsform = læsString();
             Medlem medlem = registerController.tilføjelseAfMedlem(new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemslabsType, medlemskabStatus));
             medlem.setAlder(alder);
             registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            aktivitetsform = "Konkurrencesvømmer";
             System.out.println("Medlem tilføjet som konkurrence svømmer.");
         } else if (input == 0) {
             System.out.println("Medlemmet ikke tilføjet.");
         }
-    }
+    }*/
 
     public void gemMedlem() {
         System.out.println("Registreret medlem er blevet gemt.");
@@ -458,7 +478,7 @@ public class UserInterface {
 
     // Træner___________________________________________________________________
 
-    public void tilføjMedlemTilHold() {
+   /* public void tilføjMedlemTilHold() {
         System.out.println("Indtast medlemmests fulde navn for at tilføje ind i et hold");
         //String fuldNavn;
         //String holdNavn;
@@ -472,6 +492,8 @@ public class UserInterface {
             System.out.println("Forkert input! Prøv igen.");
         }
     }
+
+    */
 
     public void gemMedlemTilHold() {
         System.out.println("Indtast fulde navn for at få medlemmet gemt.");
@@ -641,9 +663,9 @@ public class UserInterface {
 
     private void tilføjMedlemmerTilDiscipliner() {
         ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = new ArrayList<>();
-        for (Medlem medlem : registerController.getKonkurrenceSvømmere()) {
+        for (Medlem medlem : registerController.hentetMedlem()) {
             if (medlem instanceof KonkurrenceSvømmer) {
-                konkurrenceSvømmere.add((KonkurrenceSvømmer) medlem);
+                konkurrenceSvømmere.add(((KonkurrenceSvømmer) medlem));
             }
         }
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmere) {

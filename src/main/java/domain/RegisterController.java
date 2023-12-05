@@ -12,10 +12,8 @@ public class RegisterController {
     }
 
     // Medlem _______________________________________________________________________
-    public Medlem tilføjelseAfMedlem (Medlem medlem) {
-        isChanged = true;
-        database.tilføjMedlem(
-                medlem.getFuldNavn(),
+    public void tilføjelseAfMedlem (Medlem medlem) {
+        database.tilføjMedlem(medlem.getFuldNavn(),
                 medlem.getAdresse(),
                 medlem.getAlder(),
                 medlem.getFødselsdato(),
@@ -24,7 +22,7 @@ public class RegisterController {
                 medlem.getAktivitetsform(),
                 medlem.getMedlemskabType(),
                 medlem.getMedlemskabStatus());
-        return medlem;
+
     }
 
     public ArrayList<Medlem> hentetMedlem() {
@@ -75,8 +73,8 @@ public class RegisterController {
         database.opretHold(holdNavn);
     }
 
-    public void tilføjMedlemTilJuniorEllerSenior(int alder) {
-        database.tilføjMedlemTilJuniorEllerSenior(alder);
+    public String tilføjMedlemTilJuniorEllerSenior(int alder) {
+       return database.tilføjMedlemTilJuniorEllerSenior(alder);
     }
 
 

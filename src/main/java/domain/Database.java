@@ -30,10 +30,11 @@ public class Database {
         this.top5 = new ArrayList<>();
         this.hold = new Hold();
         this.træner = new Træner("Mike");
+
     }
 
     // Medlem _________________________________________________________________________
-    public Medlem tilføjMedlem(String fuldNavn,
+    public void tilføjMedlem(String fuldNavn,
                                String adresse,
                                int alder,
                                LocalDate fødselsdato,
@@ -50,7 +51,6 @@ public class Database {
             nyMedlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
         }
         medlemmer.add(nyMedlem);
-        return medlem;
     }
 
     public ArrayList<Medlem> hentMedlem() {
@@ -112,14 +112,14 @@ public class Database {
     }
 
 
-    public void tilføjMedlemTilJuniorEllerSenior(int alder) {
+    public String tilføjMedlemTilJuniorEllerSenior(int alder) {
         Medlem medlem = new Medlem();
         medlemmer.add(medlem);
         if (alder < 18) {
             juniorHold.add(medlem);
         } else {
             seniorHold.add(medlem);
-        }
+        } return "";
 
     }
 
@@ -222,7 +222,7 @@ public class Database {
 
     // FileHandler_____________________________________________
     public void loadList() {
-        medlemmer = fileHandler.loadFromCsvFile();
+        this.medlemmer = fileHandler.loadFromCsvFile();
     }
 
     public void gemMedlemmer() {

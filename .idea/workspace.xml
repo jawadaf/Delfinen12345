@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Hold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Hold.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Motionist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Motionist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
@@ -372,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701690646741</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701700194729</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701700194729</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,8 +414,8 @@
     <MESSAGE value="Jawad: igang med userstorie 3" />
     <MESSAGE value="Changes by Alhus" />
     <MESSAGE value="Changes by bsenb" />
-    <MESSAGE value="Jawad:" />
     <MESSAGE value="Changes by MUK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by MUK" />
+    <MESSAGE value="Jawad:" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
   </component>
 </project>

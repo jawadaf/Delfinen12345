@@ -142,12 +142,8 @@ public class Medlem {
         return medlemskabType;
     }
 
-    public void setMedlemskabType(int alder) {
-        if (alder<18) {
-            System.out.println("Du er registreret som junior. ");
-        } else {
-            System.out.println("Du er registreret som senior. ");
-        }
+    public void setMedlemskabType(int medlemskabType) {
+        this.medlemskabType = medlemskabType;
     }
 
 
