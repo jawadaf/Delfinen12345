@@ -35,14 +35,14 @@ public class Database {
 
     // Medlem _________________________________________________________________________
     public void tilføjMedlem(String fuldNavn,
-                               String adresse,
-                               int alder,
-                               LocalDate fødselsdato,
-                               int telefonnummer,
-                               String email,
-                               String aktivitetsform,
-                               int medlemskabType,
-                               boolean medlemskabStatus) {
+                             String adresse,
+                             int alder,
+                             LocalDate fødselsdato,
+                             int telefonnummer,
+                             String email,
+                             String aktivitetsform,
+                             int medlemskabType,
+                             boolean medlemskabStatus) {
 
         Medlem nyMedlem;
         if (aktivitetsform.equalsIgnoreCase("Konkurrencesvømmer")) {
@@ -82,30 +82,6 @@ public class Database {
 
 
     public void redigerMedlem(String fuldNavn,
-                              String adresse,
-                              int alder,
-                              int telefonnummer,
-                              LocalDate fødselsdato,
-                              String email,
-                              String aktivitetsform,
-                              int medlemskabType,
-                              boolean medlemStatus) {
-        for (Medlem medlem : medlemmer) {
-            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
-                medlem.setAdresse(adresse);
-                medlem.setAlder(alder);
-                medlem.setTelefonnummer(telefonnummer);
-                medlem.setFødselsdato(fødselsdato);
-                medlem.setEmail(email);
-                medlem.setAktivitetsform(aktivitetsform);
-                medlem.setMedlemskabType(medlemskabType);
-                medlem.setMedlemskabStatus(medlemStatus);
-                return;
-            }
-        }
-    }
-
-    public void redigereMedlem(String fuldNavn,
                               String adresse,
                               int alder,
                               int telefonnummer,

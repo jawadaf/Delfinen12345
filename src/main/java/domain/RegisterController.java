@@ -11,7 +11,10 @@ public class RegisterController {
         this.database = new Database();
     }
 
+
+
     // Medlem _______________________________________________________________________
+
     public void tilføjelseAfMedlem (Medlem medlem) {
         database.tilføjMedlem(medlem.getFuldNavn(),
                 medlem.getAdresse(),
@@ -44,6 +47,7 @@ public class RegisterController {
 
 
 
+
     public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,
@@ -51,8 +55,7 @@ public class RegisterController {
                               LocalDate fødselsdato,
                               String email,
                               String aktivitetsform,
-                              boolean medlemskabStatus,
-                              int medlemskabType){
+                              boolean medlemskabStatus){
 
         isChanged = true;
         database.redigerMedlem(
@@ -63,32 +66,14 @@ public class RegisterController {
                 fødselsdato,
                 email,
                 aktivitetsform,
-                medlemskabType,
                 medlemskabStatus);
     }
 
-    public void redigereMedlem(String fuldNavn,
-                              String adresse,
-                              int alder,
-                              int telefonnummer,
-                              LocalDate fødselsdato,
-                              String email,
-                              String aktivitetsform,
-                              boolean medlemskabStatus){
 
-        isChanged = true;
-       return new database.redigereMedlem(
-                fuldNavn,
-                adresse,
-                alder,
-                telefonnummer,
-                fødselsdato,
-                email,
-                aktivitetsform,
-                medlemskabStatus);
-            }
+
 
     // Hold ____________________________________________________________________________
+
     public void opretHold(String holdNavn) {
         database.opretHold(holdNavn);
     }
@@ -105,7 +90,7 @@ public class RegisterController {
 
 
 
-   /* public ArrayList<Domain.Hold> visHoldMedlemmer() {
+   /* public ArrayList<Hold> visHoldMedlemmer() {
        return database.visHoldMedlemmer();
     }
 

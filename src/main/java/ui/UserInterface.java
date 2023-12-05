@@ -52,8 +52,8 @@ public class UserInterface {
                 2. Gem registreret medlem.
                 3. Redigere medlem
                 4. Gem redigeret medlem.
-                5. Vis liste over medlemmer.
-                6. Slet medlem.
+                5. Slet medlem.
+                6. Vis liste over medlemmer.
                 7. Afslut programmet.
                 """);
 
@@ -63,8 +63,8 @@ public class UserInterface {
             case 2 -> gemMedlem();
             case 3 -> redigerMedlem();
             case 4 -> gemRedigeretMedlem();
-            case 5 -> visMedlemsListe();
-            case 6 -> sletMedlem();
+            case 5 -> sletMedlem();
+            case 6 -> visMedlemsListe();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input. Prøv igen.");
         }
@@ -113,7 +113,7 @@ public class UserInterface {
         int input = læsInt();
         switch (input) {
             case 1 -> redigerMedlemOplysninger();
-            case 2 -> gemRedigeretMedlem();
+            case 2 -> gemRedigeretOplysninger();
             case 3 -> seKontingenter();
         }
     }
@@ -384,7 +384,7 @@ public class UserInterface {
             System.out.println("Forkert input! Prøv igen.");
         }
 
-        registerController.redigereMedlem(
+        registerController.redigerMedlem(
                 nytFuldNavn,
                 nyAdresse,
                 nyAlder,
@@ -397,8 +397,22 @@ public class UserInterface {
 
     public void gemRedigeretMedlem () {
         System.out.println("De redigeret oplysninger er blevet gemt");
-        if (registerController.redigereMedlem(sletMedlem(String))) {
 
+
+    }
+
+
+    public void sletMedlem() {
+        System.out.println("Skriv navnet på medlemmet der skal slettes: ");
+        String sletterMedlem = null;
+        String fuldNavn = null;
+        try {
+            sletterMedlem = læsString();
+            registerController.sletterMedlem(fuldNavn);
+            registerController.equals(sletterMedlem);
+            System.out.println("Medlem er blevet slettet.");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøve igen.");
         }
     }
 
@@ -422,19 +436,7 @@ public class UserInterface {
         }
     }
 
-    public void sletMedlem() {
-        System.out.println("Skriv navnet på medlemmet der skal slettes.");
-        String sletterMedlem = null;
-        String fuldNavn = null;
-        try {
-            sletterMedlem = læsString();
-            registerController.sletterMedlem(fuldNavn);
-            registerController.equals(sletterMedlem);
-            System.out.println("Medlem er blevet slettet.");
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøve igen.");
-        }
-    }
+
 
 
 
@@ -802,7 +804,7 @@ public class UserInterface {
 
 
 
-    public void gemMedlemmetsRedigering() {
+    public void gemRedigeretOplysninger() {
         System.out.println("Oplysningerne er blevet redigeret.");
         registerController.gemMedlemer();
     }
