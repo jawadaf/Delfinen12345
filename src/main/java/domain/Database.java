@@ -52,7 +52,8 @@ public class Database {
             juniorHold.add(medlem);
         } else {
             seniorHold.add(medlem);
-        } return "";
+        }
+        return "";
 
     }
 
@@ -80,7 +81,8 @@ public class Database {
             if (medlem instanceof KonkurrenceSvømmer) {
                 konkurrenceSvømmere.add(medlem);
             }
-        } return konkurrenceSvømmere;
+        }
+        return konkurrenceSvømmere;
     }
 
     public ArrayList<Medlem> getMedlemmer() {
@@ -103,17 +105,18 @@ public class Database {
             if (medlem.getFuldNavn().toLowerCase().contains(fuldNavn.toLowerCase())) {
                 return medlem;
             }
-        } return null;
+        }
+        return null;
     }
 
     public void fjernMedlemFraHold(String fuldNavn) {
         if (fuldNavn != null) {
             Medlem fundetMedlem = søgEfterMedlem(fuldNavn);
-                fjernMedlemFraHold(fundetMedlem);
-            } else {
-                System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
-            }
+            fjernMedlemFraHold(fundetMedlem);
+        } else {
+            System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
         }
+    }
 
 
     public ArrayList<Medlem> getKonkurrenceSvømmer() {
