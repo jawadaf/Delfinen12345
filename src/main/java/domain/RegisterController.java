@@ -127,7 +127,9 @@ public class RegisterController {
     // Kassere __________________________________________________________
 
 
-
+    public int kassereOversigt() {
+        return database.kassereOversigt();
+    }
 
 
 

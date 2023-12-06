@@ -7,15 +7,9 @@
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
-    <list id="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" name="Changes by Alhus" comment="Changes by Alhus">
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-    </list>
-    <list id="7e1320f1-7024-4555-95f3-161be960c238" name="Changes by MUK" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-    </list>
+    <list id="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" name="Changes by Alhus" comment="Changes by Alhus" />
+    <list id="7e1320f1-7024-4555-95f3-161be960c238" name="Changes by MUK" comment="Changes by MUK" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,27 +44,6 @@
         <option name="url" value="https://github.com/jawadaf/Delfinen00.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/domain/Database.java">
-      <ranges>
-        <range start1="4" end1="4" start2="4" end2="5" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
-        <range start1="19" end1="19" start2="20" end2="21" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="32" end1="32" start2="34" end2="35" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="35" end1="105" start2="38" end2="38" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="121" end1="122" start2="54" end2="56" changelist="7e1320f1-7024-4555-95f3-161be960c238" />
-        <range start1="149" end1="150" start2="83" end2="85" changelist="7e1320f1-7024-4555-95f3-161be960c238" />
-        <range start1="172" end1="173" start2="107" end2="109" changelist="7e1320f1-7024-4555-95f3-161be960c238" />
-        <range start1="178" end1="183" start2="114" end2="119" changelist="7e1320f1-7024-4555-95f3-161be960c238" />
-        <range start1="198" end1="208" start2="134" end2="183" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="209" end1="219" start2="184" end2="209" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="221" end1="221" start2="211" end2="219" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="222" end1="226" start2="220" end2="224" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
-        <range start1="227" end1="230" start2="225" end2="228" changelist="cc2b1111-7d53-4941-bcd4-4e1e4bf97d95" />
-        <range start1="231" end1="232" start2="229" end2="230" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="233" end1="234" start2="231" end2="231" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -444,7 +417,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701783695584</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701866552834</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1701866552834</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701866627556</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1701866627556</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Changes by MUK">
+      <option name="closed" value="true" />
+      <created>1701866681446</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1701866681446</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,9 +475,9 @@
     <MESSAGE value="Jawad: userstorie 3" />
     <MESSAGE value="Jawad: igang med userstorie 3" />
     <MESSAGE value="Changes by bsenb" />
-    <MESSAGE value="Changes by MUK" />
     <MESSAGE value="Changes by Alhus" />
     <MESSAGE value="Jawad:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
+    <MESSAGE value="Changes by MUK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by MUK" />
   </component>
 </project>

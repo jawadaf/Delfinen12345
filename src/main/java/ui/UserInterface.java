@@ -701,7 +701,7 @@ public class UserInterface {
 
 
     public void kontingent() {
-
+        registerController.kassereOversigt();
 
     }
 
