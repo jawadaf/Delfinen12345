@@ -126,9 +126,30 @@ public class RegisterController {
 
     // Kassere __________________________________________________________
 
-public String kassereOversigt(){
-    return database.kassereOversigt();
-}
+
+
+
+
+
+
+    // Medlem __________________________________________________________
+
+    public String[] listeAfKontingenter() {
+        return database.listeAfKontingenter();
+    }
+
+
+
+
+    /*public String kassereOversigt() {
+        return database.kassereOversigt();
+    }
+
+     */
+
+
+
+
 
 
 

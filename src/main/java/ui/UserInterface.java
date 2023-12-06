@@ -109,12 +109,14 @@ public class UserInterface {
                 1. Rediger oplysninger for det valgte medlem.
                 2. Gem redigeret medlem.
                 3. Se liste over kontingenter.
+                4. Se restance.
                 """);
         int input = læsInt();
         switch (input) {
             case 1 -> redigerMedlemOplysninger();
             case 2 -> gemRedigeretOplysninger();
             case 3 -> seKontingenter();
+            case 4 -> restanceOversigt();
         }
     }
 
@@ -698,12 +700,8 @@ public class UserInterface {
     // Kassere __________________________________________________________
 
 
-    public String kontingent() {
-        registerController.kassereOversigt();
-        {
+    public void kontingent() {
 
-        }
-        return registerController.kassereOversigt();
 
     }
 
@@ -812,6 +810,20 @@ public class UserInterface {
 
 
     public void seKontingenter() {
+        String[] kontingentOversigt = registerController.listeAfKontingenter();
+        kontingentOversigt[0] = "Som aktiv medlem under 18 år skal du betale 1000 kr. årligt.";
+        kontingentOversigt[1] = "Som aktiv medlem over 18 år skal du betale 1600 kr. årligt.";
+        kontingentOversigt[2] = "Som aktiv pensionist over 59 år får du 25% rabat og skal betale 1200 kr. årligt.";
+        kontingentOversigt[3] = "Som passivt medlem skal du betale 500 kr. årligt.";
+        System.out.println("Liste over kontingenter: ");
+        for (String kontingent : kontingentOversigt) {
+            System.out.println(kontingent);
+        }
+    }
+
+
+
+    public void restanceOversigt() {
 
     }
 
