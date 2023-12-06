@@ -2,6 +2,7 @@ package domain;
 
 import datasource.FileHandler;
 
+import java.sql.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -214,13 +215,13 @@ public class Database {
 
 
 
-    // FileHandler_____________________________________________
-    public void loadList() {
-        this.medlemmer = fileHandler.loadFromCsvFile();
-    }
+// FileHandler_____________________________________________
+        public void loadList () {
+            this.medlemmer = fileHandler.loadFromCsvFile();
+        }
 
-    public void gemMedlemmer() {
-        fileHandler.saveMedlem(medlemmer);
-    }
+        public void gemMedlemmer () {
+            fileHandler.saveMedlem(medlemmer);
+        }
 
     }
