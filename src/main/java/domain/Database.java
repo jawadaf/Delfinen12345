@@ -131,27 +131,7 @@ public class Database {
 
     // Kassere __________________________________________________________
 
-    public int kassereOversigt() {
-        if (medlem.getAlder() < 18) {
-            if (medlem.getMedlemskabStatus() == true) {
-                int juniorPris = 1000;
-            }
-        }
-        if (medlem.getAlder() >= 18) {
-            if (medlem.getMedlemskabStatus() == true) {
-                int seniorPris = 1600;
-            }
-        }
-        if (medlem.getAlder() >= 60) {
-            if (medlem.getMedlemskabStatus() == true) {
-                int pensionistPris = 1200;
-            }
-        }
-        if (medlem.getMedlemskabStatus() == true) {
-            int passivPris = 500;
-        }
-        return 0;
-    }
+
 
 
 

@@ -700,9 +700,27 @@ public class UserInterface {
     // Kassere __________________________________________________________
 
 
-    public void kontingent() {
-        registerController.kassereOversigt();
+    public void kontingent() { // int juniorPris, int seniorPris, int pensionistPris, int passivtPris
+        int totalKontingent = 0;
+        ArrayList<Medlem> medlemmer = registerController.hentetMedlem();
+        //registerController.kassereOversigt(int juniorPris, int seniorPris, int pensionistPris, int passivtPris); //juniorPris, int seniorPris, int pensionistPris, int passivtPris
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getMedlemskabStatus() == false) {
+                totalKontingent += 500;
+            } else {
+                if (medlem.getAlder() < 18) {
+                    totalKontingent += 1000;
+                }
+                if (medlem.getAlder() >= 18) {
+                    totalKontingent += 1600;
+                }
+                if (medlem.getAlder() >= 60) {
+                    totalKontingent += 1200;
+                }
+            }
 
+        }
+        System.out.println("Total intægt = " + totalKontingent + "kr");
     }
 
 

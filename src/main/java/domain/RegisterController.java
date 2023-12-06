@@ -127,9 +127,16 @@ public class RegisterController {
     // Kassere __________________________________________________________
 
 
-    public int kassereOversigt() {
-        return database.kassereOversigt();
-    }
+   /* public int kassereOversigt(int juniorPris,
+                               int seniorPris,
+                               int pensionistPris,
+                               int passivPris) {
+        return database.kassereOversigt(
+                juniorPris,
+                seniorPris,
+                pensionistPris,
+                passivPris);
+    }*/
 
 
 
