@@ -139,12 +139,6 @@ public class RegisterController {
 
 
 
-
-
-
-
-
-
   /* public int kassereOversigt(int juniorPris,
                                int seniorPris,
                                int pensionistPris,
@@ -171,12 +165,6 @@ public class RegisterController {
     }
 
      */
-
-
-
-
-
-
 
 
 
