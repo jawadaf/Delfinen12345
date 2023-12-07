@@ -17,7 +17,7 @@ public class KonkurrenceSvømmer extends Medlem {
 
         super(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsForm, medlemskabsType, medlemskabStatus);
         setMedlemskabType(alder);
-        setAktivitetsform("Konkurrencesvømmer");
+        setAktivitetsform("Konkurrencesvommer");
     }
 
     public void tilføjAktivitet(Resultat nyDesciplin) {

@@ -706,6 +706,7 @@ public class UserInterface {
                 if (medlem.getAlder() >= 60) {
                     totalKontingent += 1200;
                 }
+
             }
         }
             System.out.println("Total intægt = " + totalKontingent + "kr.");

@@ -1,5 +1,7 @@
 package domain;
 
+import ui.UserInterface;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,10 +14,9 @@ public class RegisterController {
     }
 
 
-
     // Medlem _______________________________________________________________________
 
-    public void tilføjelseAfMedlem (Medlem medlem) {
+    public void tilføjelseAfMedlem(Medlem medlem) {
         database.tilføjMedlem(medlem.getFuldNavn(),
                 medlem.getAdresse(),
                 medlem.getAlder(),
@@ -36,7 +37,7 @@ public class RegisterController {
         database.gemMedlemmer();
     }
 
-    public void sletterMedlem (String fuldNavn) {
+    public void sletterMedlem(String fuldNavn) {
         isChanged = true;
         database.sletMedlem(fuldNavn);
     }
@@ -46,8 +47,6 @@ public class RegisterController {
     }
 
 
-
-
     public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,
@@ -55,7 +54,7 @@ public class RegisterController {
                               LocalDate fødselsdato,
                               String email,
                               String aktivitetsform,
-                              boolean medlemskabStatus){
+                              boolean medlemskabStatus) {
 
         isChanged = true;
         database.redigerMedlem(
@@ -70,8 +69,6 @@ public class RegisterController {
     }
 
 
-
-
     // Hold ____________________________________________________________________________
 
     public void opretHold(String holdNavn) {
@@ -79,7 +76,7 @@ public class RegisterController {
     }
 
     public String tilføjMedlemTilJuniorEllerSenior(int alder) {
-       return database.tilføjMedlemTilJuniorEllerSenior(alder);
+        return database.tilføjMedlemTilJuniorEllerSenior(alder);
     }
 
 
@@ -112,9 +109,6 @@ public class RegisterController {
     public ArrayList<Medlem> getTop5() {
         return database.getTop5();
     }
-
-
-
 
 
     // Kassere __________________________________________________________
