@@ -36,6 +36,88 @@ public class Database {
 
     }
 
+// Formand___________________________________________________________
+
+    public void redigerMedlem(String fuldNavn,
+                              String adresse,
+                              int alder,
+                              int telefonnummer,
+                              LocalDate fødselsdato,
+                              String email,
+                              String aktivitetsform,
+                              boolean medlemStatus) {
+
+
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
+                medlem.setAdresse(adresse);
+                medlem.setAlder(alder);
+                medlem.setTelefonnummer(telefonnummer);
+                medlem.setFødselsdato(fødselsdato);
+                medlem.setEmail(email);
+                medlem.setAktivitetsform(aktivitetsform);
+                medlem.setMedlemskabStatus(medlemStatus);
+            }
+        }
+    }
+
+
+    public void fjernMedlemFraHold(String fuldNavn) {
+        if (fuldNavn != null) {
+            Medlem fundetMedlem = søgEfterMedlem(fuldNavn);
+            if (fundetMedlem != null) {
+                konkurrenceSvømmere.remove(fundetMedlem);
+                motionist.remove(fundetMedlem);
+                medlemmer.remove(fundetMedlem);
+            } else {
+                System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
+            }
+        }
+    }
+
+
+    public void sletMedlem(String fuldNavn) {
+        Medlem sletMedlem = null;
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
+                sletMedlem = medlem;
+                break;
+            }
+        }
+        if (sletMedlem != null) {
+            medlemmer.remove(sletMedlem);
+        }
+    }
+
+
+
+    /*public void sletMedlem(String fuldNavn,
+                           String adresse,
+                           int alder,
+                           LocalDate fødselsdato,
+                           int telefonnummer,
+                           String email,
+                           String aktivitetsform,
+                           boolean medlemskabStatus) {
+        Medlem sletterMedlem;
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
+                sletterMedlem = medlem;
+                break;
+            }
+        }
+        if (sletterMedlem == null) {
+            medlemmer.remove(sletterMedlem);
+        } else {
+            System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
+        }
+    }
+
+     */
+
+
+
+
 
     // Hold ______________________________________________________________
 
@@ -58,7 +140,7 @@ public class Database {
     }
 
 
-    public void fjernMedlemFraHold(Medlem medlem) {
+   /* public void fjernMedlemFraHold(Medlem medlem) {
         medlemmer.remove(medlem);
         if (medlem instanceof KonkurrenceSvømmer) {
             konkurrenceSvømmere.remove(medlem);
@@ -67,7 +149,7 @@ public class Database {
             motionist.remove(medlem);
             konkurrenceSvømmere.add(medlem);
         }
-    }
+    }*/
 
     /* public void fjernMedlemFraHold(Medlem medlem) {
         medlemmer.remove(medlem);
@@ -114,14 +196,14 @@ public class Database {
         return null;
     }
 
-    public void fjernMedlemFraHold(String fuldNavn) {
+    /*public void fjernMedlemFraHold(String fuldNavn) {
         if (fuldNavn != null) {
             Medlem fundetMedlem = søgEfterMedlem(fuldNavn);
             fjernMedlemFraHold(fundetMedlem);
         } else {
             System.out.println("Medlemmet med navnet " + fuldNavn + " ikke fundet");
         }
-    }
+    }*/
 
 
     public ArrayList<Medlem> getKonkurrenceSvømmer() {
@@ -174,7 +256,7 @@ public class Database {
     }
 
 
-    public void sletMedlem(String fuldNavn) {
+    /*public void sletMedlem(String fuldNavn) {
 
         Medlem sletterMedlem = null;
         for (Medlem medlem : medlemmer) {
@@ -187,10 +269,10 @@ public class Database {
             medlemmer.remove(sletterMedlem);
         }
 
-    }
+    }*/
 
 
-    public void redigerMedlem(String fuldNavn,
+   /* public void redigerMedlem(String fuldNavn,
                               String adresse,
                               int alder,
                               int telefonnummer,
@@ -211,7 +293,7 @@ public class Database {
             }
         }
 
-    }
+    }*/
 
     public String[] listeAfKontingenter() {
         return listeAfKontingenter;
