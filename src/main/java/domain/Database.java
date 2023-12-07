@@ -154,7 +154,7 @@ public class Database {
                              boolean medlemskabStatus) {
 
         Medlem nyMedlem;
-        if (aktivitetsform.equalsIgnoreCase("Konkurrencesvømmer")) {
+        if (aktivitetsform.equalsIgnoreCase("Konkurrencesvommer")) {
             nyMedlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
             konkurrenceSvømmere.add(nyMedlem);
         } else {

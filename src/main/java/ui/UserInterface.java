@@ -97,7 +97,7 @@ public class UserInterface {
         int input = læsInt();
         switch (input) {
             case 1 -> totalKontingent();
-            case 2 -> kontingenindbetalinger();
+            case 2 -> listeOverKontingenIndbetalinger();
             case 3 -> listeOverMedlemmerIRestance();
             case 10 -> registerController.exit();
             default -> System.out.println("Forkert input! Prøv igen.");
@@ -404,19 +404,33 @@ public class UserInterface {
     }
 
 
-    public void sletMedlem() {
-        System.out.println("Skriv navnet på medlemmet der skal slettes: ");
-        String sletterMedlem = null;
-        String fuldNavn = null;
-        try {
-            sletterMedlem = læsString();
-            registerController.sletterMedlem(fuldNavn);
-            registerController.equals(sletterMedlem);
-            System.out.println("Medlem er blevet slettet.");
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøve igen.");
-        }
-    }
+   public void sletMedlem() {
+       System.out.println("Skriv navnet på medlemmet der skal fjernes fra listen.");
+       String sletMedlem = null;
+       String fuldNavn = null;
+       try {
+           sletMedlem = læsString();
+       } catch (NoSuchElementException e) {
+           System.out.println("Forkert input! Prøv igen.");
+       }
+       registerController.sletterMedlem(fuldNavn);
+       System.out.println("Medlemmet er blevet fjernet.");
+   }
+
+       /*System.out.println("Skriv navnet på medlemmet der skal slettes: ");
+       String sletterMedlem = null;
+
+       try {
+           sletterMedlem = læsString();
+           registerController.sletterMedlem();
+           registerController.equals(sletterMedlem);
+           System.out.println("Medlem er blevet slettet.");
+       } catch (NoSuchElementException e) {
+           System.out.println("Forkert input! Prøve igen.");
+       }
+
+        */
+
 
 
     public void visMedlemsListe() {
@@ -713,7 +727,7 @@ public class UserInterface {
         }
 
 
-        public void kontingenindbetalinger () {
+        public void listeOverKontingenIndbetalinger () {
             ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
             int totalKontingent = 0;
             for (Medlem medlem : medlemmer) {
@@ -740,8 +754,46 @@ public class UserInterface {
 
 
         public void listeOverMedlemmerIRestance () {
+            ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
+            int totalKontingent = 0;
 
-        }
+            for (Medlem medlem : medlemmer) {
+                if (medlem.getMedlemskabStatus() == false) {
+                    totalKontingent = 500;
+                    if (totalKontingent != 500) {
+                        //int totalKontingent = Random;
+                        System.out.println("Kontingenten er betalt");
+                    } else {
+                        System.out.println("Kontingenten er ikke betalt");
+                    }
+                }
+
+                    if (medlem.getAlder() < 18) {
+                        totalKontingent = 1000;
+                        if(totalKontingent == 1000) {
+                            System.out.println("Kontingenten er betalt");
+                        } else {
+                            System.out.println("Kontingenten er ikke betalt");
+                        }
+                    }
+                    if (medlem.getAlder() >= 18) {
+                        totalKontingent = 1600;
+                        if(totalKontingent == 1200) {
+                            System.out.println("Kontingenten er betalt");
+                        } else {
+                            System.out.println("Kontingenten er ikke betalt");
+                        }
+                    }
+                    if (medlem.getAlder() >= 60) {
+                        totalKontingent = 1200;
+                        if(totalKontingent == 1200) {
+                            System.out.println("Kontingenten er betalt");
+                        } else {
+                            System.out.println("Kontingenten er ikke betalt");
+                        }
+                    }
+                }
+            }
 
 
         // Medlem____________________________________________________________________
