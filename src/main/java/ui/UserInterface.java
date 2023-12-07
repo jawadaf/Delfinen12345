@@ -90,13 +90,13 @@ public class UserInterface {
 
     public void kassereMenu() {
         System.out.println("""
-                1. Kontingent for et medlem baseret på dets alder og aktivitetsform.
+                1. Total kontingent for medlemmer baseret på deres alder og medlemskabsstatus.
                 2. Oversigt over kontingentindbetalinger.
                 3. Vis en liste over medlemmer i restance.
                 """);
         int input = læsInt();
         switch (input) {
-            case 1 -> kontingent();
+            case 1 -> totalKontingent();
             case 2 -> kontingenindbetalinger();
             case 3 -> listeOverMedlemmerIRestance();
             case 10 -> registerController.exit();
@@ -242,7 +242,7 @@ public class UserInterface {
             registerController.tilføjelseAfMedlem(medlem);
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
-            aktivitetsform = "Konkurrencesvømmer";
+            aktivitetsform = "Konkurrencesvommer";
             Medlem medlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
             //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
             registerController.tilføjelseAfMedlem(medlem);
@@ -397,7 +397,7 @@ public class UserInterface {
                 nyMedlemsstatus);
     }
 
-    public void gemRedigeretMedlem () {
+    public void gemRedigeretMedlem() {
         System.out.println("De redigeret oplysninger er blevet gemt");
 
 
@@ -420,7 +420,7 @@ public class UserInterface {
 
 
     public void visMedlemsListe() {
-        ArrayList<Medlem> medlemListe = registerController.hentetMedlem();
+        ArrayList<Medlem> medlemListe = registerController.hentetMedlemmer();
         System.out.println("Liste over medlemmer: ");
         for (Medlem medlem : medlemListe) {
             System.out.println("Medlemmets navn: " + medlem.getFuldNavn());
@@ -437,10 +437,6 @@ public class UserInterface {
             System.out.println();
         }
     }
-
-
-
-
 
 
     // Træner___________________________________________________________________
@@ -501,6 +497,9 @@ public class UserInterface {
             System.out.println(valgteHold);
         } else if (holdTypeValg == 3) {
             valgteHold = registerController.getKonkurrenceSvømmere();
+            System.out.println(valgteHold);
+        } else if (holdTypeValg == 4) {
+            valgteHold = registerController.getTop5();
             System.out.println(valgteHold);
         } else {
             System.out.println("Ugyldigt valg. Prøv igen");
@@ -630,7 +629,7 @@ public class UserInterface {
 
     private void tilføjMedlemmerTilDiscipliner() {
         ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = new ArrayList<>();
-        for (Medlem medlem : registerController.hentetMedlem()) {
+        for (Medlem medlem : registerController.hentetMedlemmer()) {
             if (medlem instanceof KonkurrenceSvømmer) {
                 konkurrenceSvømmere.add(((KonkurrenceSvømmer) medlem));
             }
@@ -688,22 +687,12 @@ public class UserInterface {
      */
 
 
-
-
-
-
-
-
-
-
-
     // Kassere __________________________________________________________
 
 
-    public void kontingent() { // int juniorPris, int seniorPris, int pensionistPris, int passivtPris
+    public void totalKontingent() {
+        ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
         int totalKontingent = 0;
-        ArrayList<Medlem> medlemmer = registerController.hentetMedlem();
-        //registerController.kassereOversigt(int juniorPris, int seniorPris, int pensionistPris, int passivtPris); //juniorPris, int seniorPris, int pensionistPris, int passivtPris
         for (Medlem medlem : medlemmer) {
             if (medlem.getMedlemskabStatus() == false) {
                 totalKontingent += 500;
@@ -718,159 +707,174 @@ public class UserInterface {
                     totalKontingent += 1200;
                 }
             }
+        }
+            System.out.println("Total intægt = " + totalKontingent + "kr.");
+        }
+
+
+        public void kontingenindbetalinger () {
+            ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
+            int totalKontingent = 0;
+            for (Medlem medlem : medlemmer) {
+                    if (medlem.getMedlemskabStatus() == false) {
+                        totalKontingent = 500;
+                        System.out.println("Som passiv medlem skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                    } else {
+                        if (medlem.getAlder() < 18) {
+                            totalKontingent = 1000;
+                            System.out.println("Som aktiv medlem under 18 år skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                        }
+                        if (medlem.getAlder() >= 18) {
+                            totalKontingent = 1600;
+                            System.out.println("Som aktiv medlem over 18 år. skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                        }
+                        if (medlem.getAlder() >= 60) {
+                            totalKontingent = 1200;
+                            System.out.println("Som pensionist medlem skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                        }
+                    }
+                }
+            }
+
+
+
+        public void listeOverMedlemmerIRestance () {
 
         }
-        System.out.println("Total intægt = " + totalKontingent + "kr");
+
+
+        // Medlem____________________________________________________________________
+
+
+        public void redigerMedlemOplysninger () {
+            System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+            String redigerMedlem = null;
+            try {
+                redigerMedlem = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger navnet på medlemmet: ");
+            String nytFuldNavn = null;
+            try {
+                nytFuldNavn = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger adresse på medlemmet: ");
+            String nyAdresse = null;
+            try {
+                nyAdresse = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger alder på medlemmet: ");
+            int nyAlder = 0;
+            try {
+                nyAlder = læsInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger fødselsdato på medlemmet: ");
+            String nyFødselsdato = null;
+            try {
+                nyFødselsdato = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger telefonnummeret på medlemmet");
+            int nytTelefonnummer = 0;
+            try {
+                nytTelefonnummer = læsInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+            System.out.print("Rediger email på medlemmet: ");
+            String nyEmail = null;
+            try {
+                nyEmail = læsString();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger aktivitetsform på medlemmet:");
+            boolean nyAktivitetsform = true;
+            try {
+                nyAktivitetsform = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger medlemstype på medlemmet: ");
+            boolean nyMedlemsType = true;
+            try {
+                nyMedlemsType = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+
+            System.out.print("Rediger medlemsstatus på medlemmet:");
+            boolean nyMedlemsstatus = true;
+            try {
+                nyMedlemsstatus = sc.nextBoolean();
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input! Prøv igen.");
+            }
+        }
+
+
+        public void gemRedigeretOplysninger () {
+            System.out.println("Oplysningerne er blevet redigeret.");
+            registerController.gemMedlemer();
+        }
+
+
+        public void seKontingenter () {
+            String[] kontingentOversigt = registerController.listeAfKontingenter();
+            kontingentOversigt[0] = "Som aktiv medlem under 18 år skal du betale 1000 kr. årligt.";
+            kontingentOversigt[1] = "Som aktiv medlem over 18 år skal du betale 1600 kr. årligt.";
+            kontingentOversigt[2] = "Som aktiv pensionist over 59 år får du 25% rabat og skal betale 1200 kr. årligt.";
+            kontingentOversigt[3] = "Som passivt medlem skal du betale 500 kr. årligt.";
+            System.out.println("Liste over kontingenter: ");
+            for (String kontingent : kontingentOversigt) {
+                System.out.println(kontingent);
+            }
+        }
+
+
+        public void restanceOversigt () {
+
+        }
+
+
+        public String læsString () {
+            while (!sc.hasNextLine()) {
+                System.out.println("Det er ikke en string");
+                sc.next();
+            }
+            String s = sc.nextLine();
+            //sc.nextLine();
+            return s;
+        }
+
+        public int læsInt () {
+            while (!sc.hasNextInt()) {
+                System.out.println("Det er ikke en int");
+                sc.next();
+            }
+            int i = sc.nextInt();
+            sc.nextLine();
+            return i;
+        }
+
     }
 
 
-    public void kontingenindbetalinger() {
-
-    }
-
-    public void listeOverMedlemmerIRestance() {
-
-    }
-
-
-    // Medlem____________________________________________________________________
-
-
-
-    public void redigerMedlemOplysninger() {
-        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
-        String redigerMedlem = null;
-        try {
-            redigerMedlem = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger navnet på medlemmet: ");
-        String nytFuldNavn = null;
-        try {
-            nytFuldNavn = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger adresse på medlemmet: ");
-        String nyAdresse = null;
-        try {
-            nyAdresse = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger alder på medlemmet: ");
-        int nyAlder = 0;
-        try {
-            nyAlder = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger fødselsdato på medlemmet: ");
-        String nyFødselsdato = null;
-        try {
-            nyFødselsdato = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger telefonnummeret på medlemmet");
-        int nytTelefonnummer = 0;
-        try {
-            nytTelefonnummer = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-        System.out.print("Rediger email på medlemmet: ");
-        String nyEmail = null;
-        try {
-            nyEmail = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger aktivitetsform på medlemmet:" );
-        boolean nyAktivitetsform = true;
-        try {
-            nyAktivitetsform = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger medlemstype på medlemmet: ");
-        boolean nyMedlemsType = true;
-        try {
-            nyMedlemsType = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-
-        System.out.print("Rediger medlemsstatus på medlemmet:");
-        boolean nyMedlemsstatus = true;
-        try {
-            nyMedlemsstatus = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-        }
-    }
-
-
-
-    public void gemRedigeretOplysninger() {
-        System.out.println("Oplysningerne er blevet redigeret.");
-        registerController.gemMedlemer();
-    }
-
-
-
-    public void seKontingenter() {
-        String[] kontingentOversigt = registerController.listeAfKontingenter();
-        kontingentOversigt[0] = "Som aktiv medlem under 18 år skal du betale 1000 kr. årligt.";
-        kontingentOversigt[1] = "Som aktiv medlem over 18 år skal du betale 1600 kr. årligt.";
-        kontingentOversigt[2] = "Som aktiv pensionist over 59 år får du 25% rabat og skal betale 1200 kr. årligt.";
-        kontingentOversigt[3] = "Som passivt medlem skal du betale 500 kr. årligt.";
-        System.out.println("Liste over kontingenter: ");
-        for (String kontingent : kontingentOversigt) {
-            System.out.println(kontingent);
-        }
-    }
-
-
-
-    public void restanceOversigt() {
-
-    }
-
-
-
-
-
-
-    public String læsString() {
-        while (!sc.hasNextLine()) {
-            System.out.println("Det er ikke en string");
-            sc.next();
-        }
-        String s = sc.nextLine();
-        //sc.nextLine();
-        return s;
-    }
-
-    public int læsInt() {
-        while (!sc.hasNextInt()) {
-            System.out.println("Det er ikke en int");
-            sc.next();
-        }
-        int i = sc.nextInt();
-        sc.nextLine();
-        return i;
-    }
-
-}
 
 
 

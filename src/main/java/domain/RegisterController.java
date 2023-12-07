@@ -28,8 +28,8 @@ public class RegisterController {
 
     }
 
-    public ArrayList<Medlem> hentetMedlem() {
-        return database.hentMedlem();
+    public ArrayList<Medlem> hentetMedlemmer() {
+        return database.hentMedlemmer();
     }
 
     public void gemMedlemer() {
@@ -109,16 +109,9 @@ public class RegisterController {
         return database.getKonkurrenceSvømmer();
     }
 
-
-    /* public ArrayList<Hold> getSeniorHold() {
-        return database.getSeniorHold();
+    public ArrayList<Medlem> getTop5() {
+        return database.getTop5();
     }
-
-    public ArrayList<Hold> getJuniorHold() {
-        return database.getJuniorHold();
-    }
-
-     */
 
 
 
@@ -127,17 +120,46 @@ public class RegisterController {
     // Kassere __________________________________________________________
 
 
-   /* public int kassereOversigt(int juniorPris,
+    public int kassereOversigt() {
+        ArrayList<Medlem> medlemmer = hentetMedlemmer();
+        int totalKontingent = 0;
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getMedlemskabStatus() == false) {
+                totalKontingent += 500;
+            } else {
+                if (medlem.getAlder() < 18) {
+                    totalKontingent += 1000;
+                }
+                if (medlem.getAlder() >= 18) {
+                    totalKontingent += 1600;
+                }
+                if (medlem.getAlder() >= 60) {
+                    totalKontingent += 1200;
+                }
+            }
+        }
+        return 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+  /* public int kassereOversigt(int juniorPris,
                                int seniorPris,
                                int pensionistPris,
                                int passivPris) {
-        return database.kassereOversigt(
-                juniorPris,
-                seniorPris,
-                pensionistPris,
-                passivPris);
-    }*/
+       return 0;
+    }
 
+
+   */
 
 
 

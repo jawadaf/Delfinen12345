@@ -96,7 +96,12 @@ public class Database {
     }
 
     public ArrayList<Medlem> getSeniorHold() {
-        seniorHold.addAll((medlemmer));
+        seniorHold.addAll(medlemmer);
+        return medlemmer;
+    }
+
+    public ArrayList<Medlem> getTop5() {
+        top5.addAll(medlemmer);
         return medlemmer;
     }
 
@@ -159,7 +164,7 @@ public class Database {
         medlemmer.add(nyMedlem);
     }
 
-    public ArrayList<Medlem> hentMedlem() {
+    public ArrayList<Medlem> hentMedlemmer() {
         return medlemmer;
     }
 

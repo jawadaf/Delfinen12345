@@ -64,10 +64,10 @@ public class FileHandler {
                     int medlemskabType = Integer.parseInt(attributer[7].trim());
                     boolean medlemskabStatus = Boolean.parseBoolean(attributer[8].trim());
 
-                    if (attributer.length == 9) {
+                    if (aktivitetsform.equalsIgnoreCase("Motionist")) {
                         Motionist motionist = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
                         information.add(motionist);
-                    } else if (attributer.length == 10) {
+                    } else if (aktivitetsform.equalsIgnoreCase("Konkurrencesvommer")) {
                         int medlemskabsType = Integer.parseInt(attributer[7].trim());
                         KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabsType, medlemskabStatus);
                         information.add(konkurrenceSvømmer);
