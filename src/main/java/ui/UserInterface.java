@@ -6,12 +6,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.Random;
 
 public class UserInterface {
 
     private Scanner sc;
 
     public RegisterController registerController;
+    Random random = new Random();
 
     public UserInterface() {
         sc = new Scanner(System.in);
@@ -789,18 +791,60 @@ public class UserInterface {
         public void listeOverMedlemmerIRestance () {
             ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
             int totalKontingent = 0;
+            Random random = new Random();
+            int tilfældigIndex = random.nextInt(medlemmer.size());
+            Medlem tilfældigtMedlem = medlemmer.get(tilfældigIndex);
+            if (!tilfældigtMedlem.getMedlemskabStatus()) {
+                totalKontingent += 500;
+                System.out.println("Tilfældigt medlem i restance " + tilfældigtMedlem.getFuldNavn() + " - Kontingenten er ikke betalt.");
+            }
 
-            for (Medlem medlem : medlemmer) {
+           /* for (Medlem medlem : medlemmer) {
+
                 if (medlem.getMedlemskabStatus() == false) {
-                    totalKontingent = 500;
-                    System.out.println("Kontingenten er ikke betalt");
-                } else if (totalKontingent != 500) {
-                        //int totalKontingent = Random;
-                        System.out.println("Kontingenten er ikke betalt");
+                    if (medlem.getFuldNavn().equals(totalKontingent)) {
+                        totalKontingent += 500;
+                        System.out.println("Medlemmet " + medlem.getFuldNavn() + "har betalt så meget: " + totalKontingent + "kr.");
                     } else {
-
+                        totalKontingent -= 500;
+                        System.out.println("Medlemmet " + medlem.getFuldNavn() + " har ikke betalt");
                     }
                 }
+                if (medlem.getMedlemskabStatus() == true) {
+                    if (medlem.getAlder() < 18) {
+                        if (medlem.getFuldNavn().equals(totalKontingent)) {
+                            totalKontingent += 1000;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + "har betalt så meget: " + totalKontingent + "kr.");
+                        } else {
+                            totalKontingent -= 1000;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + " har ikke betalt");
+                        }
+                    }
+                }
+                if (medlem.getMedlemskabStatus() == true) {
+                    if (medlem.getAlder() >= 18) {
+                        if (medlem.getFuldNavn().equals(totalKontingent)) {
+                            totalKontingent += 1600;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + "har betalt så meget: " + totalKontingent + "kr.");
+                        } else {
+                            totalKontingent -= 1600;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + " har ikke betalt");
+                        }
+                    }
+                }
+                if (medlem.getMedlemskabStatus() == true) {
+                    if (medlem.getAlder() >= 59) {
+                        if (medlem.getFuldNavn().equals(totalKontingent)) {
+                            totalKontingent += 1200;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + "har betalt så meget: " + totalKontingent + "kr.");
+                        } else {
+                            totalKontingent -= 1200;
+                            System.out.println("Medlemmet " + medlem.getFuldNavn() + " har ikke betalt");
+                        }
+                    }
+                }
+
+            }
 
                     if (medlem.getAlder() < 18) {
                         totalKontingent = 1000;
@@ -826,8 +870,9 @@ public class UserInterface {
                             System.out.println("Kontingenten er ikke betalt");
                         }
                     }
+
+             */
                 }
-            }
 
 
         // Medlem____________________________________________________________________

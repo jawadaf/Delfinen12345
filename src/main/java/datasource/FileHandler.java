@@ -16,9 +16,9 @@ public class FileHandler {
     private static final String FILE_PATH = "disciplinregister.csv";
 
     public void saveMedlem(ArrayList<Medlem> medlemListe ) {
-        try (PrintStream out = new PrintStream(new FileOutputStream(f, true))) {
+        try (PrintStream out = new PrintStream(new FileOutputStream(f, false))) {
             for (Medlem medlem : medlemListe) {
-                if (medlem instanceof KonkurrenceSvømmer) {
+                if (medlem instanceof KonkurrenceSvømmer || medlem instanceof Motionist) {
                     out.println(medlem.getFuldNavn() + ", " +
                             medlem.getAdresse() + ", " +
                             medlem.getAlder() + ", " +
@@ -28,7 +28,8 @@ public class FileHandler {
                             medlem.getAktivitetsform() + ", " +
                             medlem.getMedlemskabType() + ", " +
                             medlem.getMedlemskabStatus());
-                } else if (medlem instanceof Motionist) {
+
+                } /*else if (medlem instanceof Motionist) {
                     out.println(medlem.getFuldNavn() + ", " +
                             medlem.getAdresse() + ", " +
                             medlem.getAlder() + ", " +
@@ -39,6 +40,7 @@ public class FileHandler {
                             medlem.getMedlemskabType() + ", " +
                             medlem.getMedlemskabStatus());
                 }
+                */
             }
         } catch (FileNotFoundException e) {
             System.out.println("Filen eksistere ikke.");
