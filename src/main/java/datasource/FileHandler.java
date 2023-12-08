@@ -68,8 +68,7 @@ public class FileHandler {
                         Motionist motionist = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
                         information.add(motionist);
                     } else if (aktivitetsform.equalsIgnoreCase("Konkurrencesvommer")) {
-                        int medlemskabsType = Integer.parseInt(attributer[7].trim());
-                        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabsType, medlemskabStatus);
+                        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
                         information.add(konkurrenceSvømmer);
                     }
                 } else {

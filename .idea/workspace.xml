@@ -7,15 +7,16 @@
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/TidsRegistrering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/TidsRegistrering.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
-    <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-    </list>
-    <list id="66a2861a-97e8-4eae-97f8-39d7ed896d59" name="Changes by bsenb" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-    </list>
+    <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="Changes by Alhus" />
+    <list id="66a2861a-97e8-4eae-97f8-39d7ed896d59" name="Changes by bsenb" comment="Changes by bsenb" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,22 +51,6 @@
         <option name="url" value="https://github.com/jawadaf/Delfinen00.git" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/domain/Database.java">
-      <ranges>
-        <range start1="37" end1="37" start2="37" end2="119" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="60" end1="61" start2="142" end2="143" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="69" end1="70" start2="151" end2="152" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="116" end1="117" start2="198" end2="199" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="123" end1="124" start2="205" end2="206" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="156" end1="157" start2="238" end2="239" changelist="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" />
-        <range start1="176" end1="177" start2="258" end2="259" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="189" end1="190" start2="271" end2="272" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="192" end1="193" start2="274" end2="275" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-        <range start1="213" end1="214" start2="295" end2="296" changelist="66a2861a-97e8-4eae-97f8-39d7ed896d59" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -142,7 +127,8 @@
       <workItem from="1700751495454" duration="426000" />
       <workItem from="1700818062215" duration="24790000" />
       <workItem from="1700930056783" duration="26980000" />
-      <workItem from="1701867502546" duration="23308000" />
+      <workItem from="1701867502546" duration="24523000" />
+      <workItem from="1702024464694" duration="7207000" />
     </task>
     <task id="LOCAL-00001" summary="000">
       <option name="closed" value="true" />
@@ -496,7 +482,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701947336668</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1701958077168</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1701958077168</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Changes by Alhus">
+      <option name="closed" value="true" />
+      <created>1701958101571</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1701958101571</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Changes by bsenb">
+      <option name="closed" value="true" />
+      <created>1701958121328</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1701958121328</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,10 +539,10 @@
     <MESSAGE value="Jawad: userstorie 3 er lavet færdigt i UserInterface.&#10;Mangler at få kaldt på metoder i klasserne Hold, HoldContoller og RegisterController." />
     <MESSAGE value="Jawad: userstorie 3" />
     <MESSAGE value="Jawad: igang med userstorie 3" />
-    <MESSAGE value="Changes by bsenb" />
+    <MESSAGE value="Changes by MUK" />
     <MESSAGE value="Changes by Alhus" />
     <MESSAGE value="Jawad:" />
-    <MESSAGE value="Changes by MUK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by MUK" />
+    <MESSAGE value="Changes by bsenb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by bsenb" />
   </component>
 </project>

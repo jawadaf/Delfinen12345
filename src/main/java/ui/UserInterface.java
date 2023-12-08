@@ -237,15 +237,13 @@ public class UserInterface {
         int input = læsInt();
         if (input == 1) {
             aktivitetsform = "Motionist";
-            Medlem medlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
             //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
-            registerController.tilføjelseAfMedlem(medlem);
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
             aktivitetsform = "Konkurrencesvommer";
-            Medlem medlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+            registerController.tilføjKonkurrencesvommer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
             //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
-            registerController.tilføjelseAfMedlem(medlem);
             System.out.println("Medlem tilføjet som konkurrence svømmer.");
         } else if (input == 0) {
             System.out.println("Medlemmet ikke tilføjet.");

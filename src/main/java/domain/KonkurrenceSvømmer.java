@@ -20,46 +20,72 @@ public class KonkurrenceSvømmer extends Medlem {
         setAktivitetsform("Konkurrencesvommer");
     }
 
-    public void tilføjAktivitet(Resultat nyDesciplin) {
+    public KonkurrenceSvømmer() {
+
+    }
+
+    public void tilføjDiscipliner(Resultat[] nyDesciplin) {
+        int startIndex = 0;
         for (int i = 0; i < discipliner.length; i++) {
             if (discipliner[i] == null ) {
-                discipliner[i] = nyDesciplin;
+                startIndex = i;
                 break;
             }
         }
+        for (int i = 0; i < nyDesciplin.length && startIndex + i < discipliner.length; i++) {
+            discipliner[startIndex + i] = nyDesciplin[i];  // sørger for at discipline er ikke større end den ny Array.
+        }
     }
 
-    public boolean isButterFly() {
+
+    public String isButterFly() {
         for (Resultat resultat : discipliner) {
-            if (resultat != null && resultat.getDisciplineNavn().equalsIgnoreCase("butterfly")) {
-                return true;
+            if (resultat != null) {
+                String disciplinNavn = resultat.getDisciplineNavn();
+                if (disciplinNavn != null && disciplinNavn.equalsIgnoreCase("butterfly")) {
+                    return "butterfly";
+                }
             }
-        } return false;
+        } return null;
     }
 
-    public boolean isCrawl() {
+
+    public String isCrawl() {
         for (Resultat resultat : discipliner) {
-            if (resultat != null && resultat.getDisciplineNavn().equalsIgnoreCase("crawl")) {
-                return true;
+            if (resultat != null) {
+                String disciplinNavn = resultat.getDisciplineNavn();
+                if (disciplinNavn != null && disciplinNavn.equalsIgnoreCase("crawl")) {
+                    return "crawl";
+                }
             }
-        } return false;
+        } return null;
     }
 
-    public boolean isBackCrawl() {
+    public String isBackCrawl() {
         for (Resultat resultat : discipliner) {
-            if (resultat != null && resultat.getDisciplineNavn().equalsIgnoreCase("backcrawl")) {
-                return true;
+            if (resultat != null) {
+                String disciplinNavn = resultat.getDisciplineNavn();
+                if (disciplinNavn != null && disciplinNavn.equalsIgnoreCase("backcrawl")) {
+                    return "backcrawl";
+                }
             }
-        } return false;
+        } return null;
     }
 
-    public boolean isBrystSvømning() {
+    public String isBrystSvomning() {
         for (Resultat resultat : discipliner) {
-            if (resultat != null && resultat.getDisciplineNavn().equalsIgnoreCase("brystsvømning")) {
-                return true;
+            if (resultat != null) {
+                String disciplinNavn = resultat.getDisciplineNavn();
+                if (disciplinNavn != null && disciplinNavn.equalsIgnoreCase("brystsvomning")) {
+                    return "brystsvomning";
+                }
             }
-        } return false;
+        } return null;
     }
+
+
+
+
 
     public double getTid() {
         double bedsteTid = 0;

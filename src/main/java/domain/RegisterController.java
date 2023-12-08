@@ -16,18 +16,31 @@ public class RegisterController {
 
     // Medlem _______________________________________________________________________
 
-    public void tilføjelseAfMedlem(Medlem medlem) {
-        database.tilføjMedlem(medlem.getFuldNavn(),
-                medlem.getAdresse(),
-                medlem.getAlder(),
-                medlem.getFødselsdato(),
-                medlem.getTelefonnummer(),
-                medlem.getEmail(),
-                medlem.getAktivitetsform(),
-                medlem.getMedlemskabType(),
-                medlem.getMedlemskabStatus());
-
+    public void tilføjKonkurrencesvommer(String fuldNavn,
+                                         String adresse,
+                                         int alder,
+                                         LocalDate fødselsdato,
+                                         int telefonnummer,
+                                         String email,
+                                         String aktivitetsform,
+                                         int medlemskabType,
+                                         boolean medlemskabStatus) {
+        database.tilføjKonkurrencesvommer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
     }
+
+
+    public void tilføjMotionist(String fuldNavn,
+                                String adresse,
+                                int alder,
+                                LocalDate fødselsdato,
+                                int telefonnummer,
+                                String email,
+                                String aktivitetsform,
+                                int medlemskabType,
+                                boolean medlemskabStatus) {
+        database.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+    }
+
 
     public ArrayList<Medlem> hentetMedlemmer() {
         return database.hentMedlemmer();
@@ -70,6 +83,36 @@ public class RegisterController {
 
 
     // Hold ____________________________________________________________________________
+
+
+
+
+    public String tilføjDisciplinerTilKonkurrencesvommer(String fuldNavn, Resultat[] discipliner) {
+        return database.tilføjDisciplinerTilKonkurrencesvommer(fuldNavn, discipliner);
+    }
+
+    public String setDisciplinNavn(String disciplinNavn) {
+        return database.setDisciplinNavn(disciplinNavn);
+    }
+
+    public String isButterFly() {
+        return database.isButterFly();
+    }
+
+    public String isCrawl() {
+        return database.isCrawl();
+    }
+
+    public String isBackCrawl() {
+        return database.isBackCrawl();
+    }
+    public String isBrystSvomning() {
+        return database.isBrystSvomning();
+    }
+
+
+
+
 
     public void opretHold(String holdNavn) {
         database.opretHold(holdNavn);

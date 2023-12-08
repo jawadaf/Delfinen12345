@@ -5,6 +5,7 @@ import datasource.FileHandler;
 import java.sql.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Database {
     private FileHandler fileHandler;
@@ -19,6 +20,7 @@ public class Database {
     private Hold hold;
     private Træner træner;
     private String[] listeAfKontingenter;
+    private Resultat resultat;
 
     public Database() {
         this.holdListe = new ArrayList<>();
@@ -33,6 +35,7 @@ public class Database {
         this.hold = new Hold();
         this.træner = new Træner("Mike");
         this.listeAfKontingenter = new String[4];
+        this.resultat = new Resultat();
 
     }
 
@@ -173,12 +176,21 @@ public class Database {
 
 
     public ArrayList<Medlem> getJuniorHold() {
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getAlder() < 18) {
+                juniorHold.add(medlem);
+            }
+        }
         return juniorHold;
 
     }
 
     public ArrayList<Medlem> getSeniorHold() {
-        seniorHold.addAll(medlemmer);
+        for (Medlem medlem : medlemmer) {
+            if (medlem.getAlder() >= 18) {
+                seniorHold.add(medlem);
+            }
+        }
         return medlemmer;
     }
 
@@ -215,6 +227,58 @@ public class Database {
         return konkurrenceSvømmere;
     }
 
+    public String tilføjDisciplinerTilKonkurrencesvommer(String fuldNavn, Resultat[] discipliner) {
+        Medlem medlem = søgEfterMedlem(fuldNavn);
+        if (medlem instanceof KonkurrenceSvømmer) {
+            KonkurrenceSvømmer konkurrenceSvømmer = (KonkurrenceSvømmer) medlem;
+            ((KonkurrenceSvømmer) medlem).tilføjDiscipliner(discipliner);
+            return "Tilføj disicipliner til konkurrencesvommer";
+        } else {
+            return "Der er ikke tilføjet discipliner til konkurrencesvommer";
+        }
+    }
+
+    public String setDisciplinNavn(String disciplinNavn) {
+        return resultat.setDisciplinNavn(disciplinNavn);
+    }
+
+    public String isButterFly() {
+        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+        return konkurrenceSvømmer.isButterFly();
+    }
+
+    public String isCrawl() {
+        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+        return konkurrenceSvømmer.isCrawl();
+    }
+
+    public String isBackCrawl() {
+        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+        return konkurrenceSvømmer.isBackCrawl();
+    }
+    public String isBrystSvomning() {
+        KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer();
+        return konkurrenceSvømmer.isBrystSvomning();
+    }
+
+    public ArrayList<Medlem> getTop5ForDiscipline(String disciplin) {
+        ArrayList<Medlem> alleKonkurrenceSvommer = new ArrayList<>(konkurrenceSvømmere);
+        Collections.sort(alleKonkurrenceSvommer, new TidsRegistrering(disciplin));
+
+        return new ArrayList<>(alleKonkurrenceSvommer.subList(0, Math.min(5, alleKonkurrenceSvommer.size())))
+    }
+
+    // Få top 5 medlemmer for alle discipliner
+    public ArrayList<Medlem> getTop5ForAlleDiscipliner() {
+        ArrayList<Medlem> top5ForAlleDiscipliner = new ArrayList<>();
+
+        // Loop genne, alle discipliner og tilføj top 5 for hver disciplin
+        for (String disciplin : getAlleDiscipliner()) {
+            top5ForAlleDiscipliner.addAll(getTop5ForDiscipline(disciplin));
+        }
+        return new ArrayList<>(top5ForAlleDiscipliner.subList(0, Math.min(5, top5ForAlleDiscipliner.size())));
+    }
+
 
     // Kassere __________________________________________________________
 
@@ -225,7 +289,9 @@ public class Database {
 
 
     // Medlem _________________________________________________________________________
-    public void tilføjMedlem(String fuldNavn,
+
+
+    public void tilføjKonkurrencesvommer(String fuldNavn,
                              String adresse,
                              int alder,
                              LocalDate fødselsdato,
@@ -234,19 +300,28 @@ public class Database {
                              String aktivitetsform,
                              int medlemskabType,
                              boolean medlemskabStatus) {
+        Medlem konkurrencesvommerMedlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+        medlemmer.add(konkurrencesvommerMedlem);
+        konkurrenceSvømmere.add(konkurrencesvommerMedlem);
+    }
 
-        Medlem nyMedlem;
-        if (aktivitetsform.equalsIgnoreCase("Konkurrencesvommer")) {
-            nyMedlem = new KonkurrenceSvømmer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
-            konkurrenceSvømmere.add(nyMedlem);
-        } else {
-            nyMedlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
-            konkurrenceSvømmere.add(nyMedlem);
-        }
-        medlemmer.add(nyMedlem);
+
+    public void tilføjMotionist(String fuldNavn,
+                             String adresse,
+                             int alder,
+                             LocalDate fødselsdato,
+                             int telefonnummer,
+                             String email,
+                             String aktivitetsform,
+                             int medlemskabType,
+                             boolean medlemskabStatus) {
+        Medlem motionistMedlem = new Motionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
+        medlemmer.add(motionistMedlem);
+        motionist.add(motionistMedlem);
     }
 
     public ArrayList<Medlem> hentMedlemmer() {
+        System.out.println("Medlemmer " + medlemmer.size());
         return medlemmer;
     }
 

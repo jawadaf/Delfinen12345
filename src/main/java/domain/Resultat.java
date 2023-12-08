@@ -24,6 +24,14 @@ public class Resultat {
         this.dato = dato;
     }
 
+    public Resultat() {
+    }
+
+    public String setDisciplinNavn(String disciplinNavn) {
+        this.disciplineNavn = disciplinNavn;
+        return disciplinNavn;
+    }
+
 
 
 }
