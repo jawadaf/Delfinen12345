@@ -640,46 +640,81 @@ public class UserInterface {
      */
 
     private void tilføjMedlemmerTilDiscipliner() {
-        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = new ArrayList<>();
-        for (Medlem medlem : registerController.hentetMedlemmer()) {
-            if (medlem instanceof KonkurrenceSvømmer) {
-                konkurrenceSvømmere.add(((KonkurrenceSvømmer) medlem));
-            }
+        ArrayList<Medlem> konkurrenceSvømmere = new ArrayList<>();
+        System.out.println("Antal konkurrencesvømmere " + konkurrenceSvømmere.size());
+        for (int i = 0; i < konkurrenceSvømmere.size(); i++) {
+            System.out.println((i + 1 + "." + konkurrenceSvømmere.get(i).getFuldNavn()));
         }
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmere) {
-            System.out.println("#" + (konkurrenceSvømmere.indexOf(konkurrenceSvømmer) + 1 + "\n"));
-        }
-        System.out.println("Svømmer med nummer: ");
+        System.out.println("Vælg svømmer ved at taste et nummer: ");
         int userChoice = læsInt();
-        KonkurrenceSvømmer svømmerValg = konkurrenceSvømmere.get(userChoice - 1);
-        System.out.println("Discipliner: \n");
-        String placering = læsString();
-        System.out.println("Dato (åååå-mm-dd): \n");
+        if (userChoice >= 1 && userChoice <= konkurrenceSvømmere.size()) {
+            Medlem svommerValg = konkurrenceSvømmere.get(userChoice - 1);
 
-        LocalDate dato = LocalDate.parse(sc.next());
-        System.out.println("""
-                1. Butterfly
-                2. Backcrawl
-                3. Crawl
-                4. Brystsvømning
-                """);
-        System.out.println("Discipline: ");
-        int userInput = læsInt();
-        String discipline = "";
-        while (discipline.isBlank()) {
-            switch (userInput) {
-                case 1 -> discipline = "Butterfly";
-                case 2 -> discipline = "Backcrawl";
-                case 3 -> discipline = "Crawl";
-                case 4 -> discipline = "Brystsvømning";
-                default -> System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Discipline: ");
+            int userInput = læsInt();
+            String discipline = "";
+
+            System.out.println("""
+                    1. Butterfly
+                    2. Backcrawl
+                    3. Crawl
+                    4. Brystsvømning
+                    """);
+
+            while (discipline.isBlank()) {
+                switch (userInput) {
+                    case 1 -> discipline = "Butterfly";
+                    case 2 -> discipline = "Backcrawl";
+                    case 3 -> discipline = "Crawl";
+                    case 4 -> discipline = "Brystsvomning";
+                    default -> System.out.println("Forkert input! Prøv igen.");
+                }
+            }
+            if (discipline.equalsIgnoreCase("butterfly")) {
+                registerController.isButterFly();
+                System.out.println("Medlem tilføjet til desciplin butterfly.");
+                discipline = registerController.setDisciplinNavn(discipline);
+            } else if (discipline.equalsIgnoreCase("backcrawl")) {
+                registerController.isBackCrawl();
+                System.out.println("Medlem tilføjet til desciplin backcrawl.");
+            } else if (discipline.equalsIgnoreCase("crawl")) {
+                registerController.isCrawl();
+                System.out.println("Medlem tilføjet til desciplin crawl.");
+            } else if (discipline.equalsIgnoreCase("brystsvomning")) {
+                registerController.isBrystSvomning();
+                System.out.println("Medlem tilføjet til desciplin brystsvomning.");
+            } else {
+                System.out.println("Medlemmet ikke tilføjet til nogen af discipliner.");
+            }
+            try {
+                System.out.println("Svømmetid: ");
+                double tid = sc.nextDouble();
+
+                System.out.println("Indtast placering: ");
+                String placering = læsString();
+
+                System.out.println("Dato (åååå-mm-dd): \n");
+                LocalDate dato = LocalDate.parse(sc.next());
+
+                //svommerValg(new Resultat(discipline, tid, placering, dato));
+
+                Resultat nyDesciplin = new Resultat(discipline, tid, placering, dato);
+                Resultat[] nyeDiscipliner = {nyDesciplin};
+
+                String resultatBesked = registerController.tilføjDisciplinerTilKonkurrencesvommer(svommerValg.getFuldNavn(), nyeDiscipliner);
+                System.out.println(resultatBesked);
+
+                registerController.saveDiscipliner(registerController.getKonkurrenceSvømmere());
+
+            } catch (InputMismatchException i) {
+                System.out.println("Forkert input! Det skal være en int.");
+                sc.nextLine();
+            } catch (DateTimeParseException d) {
+                System.out.println("Forkert input! Prøv igen.");
+                sc.nextLine();
             }
         }
-        System.out.println("Svømmetid: ");
-        double tid = sc.nextDouble();
-        svømmerValg.tilføjAktivitet(new Resultat(discipline, tid, placering, dato));
     }
-
 
 
     /*public LocalDate tilføjDato() {
@@ -758,11 +793,12 @@ public class UserInterface {
             for (Medlem medlem : medlemmer) {
                 if (medlem.getMedlemskabStatus() == false) {
                     totalKontingent = 500;
-                    if (totalKontingent != 500) {
+                    System.out.println("Kontingenten er ikke betalt");
+                } else if (totalKontingent != 500) {
                         //int totalKontingent = Random;
-                        System.out.println("Kontingenten er betalt");
-                    } else {
                         System.out.println("Kontingenten er ikke betalt");
+                    } else {
+
                     }
                 }
 

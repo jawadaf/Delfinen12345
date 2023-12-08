@@ -4,6 +4,7 @@ import ui.UserInterface;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RegisterController {
     private Database database;
@@ -85,6 +86,18 @@ public class RegisterController {
     // Hold ____________________________________________________________________________
 
 
+    public ArrayList<Medlem> getTop5ForDiscipline(String disciplin) {
+        return database.getTop5ForDiscipline(disciplin);
+    }
+
+
+    public ArrayList<Medlem> getTop5ForAlleDiscipliner() {
+       return database.getTop5ForAlleDiscipliner();
+    }
+
+    public ArrayList<String> getAlleDiscipliner() {
+       return database.getAlleDiscipliner();
+    }
 
 
     public String tilføjDisciplinerTilKonkurrencesvommer(String fuldNavn, Resultat[] discipliner) {
@@ -229,4 +242,7 @@ public class RegisterController {
     }
 
 
+    public void saveDiscipliner(ArrayList<Medlem> konkurrenceSvømmere) {
+        database.saveDiscipliner(konkurrenceSvømmere);
+    }
 }

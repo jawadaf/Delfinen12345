@@ -265,7 +265,7 @@ public class Database {
         ArrayList<Medlem> alleKonkurrenceSvommer = new ArrayList<>(konkurrenceSvømmere);
         Collections.sort(alleKonkurrenceSvommer, new TidsRegistrering(disciplin));
 
-        return new ArrayList<>(alleKonkurrenceSvommer.subList(0, Math.min(5, alleKonkurrenceSvommer.size())))
+        return new ArrayList<>(alleKonkurrenceSvommer.subList(0, Math.min(5, alleKonkurrenceSvommer.size())));
     }
 
     // Få top 5 medlemmer for alle discipliner
@@ -277,6 +277,20 @@ public class Database {
             top5ForAlleDiscipliner.addAll(getTop5ForDiscipline(disciplin));
         }
         return new ArrayList<>(top5ForAlleDiscipliner.subList(0, Math.min(5, top5ForAlleDiscipliner.size())));
+    }
+
+    public ArrayList<String> getAlleDiscipliner() {
+        ArrayList<String> alleDiscipliner = new ArrayList<>();
+        for (Medlem svommer : konkurrenceSvømmere) {
+            if (svommer instanceof KonkurrenceSvømmer) {
+                KonkurrenceSvømmer konkurrenceSvømmer = (KonkurrenceSvømmer) svommer;
+                for (Resultat resultat : konkurrenceSvømmer.getDiscipliner()) {
+                    if (resultat != null && !alleDiscipliner.contains(resultat.getDisciplineNavn())) {
+                        alleDiscipliner.add(resultat.getDisciplineNavn());
+                    }
+                }
+            }
+        } return alleDiscipliner;
     }
 
 
@@ -388,4 +402,7 @@ public class Database {
             fileHandler.saveMedlem(medlemmer);
         }
 
+    public void saveDiscipliner(ArrayList<Medlem> konkurrenceSvømmere) {
+        fileHandler.saveDiscipliner(konkurrenceSvømmere);
     }
+}

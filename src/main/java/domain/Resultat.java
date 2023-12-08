@@ -33,5 +33,11 @@ public class Resultat {
     }
 
 
+    public String getPlacering() {
+        return placering;
+    }
 
+    public LocalDate getDato() {
+        return dato;
+    }
 }

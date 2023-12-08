@@ -3,6 +3,7 @@ package datasource;
 import domain.KonkurrenceSvømmer;
 import domain.Medlem;
 import domain.Motionist;
+import domain.Resultat;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +13,7 @@ import java.util.Scanner;
 
 public class FileHandler {
     private File f = new File("medlemregister.csv");
+    private static final String FILE_PATH = "disciplinregister.csv";
 
     public void saveMedlem(ArrayList<Medlem> medlemListe ) {
         try (PrintStream out = new PrintStream(new FileOutputStream(f, true))) {
@@ -80,5 +82,25 @@ public class FileHandler {
             ioe.printStackTrace();
         }
         return information;
+    }
+
+    public void saveDiscipliner(ArrayList<Medlem> medlemmer) {
+        try(PrintWriter out = new PrintWriter(new FileWriter(FILE_PATH, true))) {
+            for (Medlem medlem : medlemmer) {
+                if (medlem instanceof KonkurrenceSvømmer) {
+                    KonkurrenceSvømmer konkurrenceSvømmer = (KonkurrenceSvømmer) medlem;
+                    for (Resultat disciplin : konkurrenceSvømmer.getDiscipliner()) {
+                        out.printf("%s,%s,%s,%s,%s%n",
+                                medlem.getFuldNavn(),
+                                disciplin.getDisciplineNavn(),
+                                disciplin.getTid(),
+                                disciplin.getPlacering(),
+                                disciplin.getDato());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Fejl ved gemning af disciplinregister :" + e.getMessage());
+        }
     }
 }

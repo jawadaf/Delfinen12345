@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
+      <change afterPath="$PROJECT_DIR$/disciplinregister" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medlemregister.csv" beforeDir="false" afterPath="$PROJECT_DIR$/medlemregister.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datasource/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/KonkurrenceSvømmer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Resultat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/TidsRegistrering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/TidsRegistrering.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="Changes by Alhus" />
@@ -128,7 +126,7 @@
       <workItem from="1700818062215" duration="24790000" />
       <workItem from="1700930056783" duration="26980000" />
       <workItem from="1701867502546" duration="24523000" />
-      <workItem from="1702024464694" duration="7207000" />
+      <workItem from="1702024464694" duration="13657000" />
     </task>
     <task id="LOCAL-00001" summary="000">
       <option name="closed" value="true" />
@@ -506,7 +504,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701958121328</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1702031837447</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1702031837448</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,8 +547,8 @@
     <MESSAGE value="Jawad: igang med userstorie 3" />
     <MESSAGE value="Changes by MUK" />
     <MESSAGE value="Changes by Alhus" />
-    <MESSAGE value="Jawad:" />
     <MESSAGE value="Changes by bsenb" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by bsenb" />
+    <MESSAGE value="Jawad:" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
   </component>
 </project>
