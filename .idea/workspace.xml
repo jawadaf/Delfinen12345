@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Kasserer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Kasserer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Medlem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="Changes by Alhus" />
@@ -122,6 +126,7 @@
       <workItem from="1700930056783" duration="26980000" />
       <workItem from="1701867502546" duration="24523000" />
       <workItem from="1702024464694" duration="29174000" />
+      <workItem from="1702139385362" duration="3000000" />
     </task>
     <task id="LOCAL-00002" summary="000">
       <option name="closed" value="true" />

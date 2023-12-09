@@ -205,6 +205,10 @@ public class RegisterController {
 
    */
 
+    public int totalKontigent() {
+        return database.totalKontigent();
+    }
+
 
 
     // Medlem __________________________________________________________
@@ -244,5 +248,21 @@ public class RegisterController {
 
     public void saveDiscipliner(ArrayList<Medlem> konkurrenceSvømmere) {
         database.saveDiscipliner(konkurrenceSvømmere);
+    }
+
+    // Formand_______________________________________________________________________
+
+    public Medlem findMedlem(String fuldNavn) {
+        // Iterér gennem medlemslisten og find medlemmet med det givne fulde navn
+        for (Medlem medlem : hentMedlemmer()) {
+            if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
+                return medlem;
+            }
+        }
+        return null; // Returner null, hvis medlemmet ikke blev fundet
+    }
+
+    public ArrayList<Medlem> hentMedlemmer() {
+        return hentMedlemmer();
     }
 }

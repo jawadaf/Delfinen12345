@@ -119,10 +119,6 @@ public class Medlem {
         return alder;
     }
 
-    public LocalDate getFødselsdato() {
-        return fødselsdato;
-    }
-
     public int getTelefonnummer() {
         return telefonnummer;
     }
@@ -135,16 +131,18 @@ public class Medlem {
         return aktivitetsform;
     }
 
-    public boolean getMedlemskabStatus() {
+    public boolean getMedlemskabsstatus() {
         return medlemskabStatus;
     }
     public int getMedlemskabType() {
         return medlemskabType;
     }
-
-    public void setMedlemskabType(int medlemskabType) {
-        this.medlemskabType = medlemskabType;
+    public LocalDate getFødselsdato() {
+        return fødselsdato;
     }
+
+
+
 
 
 
@@ -178,10 +176,16 @@ public class Medlem {
         this.aktivitetsform = aktivitetsform;
     }
 
-
+    public void setMedlemskabType(int medlemskabType) {
+        this.medlemskabType = medlemskabType;
+    }
 
     public void setMedlemskabStatus (boolean medlemskabStatus) {
         this.medlemskabStatus = medlemskabStatus;
+    }
+
+    public boolean getMedlemskabStatus() {
+        return medlemskabStatus;
     }
 
 

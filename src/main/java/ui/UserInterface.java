@@ -310,101 +310,112 @@ public class UserInterface {
             redigerMedlem = læsString();
         } catch (NoSuchElementException e) {
             System.out.println("Forkert input! Prøv igen.");
+            return;
         }
 
-        // Nyt fuld navn
 
-        System.out.print("Rediger navnet på medlemmet: ");
+        Medlem eksisterendeMedlem = registerController.findMedlem(redigerMedlem);
+
+        if (eksisterendeMedlem == null) {
+            System.out.println("Medlemmet blev ikke fundet. Prøv igen.");
+            return;
+        }
+
+        System.out.println("Eksisterende oplysninger for medlemmet:");
+        System.out.println(eksisterendeMedlem);
+
+        // Opdater medlemsoplysninger
+        System.out.println("Indtast nye oplysninger for medlemmet:");
+
+        // Nyt fuld navn
+        System.out.print("Rediger navnet på medlemmet (" + eksisterendeMedlem.getFuldNavn() + "): ");
         String nytFuldNavn = null;
         try {
             nytFuldNavn = læsString();
         } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Navnet forbliver uændret.");
         }
 
         // Ny adresse
-
-        System.out.print("Rediger adresse på medlemmet: ");
+        System.out.print("Rediger adresse på medlemmet (" + eksisterendeMedlem.getAdresse() + "): ");
         String nyAdresse = null;
         try {
             nyAdresse = læsString();
         } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Adressen forbliver uændret.");
         }
 
         // Ny alder
-
-        System.out.print("Rediger alder på medlemmet: ");
+        System.out.print("Rediger alder på medlemmet (" + eksisterendeMedlem.getAlder() + "): ");
         int nyAlder = 0;
         try {
             nyAlder = læsInt();
         } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Alderen forbliver uændret.");
         }
 
         // Ny fødselsdato
-
         System.out.print("Rediger fødselsdato på medlemmet (åååå-mm-dd): ");
         LocalDate nyFødselsdato = null;
-        LocalDate fødselsdato = nyFødselsdato;
         try {
             String fødselsdagsdato = læsString();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            fødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
+            nyFødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
         } catch (DateTimeParseException e) {
             System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
             sc.nextLine();
         }
 
         // Nyt telefonnummer
-
-        System.out.print("Rediger telefonnummeret på medlemmet: ");
+        System.out.print("Rediger telefonnummeret på medlemmet (" + eksisterendeMedlem.getTelefonnummer() + "): ");
         int nytTelefonnummer = 0;
         try {
             nytTelefonnummer = læsInt();
         } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Telefonnummeret forbliver uændret.");
         }
 
         // Ny email
-
-        System.out.print("Rediger email på medlemmet: ");
+        System.out.print("Rediger email på medlemmet (" + eksisterendeMedlem.getEmail() + "): ");
         String nyEmail = null;
         try {
             nyEmail = læsString();
         } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Email forbliver uændret.");
         }
 
         // Ny aktivitetsform
-
-        System.out.print("Rediger aktivitetsform på medlemmet (Motionist/Konkurrencesvømmer): ");
+        System.out.print("Rediger aktivitetsform på medlemmet (" + eksisterendeMedlem.getAktivitetsform() + "): ");
         String nyAktivitetsform = null;
         try {
             nyAktivitetsform = læsString();
         } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
+            System.out.println("Forkert input! Aktivitetsformen forbliver uændret.");
         }
 
         // Ny medlemskabsstatus
-
-        System.out.print("Rediger medlemsstatus på medlemmet (tast 'true' for aktiv, tast 'false' for passiv: ");
+        System.out.print("Rediger medlemsstatus på medlemmet (tast 'true' for aktiv, tast 'false' for passiv, nuværende: " + eksisterendeMedlem.getMedlemskabsstatus() + "): ");
         boolean nyMedlemsstatus = true;
         try {
             nyMedlemsstatus = sc.nextBoolean();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Medlemsstatus forbliver uændret.");
+            sc.nextLine();  // Ryd buffer
         }
 
+        // Kald RegisterController for at foretage redigering
         registerController.redigerMedlem(
-                nytFuldNavn,
-                nyAdresse,
-                nyAlder,
-                nytTelefonnummer,
-                nyFødselsdato,
-                nyEmail,
-                nyAktivitetsform,
-                nyMedlemsstatus);
+                registerController.redigerMedlem(
+                        eksisterendeMedlem.getFuldNavn(),
+                        eksisterendeMedlem.getAdresse(),
+                        eksisterendeMedlem.getAlder(),
+                        eksisterendeMedlem.getTelefonnummer(),
+                        eksisterendeMedlem.getFødselsdato(),
+                        eksisterendeMedlem.getEmail(),
+                        eksisterendeMedlem.getAktivitetsform(),
+                        eksisterendeMedlem.getMedlemskabsstatus()
+                );
+
     }
 
     public void gemRedigeretMedlem() {
@@ -751,9 +762,9 @@ public class UserInterface {
 
     public void totalKontingent() {
         ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
-        int totalKontingent = 0;
-        for (Medlem medlem : medlemmer) {
-            if (medlem.getMedlemskabStatus() == false) {
+        int totalKontingent = registerController.totalKontigent();
+        /*for (Medlem medlem : medlemmer) {
+            if (!medlem.getMedlemskabStatus()) {
                 totalKontingent += 500;
             } else {
                 if (medlem.getAlder() < 18) {
@@ -765,36 +776,34 @@ public class UserInterface {
                 if (medlem.getAlder() >= 60) {
                     totalKontingent += 1200;
                 }
-
             }
-        }
-            System.out.println("Total intægt = " + totalKontingent + "kr.");
-        }
+        }*/
+        System.out.println("Total indtægt = " + totalKontingent + " kr.");
+    }
 
-
-        public void listeOverKontingenIndbetalinger () {
-            ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
+    public void listeOverKontingenIndbetalinger() {
+        ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
+        for (Medlem medlem : medlemmer) {
             int totalKontingent = 0;
-            for (Medlem medlem : medlemmer) {
-                    if (medlem.getMedlemskabStatus() == false) {
-                        totalKontingent = 500;
-                        System.out.println("Som passiv medlem skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
-                    } else {
-                        if (medlem.getAlder() < 18) {
-                            totalKontingent = 1000;
-                            System.out.println("Som aktiv medlem under 18 år skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
-                        }
-                        if (medlem.getAlder() >= 18) {
-                            totalKontingent = 1600;
-                            System.out.println("Som aktiv medlem over 18 år. skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
-                        }
-                        if (medlem.getAlder() >= 60) {
-                            totalKontingent = 1200;
-                            System.out.println("Som pensionist medlem skal du betale så meget: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
-                        }
-                    }
+            if (!medlem.getMedlemskabStatus()) {
+                totalKontingent = 500;
+                System.out.println("Som passiv medlem skal du betale: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+            } else {
+                if (medlem.getAlder() < 18) {
+                    totalKontingent = 1000;
+                    System.out.println("Som aktiv medlem under 18 år skal du betale: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                }
+                if (medlem.getAlder() >= 18 && medlem.getAlder() < 60) {
+                    totalKontingent = 1600;
+                    System.out.println("Som aktiv medlem over 18 år. skal du betale: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
+                }
+                if (medlem.getAlder() >= 60) {
+                    totalKontingent = 1200;
+                    System.out.println("Som pensionist medlem skal du betale: " + medlem.getFuldNavn() + " " + totalKontingent + " kr.");
                 }
             }
+        }
+    }
 
 
 

@@ -21,6 +21,9 @@ public class Database {
     private Træner træner;
     private String[] listeAfKontingenter;
     private Resultat resultat;
+    private Kasserer kasserer;
+    private RegisterController registerController;
+
 
     public Database() {
         this.holdListe = new ArrayList<>();
@@ -296,7 +299,9 @@ public class Database {
 
     // Kassere __________________________________________________________
 
-
+    public int totalKontigent() {
+        return kasserer.totalKontingent();
+    }
 
 
 
