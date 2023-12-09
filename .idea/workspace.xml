@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:" />
+    <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
+    </list>
     <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="Changes by Alhus" />
     <list id="66a2861a-97e8-4eae-97f8-39d7ed896d59" name="Changes by bsenb" comment="Changes by bsenb" />
     <option name="SHOW_DIALOG" value="false" />
@@ -551,5 +555,16 @@
     <MESSAGE value="Changes by bsenb" />
     <MESSAGE value="Jawad:" />
     <option name="LAST_COMMIT_MESSAGE" value="Jawad:" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ui/UserInterface.java</url>
+          <line>448</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

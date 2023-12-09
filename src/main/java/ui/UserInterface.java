@@ -178,13 +178,13 @@ public class UserInterface {
 
 
         // Medlemskabstatus
-        boolean medlemskabStatus = true; // Start med at antage, at det er aktivt
+        boolean medlemskabStatus = true;
 
         System.out.print("Er medlemmet aktivt? Indtast 'ja' eller 'nej': ");
         String svar = sc.nextLine().toLowerCase();
 
         if (svar.equals("nej")) {
-            medlemskabStatus = false; // Hvis svaret er "nej", sæt til passivt
+            medlemskabStatus = false;
             System.out.println("Du er passivt medlem.");
         } else {
             System.out.println("Du er aktivt medlem.");
@@ -201,13 +201,13 @@ public class UserInterface {
             String aktivitetsform = null;
             aktivitetsform = "Motionist";
             registerController.tilføjMotionist(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
-            //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            registerController.tilføjMedlemTilJuniorEllerSenior(alder);
             System.out.println("Medlem tilføjet som motionist.");
         } else if (input == 2) {
             String aktivitetsform = null;
             aktivitetsform = "Konkurrencesvommer";
             registerController.tilføjKonkurrencesvommer(fuldNavn, adresse, alder, fødselsdato, telefonnummer, email, aktivitetsform, medlemskabType, medlemskabStatus);
-            //registerController.tilføjMedlemTilJuniorEllerSenior(alder);
+            registerController.tilføjMedlemTilJuniorEllerSenior(alder);
             System.out.println("Medlem tilføjet som konkurrence svømmer.");
         } else if (input == 0) {
             System.out.println("Medlemmet ikke tilføjet.");
@@ -226,7 +226,7 @@ public class UserInterface {
             try {
                 input = sc.nextLine();
                 // Tjek om inputtet er en gyldig streng
-                if (!input.matches("[a-zA-Z]+")) {
+                if (!input.matches("[a-zA-Z\\s]+")) {  // Tilføjet \\s for at acceptere mellemrum
                     throw new NoSuchElementException();
                 }
                 gyldigtInput = true; // Hvis vi når hertil, er inputtet gyldigt
@@ -237,6 +237,28 @@ public class UserInterface {
         return input;
     }
 
+    /*private String indtastGyldigString(String prompt) {
+        String input = "";
+        boolean gyldigtInput = false;
+
+        while (!gyldigtInput) {
+            System.out.print(prompt);
+
+            try {
+                input = sc.nextLine();
+                if (!input.matches("[a-zA-Z]+")) {
+                    throw new NoSuchElementException();
+                }
+                gyldigtInput = true;
+            } catch (NoSuchElementException e) {
+                System.out.println("Forkert input. Prøv igen.");
+            }
+        }
+        return input;
+    }
+
+     */
+
     private int indtastGyldigInteger(String prompt) {
         int input = 0;
         boolean gyldigtInput = false;
@@ -246,11 +268,11 @@ public class UserInterface {
 
             try {
                 input = sc.nextInt();
-                sc.nextLine(); // Forbrug resterende Enter
-                gyldigtInput = true; // Hvis vi når hertil, er inputtet gyldigt
+                sc.nextLine();
+                gyldigtInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Forkert input. Indtast venligst et heltal.");
-                sc.nextLine(); // Ryd bufferen for at undgå uendelig løkke
+                sc.nextLine();
             }
         }
         return input;
@@ -267,7 +289,7 @@ public class UserInterface {
                 String datoString = sc.nextLine();
                 DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 dato = LocalDate.parse(datoString, dateFormat);
-                gyldigtInput = true; // Hvis vi når hertil, er inputtet gyldigt
+                gyldigtInput = true;
             } catch (DateTimeParseException | NoSuchElementException e) {
                 System.out.println("Forkert datoformat. Indtast dato på formatet åååå-mm-dd.");
             }
@@ -284,7 +306,6 @@ public class UserInterface {
 
             try {
                 email = sc.nextLine();
-                // Tjek om inputtet er en gyldig e-mailadresse
                 if (!email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
                     throw new NoSuchElementException();
                 }
@@ -303,7 +324,148 @@ public class UserInterface {
     }
 
 
+
     public void redigerMedlem() {
+        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
+        String redigerMedlem = null;
+        try {
+            redigerMedlem = indtastGyldigString("Indtast fulde navn: ");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Prøv igen.");
+            return;
+        }
+
+        Medlem eksisterendeMedlem = registerController.findMedlem(redigerMedlem);
+
+        if (eksisterendeMedlem == null) {
+            System.out.println("Medlemmet blev ikke fundet. Prøv igen.");
+            return;
+        }
+
+        System.out.println("Eksisterende oplysninger for medlemmet:");
+        System.out.println(eksisterendeMedlem);
+
+        System.out.println("Indtast nye oplysninger for medlemmet:");
+
+        // Nyt fuld navn
+        System.out.print("Rediger navnet på medlemmet (" + eksisterendeMedlem.getFuldNavn() + "): ");
+        String nytFuldNavn = null;
+        try {
+            nytFuldNavn = indtastGyldigString("Indtast fulde navn: ");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Navnet forbliver uændret.");
+        }
+
+        // Ny adresse
+        System.out.print("Rediger adresse på medlemmet (" + eksisterendeMedlem.getAdresse() + "): ");
+        String nyAdresse = null;
+        try {
+            nyAdresse = indtastGyldigString("Indtast adresse: ");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Adressen forbliver uændret.");
+        }
+
+        // Ny alder
+        System.out.print("Rediger alder på medlemmet (" + eksisterendeMedlem.getAlder() + "): ");
+        int nyAlder = 0;
+        try {
+            nyAlder = indtastGyldigInteger("Indtast alder: ");
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Alderen forbliver uændret.");
+        }
+
+        // Ny fødselsdato
+        System.out.print("Rediger fødselsdato på medlemmet (åååå-mm-dd): ");
+        LocalDate nyFødselsdato = null;
+        try {
+            nyFødselsdato = indtastGyldigDato("Indtast fødselsdato: ");
+        } catch (DateTimeParseException e) {
+            System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
+        }
+
+        // Nyt telefonnummer
+        System.out.print("Rediger telefonnummeret på medlemmet (" + eksisterendeMedlem.getTelefonnummer() + "): ");
+        int nytTelefonnummer = 0;
+        try {
+            nytTelefonnummer = indtastGyldigInteger("Indtast telefonnummer: ");
+        } catch (InputMismatchException e) {
+            System.out.println("Forkert input! Telefonnummeret forbliver uændret.");
+        }
+
+        // Ny email
+        System.out.print("Rediger email på medlemmet (" + eksisterendeMedlem.getEmail() + "): ");
+        String nyEmail = null;
+        try {
+            nyEmail = indtastGyldigEmail("Indtast email: ");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Email forbliver uændret.");
+        }
+
+        // Ny medlemskabsstatus
+        boolean nyMedlemsstatus = true;
+        System.out.print("Er medlemmet aktivt? Indtast 'ja' eller 'nej': ");
+        String svar = sc.nextLine().toLowerCase();
+        if (svar.equals("nej")) {
+            nyMedlemsstatus = false;
+            System.out.println("Du er passivt medlem.");
+        } else {
+            System.out.println("Du er aktivt medlem.");
+        }
+
+        // Ny aktivitetsform
+
+        System.out.println("Rediger aktivitetsform på medlemmet (" + eksisterendeMedlem.getAktivitetsform() + "): ");
+        System.out.println("""
+        1. Motionist
+        2. Konkurrencesvommer
+        0. Tilbage til hovedmenuen
+        """);
+
+        int input = læsInt();
+        String nyAktivitetsform = eksisterendeMedlem.getAktivitetsform();
+
+        switch (input) {
+            case 1:
+                nyAktivitetsform = "Motionist";
+                break;
+            case 2:
+                nyAktivitetsform = "Konkurrencesvommer";
+                break;
+            case 0:
+                System.out.println("Aktivitetsformen forbliver uændret.");
+                return;
+            default:
+                System.out.println("Ugyldigt valg. Aktivitetsformen forbliver uændret.");
+                return;
+        }
+       /* System.out.print("Rediger aktivitetsform på medlemmet (" + eksisterendeMedlem.getAktivitetsform() + "): ");
+        String nyAktivitetsform = null;
+        try {
+            nyAktivitetsform = indtastGyldigString("Indtast aktivitetsform: ");
+        } catch (NoSuchElementException e) {
+            System.out.println("Forkert input! Aktivitetsformen forbliver uændret.");
+        }
+
+        */
+
+
+
+        registerController.redigerMedlem(
+                nytFuldNavn != null ? nytFuldNavn : eksisterendeMedlem.getFuldNavn(),
+                nyAdresse != null ? nyAdresse : eksisterendeMedlem.getAdresse(),
+                nyAlder != 0 ? nyAlder : eksisterendeMedlem.getAlder(),
+                nytTelefonnummer != 0 ? nytTelefonnummer : eksisterendeMedlem.getTelefonnummer(),
+                nyFødselsdato != null ? nyFødselsdato : eksisterendeMedlem.getFødselsdato(),
+                nyEmail != null ? nyEmail : eksisterendeMedlem.getEmail(),
+                nyAktivitetsform != null ? nyAktivitetsform : eksisterendeMedlem.getAktivitetsform(),
+                nyMedlemsstatus);
+    }
+
+
+
+
+
+    /*public void redigerMedlem() {
         System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
         String redigerMedlem = null;
         try {
@@ -312,7 +474,6 @@ public class UserInterface {
             System.out.println("Forkert input! Prøv igen.");
             return;
         }
-
 
         Medlem eksisterendeMedlem = registerController.findMedlem(redigerMedlem);
 
@@ -405,18 +566,19 @@ public class UserInterface {
 
         // Kald RegisterController for at foretage redigering
         registerController.redigerMedlem(
-                registerController.redigerMedlem(
-                        eksisterendeMedlem.getFuldNavn(),
-                        eksisterendeMedlem.getAdresse(),
-                        eksisterendeMedlem.getAlder(),
-                        eksisterendeMedlem.getTelefonnummer(),
-                        eksisterendeMedlem.getFødselsdato(),
-                        eksisterendeMedlem.getEmail(),
-                        eksisterendeMedlem.getAktivitetsform(),
-                        eksisterendeMedlem.getMedlemskabsstatus()
-                );
+                eksisterendeMedlem.getFuldNavn(),
+                eksisterendeMedlem.getAdresse(),
+                eksisterendeMedlem.getAlder(),
+                eksisterendeMedlem.getTelefonnummer(),
+                eksisterendeMedlem.getFødselsdato(),
+                eksisterendeMedlem.getEmail(),
+                eksisterendeMedlem.getAktivitetsform(),
+                eksisterendeMedlem.getMedlemskabsstatus());
 
     }
+
+     */
+
 
     public void gemRedigeretMedlem() {
         System.out.println("De redigeret oplysninger er blevet gemt");

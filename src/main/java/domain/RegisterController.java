@@ -254,7 +254,7 @@ public class RegisterController {
 
     public Medlem findMedlem(String fuldNavn) {
         // Iterér gennem medlemslisten og find medlemmet med det givne fulde navn
-        for (Medlem medlem : hentMedlemmer()) {
+        for (Medlem medlem : hentetMedlemmer()) {
             if (medlem.getFuldNavn().equalsIgnoreCase(fuldNavn)) {
                 return medlem;
             }
@@ -262,7 +262,5 @@ public class RegisterController {
         return null; // Returner null, hvis medlemmet ikke blev fundet
     }
 
-    public ArrayList<Medlem> hentMedlemmer() {
-        return hentMedlemmer();
-    }
+
 }
