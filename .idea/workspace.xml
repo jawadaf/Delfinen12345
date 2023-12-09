@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="177004ca-4cc8-4ea1-98c4-c940dc5c63f4" name="Changes" comment="Jawad:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UserInterface.java" afterDir="false" />
     </list>
     <list id="fd022511-6424-4d84-a19c-e931fdc80f0b" name="Changes by Alhus" comment="Changes by Alhus" />
     <list id="66a2861a-97e8-4eae-97f8-39d7ed896d59" name="Changes by bsenb" comment="Changes by bsenb" />
@@ -124,14 +122,6 @@
       <workItem from="1701867502546" duration="24523000" />
       <workItem from="1702024464694" duration="29174000" />
       <workItem from="1702139385362" duration="3343000" />
-    </task>
-    <task id="LOCAL-00003" summary="klasser oprettet78">
-      <option name="closed" value="true" />
-      <created>1700570462612</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1700570462612</updated>
     </task>
     <task id="LOCAL-00004" summary="Jawad: rettet lidt på klasserne og metoderne og fik tilføjet '@Override'">
       <option name="closed" value="true" />
@@ -517,7 +507,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702143229644</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Jawad:">
+      <option name="closed" value="true" />
+      <created>1702150126344</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1702150126344</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +559,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ui/UserInterface.java</url>
-          <line>448</line>
+          <line>414</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
