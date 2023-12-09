@@ -225,28 +225,7 @@ public class UserInterface {
 
             try {
                 input = sc.nextLine();
-                // Tjek om inputtet er en gyldig streng
-                if (!input.matches("[a-zA-Z\\s]+")) {  // Tilføjet \\s for at acceptere mellemrum
-                    throw new NoSuchElementException();
-                }
-                gyldigtInput = true; // Hvis vi når hertil, er inputtet gyldigt
-            } catch (NoSuchElementException e) {
-                System.out.println("Forkert input. Prøv igen.");
-            }
-        }
-        return input;
-    }
-
-    /*private String indtastGyldigString(String prompt) {
-        String input = "";
-        boolean gyldigtInput = false;
-
-        while (!gyldigtInput) {
-            System.out.print(prompt);
-
-            try {
-                input = sc.nextLine();
-                if (!input.matches("[a-zA-Z]+")) {
+                if (!input.matches("[a-zA-ZæøåÆØÅ ]+")) {
                     throw new NoSuchElementException();
                 }
                 gyldigtInput = true;
@@ -257,7 +236,6 @@ public class UserInterface {
         return input;
     }
 
-     */
 
     private int indtastGyldigInteger(String prompt) {
         int input = 0;
@@ -358,12 +336,14 @@ public class UserInterface {
 
         // Ny adresse
         System.out.print("Rediger adresse på medlemmet (" + eksisterendeMedlem.getAdresse() + "): ");
-        String nyAdresse = null;
-        try {
-            nyAdresse = indtastGyldigString("Indtast adresse: ");
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Adressen forbliver uændret.");
-        }
+
+        // Indtast nye dele af adressen
+        String nyBy = indtastGyldigString("Indtast by navn: ");
+        String nytVejnavn = indtastGyldigString("Indtast vejnavn: ");
+        int nytVejnummer = indtastGyldigInteger("Indtast vejnummer: ");
+
+        // Saml adresse
+        String nyAdresse = nyBy + " " + nytVejnavn + " " + nytVejnummer;
 
         // Ny alder
         System.out.print("Rediger alder på medlemmet (" + eksisterendeMedlem.getAlder() + "): ");
@@ -438,18 +418,8 @@ public class UserInterface {
                 System.out.println("Ugyldigt valg. Aktivitetsformen forbliver uændret.");
                 return;
         }
-       /* System.out.print("Rediger aktivitetsform på medlemmet (" + eksisterendeMedlem.getAktivitetsform() + "): ");
-        String nyAktivitetsform = null;
-        try {
-            nyAktivitetsform = indtastGyldigString("Indtast aktivitetsform: ");
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Aktivitetsformen forbliver uændret.");
-        }
 
-        */
-
-
-
+        // Gem de opdaterede oplysninger
         registerController.redigerMedlem(
                 nytFuldNavn != null ? nytFuldNavn : eksisterendeMedlem.getFuldNavn(),
                 nyAdresse != null ? nyAdresse : eksisterendeMedlem.getAdresse(),
@@ -457,132 +427,14 @@ public class UserInterface {
                 nytTelefonnummer != 0 ? nytTelefonnummer : eksisterendeMedlem.getTelefonnummer(),
                 nyFødselsdato != null ? nyFødselsdato : eksisterendeMedlem.getFødselsdato(),
                 nyEmail != null ? nyEmail : eksisterendeMedlem.getEmail(),
-                nyAktivitetsform != null ? nyAktivitetsform : eksisterendeMedlem.getAktivitetsform(),
+                nyAktivitetsform,
                 nyMedlemsstatus);
-    }
 
-
-
-
-
-    /*public void redigerMedlem() {
-        System.out.println("Indtast det fulde navn på medlemmet, som du gerne vil redigere: ");
-        String redigerMedlem = null;
-        try {
-            redigerMedlem = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Prøv igen.");
-            return;
-        }
-
-        Medlem eksisterendeMedlem = registerController.findMedlem(redigerMedlem);
-
-        if (eksisterendeMedlem == null) {
-            System.out.println("Medlemmet blev ikke fundet. Prøv igen.");
-            return;
-        }
-
-        System.out.println("Eksisterende oplysninger for medlemmet:");
-        System.out.println(eksisterendeMedlem);
-
-        // Opdater medlemsoplysninger
-        System.out.println("Indtast nye oplysninger for medlemmet:");
-
-        // Nyt fuld navn
-        System.out.print("Rediger navnet på medlemmet (" + eksisterendeMedlem.getFuldNavn() + "): ");
-        String nytFuldNavn = null;
-        try {
-            nytFuldNavn = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Navnet forbliver uændret.");
-        }
-
-        // Ny adresse
-        System.out.print("Rediger adresse på medlemmet (" + eksisterendeMedlem.getAdresse() + "): ");
-        String nyAdresse = null;
-        try {
-            nyAdresse = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Adressen forbliver uændret.");
-        }
-
-        // Ny alder
-        System.out.print("Rediger alder på medlemmet (" + eksisterendeMedlem.getAlder() + "): ");
-        int nyAlder = 0;
-        try {
-            nyAlder = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Alderen forbliver uændret.");
-        }
-
-        // Ny fødselsdato
-        System.out.print("Rediger fødselsdato på medlemmet (åååå-mm-dd): ");
-        LocalDate nyFødselsdato = null;
-        try {
-            String fødselsdagsdato = læsString();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            nyFødselsdato = LocalDate.parse(fødselsdagsdato, formatter);
-        } catch (DateTimeParseException e) {
-            System.out.println("Forkert datoformat. Brug formatet åååå-mm-dd. Prøv igen.");
-            sc.nextLine();
-        }
-
-        // Nyt telefonnummer
-        System.out.print("Rediger telefonnummeret på medlemmet (" + eksisterendeMedlem.getTelefonnummer() + "): ");
-        int nytTelefonnummer = 0;
-        try {
-            nytTelefonnummer = læsInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Telefonnummeret forbliver uændret.");
-        }
-
-        // Ny email
-        System.out.print("Rediger email på medlemmet (" + eksisterendeMedlem.getEmail() + "): ");
-        String nyEmail = null;
-        try {
-            nyEmail = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Email forbliver uændret.");
-        }
-
-        // Ny aktivitetsform
-        System.out.print("Rediger aktivitetsform på medlemmet (" + eksisterendeMedlem.getAktivitetsform() + "): ");
-        String nyAktivitetsform = null;
-        try {
-            nyAktivitetsform = læsString();
-        } catch (NoSuchElementException e) {
-            System.out.println("Forkert input! Aktivitetsformen forbliver uændret.");
-        }
-
-        // Ny medlemskabsstatus
-        System.out.print("Rediger medlemsstatus på medlemmet (tast 'true' for aktiv, tast 'false' for passiv, nuværende: " + eksisterendeMedlem.getMedlemskabsstatus() + "): ");
-        boolean nyMedlemsstatus = true;
-        try {
-            nyMedlemsstatus = sc.nextBoolean();
-        } catch (InputMismatchException e) {
-            System.out.println("Forkert input! Medlemsstatus forbliver uændret.");
-            sc.nextLine();  // Ryd buffer
-        }
-
-        // Kald RegisterController for at foretage redigering
-        registerController.redigerMedlem(
-                eksisterendeMedlem.getFuldNavn(),
-                eksisterendeMedlem.getAdresse(),
-                eksisterendeMedlem.getAlder(),
-                eksisterendeMedlem.getTelefonnummer(),
-                eksisterendeMedlem.getFødselsdato(),
-                eksisterendeMedlem.getEmail(),
-                eksisterendeMedlem.getAktivitetsform(),
-                eksisterendeMedlem.getMedlemskabsstatus());
 
     }
-
-     */
-
 
     public void gemRedigeretMedlem() {
-        System.out.println("De redigeret oplysninger er blevet gemt");
-
+        System.out.println("De redigerede oplysninger er blevet gemt.");
 
     }
 
@@ -925,7 +777,7 @@ public class UserInterface {
     public void totalKontingent() {
         ArrayList<Medlem> medlemmer = registerController.hentetMedlemmer();
         int totalKontingent = registerController.totalKontigent();
-        /*for (Medlem medlem : medlemmer) {
+        for (Medlem medlem : medlemmer) {
             if (!medlem.getMedlemskabStatus()) {
                 totalKontingent += 500;
             } else {
@@ -939,7 +791,7 @@ public class UserInterface {
                     totalKontingent += 1200;
                 }
             }
-        }*/
+        }
         System.out.println("Total indtægt = " + totalKontingent + " kr.");
     }
 

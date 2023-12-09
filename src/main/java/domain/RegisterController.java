@@ -1,7 +1,9 @@
 package domain;
 
+import datasource.FileHandler;
 import ui.UserInterface;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,6 +82,8 @@ public class RegisterController {
                 email,
                 aktivitetsform,
                 medlemskabStatus);
+
+
     }
 
 

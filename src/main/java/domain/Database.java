@@ -63,6 +63,7 @@ public class Database {
                 medlem.setEmail(email);
                 medlem.setAktivitetsform(aktivitetsform);
                 medlem.setMedlemskabStatus(medlemStatus);
+                return;
             }
         }
     }
